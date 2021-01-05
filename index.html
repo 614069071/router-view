@@ -149,7 +149,63 @@
 
         <!-- 路由器管理 -->
         <div class="module-item-wrapper" data-module="route-manage">
+          <div class="model-title">管理密码</div>
 
+          <div class="model-content">
+            <form id="setting_manage_form">
+              <label class="label-item">
+                <span>旧密码</span>
+                <input type="text" name="ip_addr" placeholder="请输入旧密码">
+              </label>
+              <label class="label-item">
+                <span>新密码</span>
+                <input type="text" name="subnet" placeholder="请输入新密码">
+              </label>
+              <label class="label-item">
+                <span>确认新密码</span>
+                <input type="text" name="wg" placeholder="请再次输入新密码">
+              </label>
+            </form>
+
+            <button class="button submit">确认</button>
+          </div>
+
+          <div class="model-title">软件升级</div>
+
+          <div class="model-content">
+            <!-- <form id="setting_manage_form">
+              <label class="label-item">
+                <span>选择固件</span>
+                <input type="file" name="ip_addr" placeholder="请输入旧密码">
+              </label>
+            </form> -->
+
+            <div>
+              <div class="sim-label-title">软件升级</div>
+
+              <label class="button">选择固件
+                <input type="file" hidden />
+              </label>
+              <button class="button">确认上传</button>
+            </div>
+
+            <p><span class="sim-label-title"></span>文件名称</p>
+
+          </div>
+
+          <div class="model-title">重启和恢复出厂</div>
+
+          <div class="model-content">
+            <p>
+              <span class="sim-label-title">重启路由器</span>
+              <button class="button">重启</button>
+            </p>
+
+            <p>
+              <span class="sim-label-title">恢复出厂设置</span>
+              <button class="button">恢复</button>
+            </p>
+          </div>
         </div>
 
         <!-- 系统日志 -->

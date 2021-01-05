@@ -177,14 +177,14 @@ input:-ms-input-placeholder {
   height: 30px;
   line-height: 30px;
   text-align: right;
-  width: 80px;
+  width: 90px;
   margin-right: 12px;
 }
 
 .sim-label-title {
   display: inline-block;
   text-align: right;
-  width: 80px;
+  width: 90px;
   margin-right: 12px;
 }
 
@@ -206,6 +206,11 @@ input:-ms-input-placeholder {
   color: #fff;
   cursor: pointer;
   transition: all 0.1s;
+  display: inline-block;
+  margin-right: 10px;
+  min-width: 96px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .button:hover {
@@ -217,7 +222,7 @@ input:-ms-input-placeholder {
 }
 
 .button.submit {
-  margin-left: 92px;
+  margin-left: 102px;
 }
 
 /* 自定义滚动条 */
@@ -277,4 +282,22 @@ input:-ms-input-placeholder {
 
 .model-type-item {
   display: none;
+}
+
+/* 多行模块 */
+.model-title {
+  height: 50px;
+  line-height: 50px;
+  padding-left: 50px;
+  background-color: #f5f7fa;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.model-content {
+  display: inline-block;
+  /* border: 1px solid #eee; */
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
 }

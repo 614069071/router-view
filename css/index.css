@@ -44,9 +44,9 @@
 
 .nav-menu-wrapper {
   /* width: 180px; */
-  border-right: 1px solid red;
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: rgb(84, 92, 100);
 }
 
 .content-main-wrapper {
@@ -60,12 +60,12 @@
 
 .main-header-wrapper {
   height: 60px;
-  border-bottom: 1px solid lightskyblue;
+  border-bottom: 1px solid #dfe4ed;
 }
 
 .main-content-wrapper {
   flex: 1;
-  padding-left: 50px;
+  padding: 0 50px;
   padding-top: 20px;
   overflow-x: hidden;
   overflow-y: auto;
