@@ -1,0 +1,74 @@
+/* NavMenu start */
+.menu-bar-body {
+  width: 160px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menu-item-title,
+.menu-submenu-title {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  padding: 0 20px;
+  color: #fff;
+  justify-content: space-between;
+  background-color: rgb(84, 92, 100);
+}
+
+.menu-item-title:hover,
+.menu-submenu-title:hover {
+  background-color: rgb(67, 74, 80);
+}
+
+.menu-item-title.checked {
+  color: rgb(255, 208, 75);
+}
+
+.menu-submenu-title.open .icon-arrow {
+  transform: rotate(180deg);
+}
+
+.menu-submenu-body {
+  display: none;
+}
+
+/* NavMenu end */
+
+/* 主体布局 start */
+.content-wrapper {
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
+  display: flex;
+}
+
+.nav-menu-wrapper {
+  /* width: 180px; */
+  background-color: pink;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.content-main-wrapper {
+  flex: 1;
+}
+
+.content-main-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header-wrapper {
+  height: 60px;
+  background-color: lightskyblue;
+}
+
+.main-content-wrapper {
+  flex: 1;
+  background-color: lightcyan;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* 主体布局 end */
