@@ -103,7 +103,7 @@ appendMenuToEle(menuBarArray, root);
 // 路由设置 => 上网设置
 var $connectRadioBtns = $('.connect-type-wrapper .check-type');
 var $connectModels = $('.connect-type-main-wrapper .model-type-item');
-console.log($connectModels)
+
 // tab切换
 $connectRadioBtns.on('change', function () {
   var $index = $(this).data('index');
