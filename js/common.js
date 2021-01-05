@@ -17,7 +17,7 @@ $allSwitchBtns.on('change', function () {
   isChecked ? parent.addClass('on') : parent.removeClass('on');
 });
 
-var $allRadioBtns = $("input[role='radio']");
+var $allRadioBtns = $("input[type=radio]");
 $allRadioBtns.on('change', function () {
   var name = $(this).prop('name');
   var list = $('input[name=' + name + ']');

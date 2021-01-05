@@ -22,7 +22,7 @@
 }
 
 .menu-item-title.checked {
-  color: rgb(255, 208, 75);
+  color: var(--default-color);
 }
 
 .menu-submenu-title.open .icon-arrow {
@@ -39,13 +39,12 @@
 .content-wrapper {
   height: 100%;
   width: 100%;
-  background-color: #eee;
   display: flex;
 }
 
 .nav-menu-wrapper {
   /* width: 180px; */
-  background-color: pink;
+  border-right: 1px solid red;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -61,14 +60,23 @@
 
 .main-header-wrapper {
   height: 60px;
-  background-color: lightskyblue;
+  border-bottom: 1px solid lightskyblue;
 }
 
 .main-content-wrapper {
   flex: 1;
-  background-color: lightcyan;
+  padding-left: 50px;
+  padding-top: 20px;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
 /* 主体布局 end */
+
+/* 主体模块 */
+.module-item-wrapper {
+  display: none;
+}
+.module-item-wrapper:first-child {
+  display: block;
+}

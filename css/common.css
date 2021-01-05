@@ -1,3 +1,10 @@
+:root {
+  --default-color: #409eff;
+  --hover-color: #66b1ff;
+  --check-color: #3a8ee6;
+  --de-btn-color: #dcdfe6;
+}
+
 body,
 html {
   font-size: 14px;
@@ -16,10 +23,10 @@ img {
 
 input,
 button {
-  border: none;
   padding: 0;
-  outline: none;
   margin: 0;
+  border: none;
+  outline: none;
 }
 
 [class$="btn"] {
@@ -40,75 +47,90 @@ li {
   padding: 0;
 }
 
+p {
+  margin: 20px 0;
+  padding: 0;
+}
+
 /* 自定义placeholder样式 */
 input::-webkit-input-placeholder {
-  color: red;
+  color: #c0c9cf;
 }
 
 input::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: red;
+  color: #c0c9cf;
 }
 
 input:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: red;
+  color: #c0c9cf;
 }
 
 input:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: red;
-}
-
-/* 自定义滚动条 */
-.custom-scroll-bars::-webkit-scrollbar {
-  width: 3px;
-}
-.custom-scroll-bars::-webkit-scrollbar-track {
-  background-color: #eee;
-  border-radius: 6px;
-}
-.custom-scroll-bars::-webkit-scrollbar-thumb {
-  border-radius: 6px;
-  background-color: #ddd;
-}
-
-.wrapper {
-  width: 100%;
-  height: 100%;
-  min-height: 600px;
-}
-
-.container {
-  width: 980px;
-  margin: 0 auto;
+  color: #c0c9cf;
 }
 
 /* 单选按钮 */
+.radio-btn {
+  line-height: 1;
+  margin-right: 20px;
+}
 .radio-btn span {
   display: inline-block;
   width: 14px;
   height: 14px;
-  background-color: #aaa;
+  margin-right: 2px;
+  border: 1px solid var(--de-btn-color);
   border-radius: 50%;
+  position: relative;
+  top: 2px;
+  box-sizing: border-box;
+  transition: all 0.1s;
+}
+
+.radio-btn span::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-radius: 100%;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s;
 }
 
 .radio-btn.on span {
-  background-color: lightblue;
+  background-color: var(--default-color);
+  border-color: var(--default-color);
 }
 
-/* <label class="radio-btn">
-  <input class="check-type" type="radio" name="connectType" role="radio" data-index="2" value="3"
-    hidden />
-  <span></span>
-  动态IP
-</label> */
+.radio-btn.on span::before {
+  width: 4px;
+  height: 4px;
+}
+
+.radio-btn:hover span {
+  border-color: var(--default-color);
+}
+
+/* 自定义radio使用html
+  <label class="radio-btn">
+    <input class="check-type" type="radio" name="connectType" role="radio" data-index="2" value="3"
+      hidden />
+    <span></span>
+    动态IP
+  </label> 
+*/
 
 /* switch 按钮 */
 .switch-btn {
   width: 40px;
   height: 18px;
-  background-color: red;
+  background-color: var(--de-btn-color);
   border-radius: 9px;
   position: relative;
   transition: all 0.2s;
@@ -127,17 +149,89 @@ input:-ms-input-placeholder {
 }
 
 .switch-btn.on {
-  background-color: blue;
+  background-color: var(--default-color);
 }
 
 .switch-btn.on::before {
   left: 21px;
 }
 
-/* <label class="switch-btn">
-  <input type="checkbox" name="dhcp" value="1" hidden role="switch">
-  <span></span>
-</label> */
+/* 
+  自定义switch使用html
+  <label class="switch-btn">
+    <input type="checkbox" name="dhcp" value="1" hidden role="switch">
+    <span></span>
+  </label> 
+*/
+
+/* 表单input输入公共样式 */
+.label-item {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+  color: #606266;
+}
+
+.label-item > span {
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+  width: 80px;
+  margin-right: 12px;
+}
+
+.sim-label-title {
+  display: inline-block;
+  text-align: right;
+  width: 80px;
+  margin-right: 12px;
+}
+
+.label-item > input {
+  height: 40px;
+  width: 220px;
+  border: 1px solid #dcdfe6;
+  padding: 0 15px;
+  border-radius: 4px;
+}
+
+/* 自定义按钮 */
+.button {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  background-color: var(--default-color);
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.button:hover {
+  background-color: var(--hover-color);
+}
+
+.button:active {
+  background-color: var(--check-color);
+}
+
+.button.submit {
+  margin-left: 92px;
+}
+
+/* 自定义滚动条 */
+.custom-scroll-bars::-webkit-scrollbar {
+  width: 3px;
+}
+.custom-scroll-bars::-webkit-scrollbar-track {
+  background-color: #eee;
+  border-radius: 6px;
+}
+.custom-scroll-bars::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #ddd;
+}
 
 /* toast 弹窗 */
 .toast-wrapper {
@@ -153,17 +247,34 @@ input:-ms-input-placeholder {
   z-index: 100;
 }
 
+/* 箭头 */
 .icon-arrow {
   display: inline-block;
   width: 10px;
   height: 10px;
   margin-left: 6px;
-  /* border-width: 1px;
-  border-style: solid;
-  border-color: red red limegreen limegreen; */
-  /* transform: rotate(-45deg); */
   background-image: url(../images/arrow.png);
   background-position: center;
   background-size: contain;
   transition: all 0.1s;
+}
+
+/* 自定义样式 */
+.wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+}
+
+.container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.model-type-list .model-type-item:first-child {
+  display: block;
+}
+
+.model-type-item {
+  display: none;
 }

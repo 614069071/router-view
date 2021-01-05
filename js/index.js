@@ -12,6 +12,14 @@ function initMenuHandel() {
   $menu_item_titles.on('click', function () {
     $menu_item_titles.removeClass('checked');
     $(this).addClass('checked');
+
+    // 获取对应模块
+    var $module = $(this).data('module') || '';
+    var $modules = $('.module-item-wrapper');
+    $modules.hide();
+    var $content = $('.module-item-wrapper[data-module="' + $module + '"]');
+    $content.show();
+    // console.log($content);
   });
 }
 
@@ -25,7 +33,7 @@ function createMenuItem(arr, pl) {
       var nextNode = createMenuItem(e.list, padding + 10);
       result += '<li class="menu-submenu"><span class="menu-submenu-title" style="padding-left:' + padding + 'px;">' + e.title + '<i class="icon-arrow"></i></span><ul class="menu-submenu-body">' + nextNode + '</ul></li>';
     } else {
-      result += '<li class="menu-item"><span class="menu-item-title" style="padding-left:' + padding + 'px;">' + e.title + '</span></li>';
+      result += '<li class="menu-item"><span class="menu-item-title ' + (e.checked ? "checked" : "") + '" data-module="' + e.module + '" style="padding-left:' + padding + 'px;">' + e.title + '</span></li>';
     }
   }
 
@@ -42,19 +50,22 @@ function createMenuTree(arr) {
 var menuBarArray = [
   {
     title: '网络状态',
+    module: 'network-status',
+    checked: 1
   },
   {
     title: '设备管理',
+    module: 'device-manage'
   },
   {
     title: '路由设置',
     list: [
-      { title: '路由器状态' },
-      { title: '设置向导' },
-      { title: '上网设置' },
-      { title: 'LAN口设置' },
-      { title: '路由器管理' },
-      { title: '系统日志' },
+      { title: '路由器状态', module: 'route-status' },
+      { title: '设置向导', module: 'route-guide' },
+      { title: '上网设置', module: 'route-internet' },
+      { title: 'LAN口设置', module: 'route-lan' },
+      { title: '路由器管理', module: 'route-manage' },
+      { title: '系统日志', module: 'route-log' },
     ]
   },
   {
@@ -74,6 +85,7 @@ function appendMenuToEle(arr, el) {
   initMenuHandel();
 }
 
+// 登录权限判断
 // var login_status = $.cookie('loginStatus');
 // console.log(login_status)
 // if (login_status) {
@@ -88,4 +100,12 @@ appendMenuToEle(menuBarArray, root);
 /* ------------------- 创建 NavMenu start ------------------- */
 
 /* 主体功能模块 */
-
+// 路由设置 => 上网设置
+var $connectRadioBtns = $('.connect-type-wrapper .check-type');
+var $connectModels = $('.connect-type-main-wrapper .model-type-item');
+console.log($connectModels)
+// tab切换
+$connectRadioBtns.on('change', function () {
+  var $index = $(this).data('index');
+  $connectModels.hide().eq($index).show();
+})
