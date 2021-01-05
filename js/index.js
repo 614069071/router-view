@@ -108,4 +108,4 @@ console.log($connectModels)
 $connectRadioBtns.on('change', function () {
   var $index = $(this).data('index');
   $connectModels.hide().eq($index).show();
-})
+});

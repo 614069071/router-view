@@ -144,7 +144,39 @@
 
         <!-- LAN口设置 -->
         <div class="module-item-wrapper" data-module="route-lan">
-          LAN口设置
+          <p>DHCP服务为所有连接到智能路由器的设备自动分配IP地址。</p>
+          <form class="setting-lan-from" id="setting_lan_form">
+            <label class="label-item">
+              <span>IP</span><input type="text" name="ip" placeholder="请输入您的IP地址">
+            </label>
+            <label class="label-item">
+              <span>子网掩码</span><input type="text" name="zip" placeholder="请输入您的子网掩码">
+            </label>
+            <div class="label-item">
+              <span>DHCP</span>
+              <label class="switch-btn">
+                <input id="switch_dhcp_btn" type="checkbox" value="1" hidden role="switch">
+                <span></span>
+              </label>
+            </div>
+
+            <div class="dhcp-options-wrapper">
+              <label class="label-item">
+                <span>起始IP地址</span><input type="text" name="start_id" placeholder="请输入您的起始IP地址">
+              </label>
+              <label class="label-item">
+                <span>终止IP地址</span><input type="text" name="end_id" placeholder="请输入您的终止IP地址">
+              </label>
+              <label class="label-item">
+                <span>DNS(首选)</span><input type="text" name="start_dns" placeholder="请输入您的DNS（首选）">
+              </label>
+              <label class="label-item">
+                <span>DNS(备用)</span><input type="text" name="end_dns" placeholder="请输入您的DNS（备用）">
+              </label>
+            </div>
+          </form>
+
+          <button class="setting-lan-submit button submit" id="setting_lan_submit">保存</button>
         </div>
 
         <!-- 路由器管理 -->

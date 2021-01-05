@@ -51,6 +51,24 @@ window._toast = function (text, awit) {
   });
 }
 
+// loading
+window._loading = function (text) {
+  var elLoading = document.querySelector('.loading-wrapper');
+
+  if (elLoading) $(elLoading).remove();
+  var content = text ? '<span class="loading-text"></span>' + text + '</span>' : '';
+  var $el = $('<div class="loading-wrapper"><span class="icon-loading"></span>' + content + '</div>');
+
+  $('body').append($el);
+}
+
+// 关闭所有弹窗
+window._close = function () {
+  var elToast = document.querySelector('.toast-wrapper');
+  var elLoading = document.querySelector('.loading-wrapper');
+  $(elToast).remove();
+  $(elLoading).remove();
+}
 
 /* 
   @data 请求数据
