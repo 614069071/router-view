@@ -99,6 +99,120 @@ var root = $('.nav-menu-wrapper');
 appendMenuToEle(menuBarArray, root);
 /* ------------------- 创建 NavMenu start ------------------- */
 
+
+/* -------------------创建分页器 start -------------------*/
+function Pager(total, size, step, callback) {
+  this.total = total;//总数凉条数
+  this.size = size || 10;//分页条数
+  this.step = step || 5;//显示条数
+  this.current = 1;//当前索引
+  this.cache = 0;//
+  this.addPage = 0;//
+  this.callback = callback || function () { }
+}
+
+Pager.prototype.switchPage = function (type) {
+  if (type) {
+    if (this.current === 1 && !this.addPage) return;
+    if (this.current <= 1) {
+      if (this.addPage) {
+        this.addPage--;
+      }
+    } else {
+      this.current--;
+    }
+  } else {
+    if (this.current >= this.cache) {
+      var num = Math.ceil(this.total / this.size);
+      if (this.addPage >= num - this.step) return;
+      this.addPage++;
+    } else {
+      this.current++;
+    }
+  }
+
+  var currentPage = this.current + this.addPage;
+
+  this.callback(currentPage);
+};
+
+Pager.prototype.checked = function (item) {
+  this.current = item;
+  var index = item + this.addPage;
+  this.callback(index);
+};
+
+Pager.prototype.create = function () {
+  var items = [];
+  var self = this;
+
+  for (let i = 0; i < this.cache; i++) {
+    var item = $('<span class="pager-item ' + (this.current === (i + 1) ? 'active' : '') + '">' + (i + 1 + this.addPage) + '</span>');
+    item.on('click', function () {
+      $(this).addClass('active').siblings().removeClass('active');
+      self.checked(i + 1);
+    });
+    items.push(item);
+  }
+
+  return items;
+}
+
+Pager.prototype.update = function () {
+  var $el = $('.pager-body');
+  var items = this.create();
+
+  $el.empty().append(items);
+}
+
+Pager.prototype.init = function (root) {
+  var self = this;
+  // 创建分页数量
+  var num = Math.ceil(this.total / this.size);
+
+  this.cache = num >= this.step ? this.step : num;
+
+  console.log(this.cache, 'this.cache')
+
+  var root = root || $('body');
+  var $wrapper = $('<div class="pager-view-wrapper right"></div>');
+  var $leftBtn = $('<div class="pager-btn"><i class="icon-arrow-left"></i></div>');
+  $leftBtn.on('click', function () {
+    self.switchPage(1);
+    self.update();
+  })
+
+  var $rightBtn = $('<div class="pager-btn"><i class="icon-arrow-right"></i></div>');
+  $rightBtn.on('click', function () {
+    self.switchPage(0);
+    self.update();
+  })
+
+  var $pagerBody = $('<div class="pager-body"></div>');
+  var $items = this.create();
+
+  console.log($items, '$items')
+
+  $pagerBody.append($items);
+  console.log($pagerBody, '$pagerBody')
+  $wrapper.append($leftBtn);
+  $wrapper.append($pagerBody);
+  $wrapper.append($rightBtn);
+
+  root.append($wrapper);
+}
+
+var pager = new Pager(100, 10, 8, function (index) {
+  console.log('current', index);
+});
+var el = $('.pager-view-wrapper-test');
+pager.init(el);
+
+console.log(pager, 'pager')
+
+/* -------------------创建分页器 end -------------------*/
+
+
 /* 主体功能模块 */
 // 路由设置 => 上网设置
 var $connectRadioBtns = $('.connect-type-wrapper .check-type');

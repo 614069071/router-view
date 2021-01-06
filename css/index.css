@@ -127,8 +127,16 @@
   margin-top: 20px;
 }
 
+.pager-view-wrapper.right {
+  justify-content: flex-end;
+}
+
+.pager-body {
+  display: flex;
+}
+
 .pager-btn,
-.pager-item {
+.pager-body .pager-item {
   height: 30px;
   line-height: 30px;
   width: 30px;
@@ -137,11 +145,15 @@
   color: #606266;
   background-color: #f4f4f5;
   border-radius: 2px;
-  margin: 0 5px;
   cursor: pointer;
   user-select: none;
 }
 
-.pager-item.active {
-  color: #409eff;
+.pager-body .pager-item {
+  margin: 0 5px;
+}
+
+.pager-body .pager-item.active {
+  color: #fff;
+  background-color: #409eff;
 }
