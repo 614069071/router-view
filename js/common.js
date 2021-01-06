@@ -254,10 +254,9 @@ _MenuTree.prototype.initMenuHandel = function() {
 
     $menu_submenu_titles.on('click', function() {
         var other = $(this).parent().siblings();
-        var child = other.children('.menu-submenu-body');
-        child.slideUp();
-        var next = $(this).next();
-        next.slideToggle();
+        other.children('.menu-submenu-body').slideUp();
+        other.children('.menu-submenu-title').removeClass('open');
+        $(this).toggleClass('open').next().slideToggle();
     });
 
     $menu_item_titles.on('click', function() {
