@@ -9,19 +9,16 @@
 // }
 
 var menuBarArray = [
-  {
-    title: '网络状态',
-    module: 'network-status',
-    checked: 1
-  },
-  {
-    title: '设备管理',
-    module: 'device-manage'
-  },
+  // {
+  //   title: '网络状态',
+  //   module: 'network-status',
+  //   checked: 1
+  // },
   {
     title: '路由设置',
     list: [
       { title: '路由器状态', module: 'route-status' },
+      { title: 'DHCP服务器', module: 'device-manage' },
       { title: '设置向导', module: 'route-guide' },
       { title: '上网设置', module: 'route-internet' },
       { title: 'LAN口设置', module: 'route-lan' },
@@ -43,10 +40,18 @@ var menuBarArray = [
 new _MenuTree(menuBarArray, $('.nav-menu-wrapper'));
 
 // 创建分页器
-new _Pager($('.pager-view-wrapper-test'), {
+new _Pager($('.device-list-pager-wrapper'), {
   total: 100,
   callback: function (index) {
-    console.log('current', index);
+    console.log('device', index);
+  }
+});
+
+// 创建分页器
+new _Pager($('.roter-log-pager-wrapper'), {
+  total: 100,
+  callback: function (index) {
+    console.log('log', index);
   }
 });
 

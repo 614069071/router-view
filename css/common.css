@@ -336,7 +336,7 @@ input:-ms-input-placeholder {
 /* 分页器 */
 .pager-view-wrapper {
   display: flex;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin-top: 20px;
 }
 

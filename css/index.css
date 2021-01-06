@@ -82,25 +82,25 @@
 }
 
 /* 系统日志 */
-.route-item-log-wrapper {
+.side-table-wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.route-log-wrapper {
+.side-table {
   border-collapse: collapse;
   width: 100%;
 }
 
-.route-log-wrapper thead {
+.side-table thead {
   background-color: #f5f7fa;
   color: #909399;
 }
 
-.route-log-wrapper th,
-.route-log-wrapper td {
+.side-table th,
+.side-table td {
   vertical-align: middle;
   padding: 10px;
   line-height: 20px;
@@ -118,4 +118,10 @@
 .route-log-wrapper tr {
   border-top: 1px solid #ebeef5;
   border-bottom: 1px solid #ebeef5;
+}
+
+.device-list-wrapper tr th,
+.device-list-wrapper tr td {
+  text-align: center;
+  /* width: 100px; */
 }

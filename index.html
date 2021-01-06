@@ -16,7 +16,7 @@
 <body>
   <div class="content-wrapper">
     <!-- NavMenu -->
-    <nav class="nav-menu-wrapper  custom-scroll-bars"></nav>
+    <nav class="nav-menu-wrapper custom-scroll-bars"></nav>
     <div class="content-main-wrapper">
       <!-- Header -->
       <header class="main-header-wrapper">
@@ -31,10 +31,45 @@
         </div>
         <!-- -------------网络状态 end------------- -->
 
-        <!-- -------------设备管理 start------------- -->
-        <!-- 设备管理 -->
+        <!-- -------------DHCP start------------- -->
+        <!-- 设备列表 -->
         <div class="module-item-wrapper" data-module="device-manage">
-          设备管理
+          <div class="dhcp-item-device-wrapper side-table-wrapper">
+            <table class="device-list-wrapper side-table">
+              <thead>
+                <tr>
+                  <th>设备名</th>
+                  <th>MAC地址</th>
+                  <th>IP地址</th>
+                  <th>有效时间</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>xiaomi</td>
+                  <td>A8-A8-A8-A8-A8-A8</td>
+                  <td>192.168.0.100</td>
+                  <td>01:56:37</td>
+                </tr>
+
+              </tbody>
+            </table>
+
+            <!-- 分页 -->
+            <div class="device-list-pager-wrapper">
+
+            </div>
+            <!-- <div class="pager-view-wrapper right">
+              <div class="pager-btn"><i class="icon-arrow-left"></i></div>
+              <div class="pager-body">
+                <span class="pager-item active">1</span>
+                <span class="pager-item">2</span>
+                <span class="pager-item">3</span>
+              </div>
+              <div class="pager-btn"><i class="icon-arrow-right"></i></div>
+            </div> -->
+          </div>
         </div>
         <!-- -------------设备管理 end------------- -->
 
@@ -242,8 +277,8 @@
 
         <!-- 系统日志 -->
         <div class="module-item-wrapper" data-module="route-log">
-          <div class="route-item-log-wrapper">
-            <table class="route-log-wrapper">
+          <div class="route-item-log-wrapper side-table-wrapper">
+            <table class="route-log-wrapper side-table">
               <thead>
                 <tr>
                   <th>索引</th>
@@ -269,7 +304,7 @@
             </table>
 
             <!-- 分页 -->
-            <div class="pager-view-wrapper-test">
+            <div class="roter-log-pager-wrapper">
 
             </div>
             <!-- <div class="pager-view-wrapper right">
