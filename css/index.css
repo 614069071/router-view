@@ -82,31 +82,6 @@
 }
 
 /* 系统日志 */
-.side-table-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.side-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.side-table thead {
-  background-color: #f5f7fa;
-  color: #909399;
-}
-
-.side-table th,
-.side-table td {
-  vertical-align: middle;
-  padding: 10px;
-  line-height: 20px;
-  box-sizing: border-box;
-}
-
 .route-log-wrapper tr th:nth-child(1),
 .route-log-wrapper tr td:nth-child(1),
 .route-log-wrapper tr th:nth-child(2),
@@ -115,13 +90,15 @@
   width: 100px;
 }
 
-.route-log-wrapper tr {
-  border-top: 1px solid #ebeef5;
-  border-bottom: 1px solid #ebeef5;
-}
-
 .device-list-wrapper tr th,
 .device-list-wrapper tr td {
   text-align: center;
   /* width: 100px; */
+}
+
+/* LAN口设置 */
+.setting-lan-from p {
+  height: 42px;
+  display: flex;
+  align-items: center;
 }

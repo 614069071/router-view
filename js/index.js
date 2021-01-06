@@ -65,3 +65,12 @@ $connectRadioBtns.on('change', function () {
   var $index = $(this).data('index');
   $connectModels.hide().eq($index).show();
 });
+
+// lan设置
+var $lanRadios = $('#setting_lan_form .check-type');
+var $lanTypeItems = $('#setting_lan_form .lan-type-item');
+
+$lanRadios.on('change', function () {
+  var $index = $(this).data('index');
+  $lanTypeItems.hide().eq($index).show();
+})

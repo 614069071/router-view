@@ -32,8 +32,28 @@
         <!-- -------------网络状态 end------------- -->
 
         <!-- -------------DHCP start------------- -->
-        <!-- 设备列表 -->
         <div class="module-item-wrapper" data-module="device-manage">
+          <p class="model-title">DHCP服务器</p>
+
+          <form class="dhcp-setting-from" id="dhcp_setting_form">
+            <label class="label-item">
+              <span>起始IP地址</span><input type="text" name="start_id" placeholder="请输入您的起始IP地址">
+            </label>
+            <label class="label-item">
+              <span>终止IP地址</span><input type="text" name="end_id" placeholder="请输入您的终止IP地址">
+            </label>
+            <label class="label-item">
+              <span>DNS(首选)</span><input type="text" name="start_dns" placeholder="请输入您的DNS（首选）">
+            </label>
+            <label class="label-item">
+              <span>DNS(备用)</span><input type="text" name="end_dns" placeholder="请输入您的DNS（备用）">
+            </label>
+          </form>
+
+          <button class="setting-lan-submit button submit" id="setting_lan_submit">保存</button>
+          <p class="model-title">设备列表</p>
+
+          <!-- 设备列表 -->
           <div class="dhcp-item-device-wrapper side-table-wrapper">
             <table class="device-list-wrapper side-table">
               <thead>
@@ -53,6 +73,13 @@
                   <td>01:56:37</td>
                 </tr>
 
+                <tr>
+                  <td>xiaomi</td>
+                  <td>A8-A8-A8-A8-A8-A8</td>
+                  <td>192.168.0.100</td>
+                  <td>01:56:37</td>
+                </tr>
+
               </tbody>
             </table>
 
@@ -60,18 +87,10 @@
             <div class="device-list-pager-wrapper">
 
             </div>
-            <!-- <div class="pager-view-wrapper right">
-              <div class="pager-btn"><i class="icon-arrow-left"></i></div>
-              <div class="pager-body">
-                <span class="pager-item active">1</span>
-                <span class="pager-item">2</span>
-                <span class="pager-item">3</span>
-              </div>
-              <div class="pager-btn"><i class="icon-arrow-right"></i></div>
-            </div> -->
+
           </div>
         </div>
-        <!-- -------------设备管理 end------------- -->
+        <!-- -------------DHCP end------------- -->
 
         <!-- -------------路由设置模块 start------------- -->
         <!-- 路由器状态 -->
@@ -179,7 +198,7 @@
 
         <!-- LAN口设置 -->
         <div class="module-item-wrapper" data-module="route-lan">
-          <p>DHCP服务为所有连接到智能路由器的设备自动分配IP地址。</p>
+          <!-- <p>DHCP服务为所有连接到智能路由器的设备自动分配IP地址。</p>
           <form class="setting-lan-from" id="setting_lan_form">
             <label class="label-item">
               <span>IP</span><input type="text" name="ip" placeholder="请输入您的IP地址">
@@ -209,6 +228,41 @@
                 <span>DNS(备用)</span><input type="text" name="end_dns" placeholder="请输入您的DNS（备用）">
               </label>
             </div>
+          </form> -->
+
+          <form class="setting-lan-from" id="setting_lan_form">
+            <p><span class="sim-label-title">MAC地址</span>A8-A8-A8-A8-A8-A8</p>
+            <p>
+              <span class="sim-label-title">LAN口IP设置</span>
+              <label class="radio-btn on">
+                <input class="check-type" type="radio" name="dhcpType" data-index="0" value="1" hidden checked />
+                <span></span>
+                自动（推荐）
+              </label>
+              <label class="radio-btn">
+                <input class="check-type" type="radio" name="dhcpType" data-index="1" value="2" hidden />
+                <span></span>
+                手动
+              </label>
+            </p>
+
+            <div class="lan-type-item dchp-auto">
+              <p><span class="sim-label-title">IP地址</span>192.168.0.1</p>
+              <p><span class="sim-label-title">子网掩码</span>255.255.255.0</p>
+            </div>
+
+            <div class="lan-type-item dchp-fixed" style="display: none;">
+              <label class="label-item">
+                <span>IP地址</span>
+                <input type="text" name="lan_ip" placeholder="请输入您的起始IP地址" value="192.168.1.1" />
+              </label>
+              <label class="label-item">
+                <span>子网掩码</span>
+                <input type="text" name="lan_yan" placeholder="请输入您的起始IP地址" value="255.255.255.0" />
+              </label>
+            </div>
+
+
           </form>
 
           <button class="setting-lan-submit button submit" id="setting_lan_submit">保存</button>
