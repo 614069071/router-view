@@ -2,196 +2,199 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-  <meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
-  <meta name="format-detection" content="telephone=no">
-  <meta http-equiv="Pragma" content="no-cache">
-  <link rel="stylesheet" href="./css/normalize.css">
-  <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/index.css">
-  <title>content</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>content</title>
 </head>
 
 <body>
-  <div class="content-wrapper">
-    <!-- NavMenu -->
-    <nav class="nav-menu-wrapper custom-scroll-bars"></nav>
-    <div class="content-main-wrapper">
-      <!-- Header -->
-      <header class="main-header-wrapper">
-        Header
-      </header>
-      <!-- Main -->
-      <main class="main-content-wrapper">
-        <!-- -------------路由设置模块 start------------- -->
-        <!-- 路由器状态 -->
-        <div class="module-item-wrapper" data-module="route-status">
-          路由器状态
-        </div>
+    <div class="content-wrapper">
+        <!-- NavMenu -->
+        <nav class="nav-menu-wrapper custom-scroll-bars"></nav>
+        <div class="content-main-wrapper">
+            <!-- Header -->
+            <header class="main-header-wrapper">
+                Header
+            </header>
+            <!-- Main -->
+            <main class="main-content-wrapper">
+                <!-- -------------路由设置模块 start------------- -->
+                <!-- 路由器状态 -->
+                <div class="module-item-wrapper" data-module="route-status">
+                    路由器状态
+                </div>
 
-        <!-- -------------DHCP start------------- -->
-        <div class="module-item-wrapper" data-module="device-manage">
-          <div class="model-title">DHCP服务器</div>
+                <!-- -------------DHCP start------------- -->
+                <div class="module-item-wrapper" data-module="device-manage">
+                    <div class="">
 
-          <form class="dhcp-setting-from" id="dhcp_setting_form">
-            <label class="label-item">
+                        <div class="model-title">DHCP服务器</div>
+
+                        <form class="dhcp-setting-from" id="dhcp_setting_form">
+                            <label class="label-item">
               <span>起始IP地址</span><input type="text" name="start_id" placeholder="请输入您的起始IP地址">
             </label>
-            <label class="label-item">
+                            <label class="label-item">
               <span>终止IP地址</span><input type="text" name="end_id" placeholder="请输入您的终止IP地址">
             </label>
-            <label class="label-item">
+                            <label class="label-item">
               <span>DNS(首选)</span><input type="text" name="start_dns" placeholder="请输入您的DNS（首选）">
             </label>
-            <label class="label-item">
+                            <label class="label-item">
               <span>DNS(备用)</span><input type="text" name="end_dns" placeholder="请输入您的DNS（备用）">
             </label>
-          </form>
+                        </form>
 
-          <button class="setting-lan-submit button submit" id="setting_lan_submit">保存</button>
-          <p class="model-title">设备列表</p>
+                        <button class="setting-lan-submit button submit" id="setting_lan_submit">保存</button>
+                        <p class="model-title">设备列表</p>
 
-          <!-- 设备列表 -->
-          <div class="dhcp-item-device-wrapper">
-            <table class="device-list-wrapper side-table">
-              <thead>
-                <tr>
-                  <th>设备名</th>
-                  <th>MAC地址</th>
-                  <th>IP地址</th>
-                  <th>有效时间</th>
-                </tr>
-              </thead>
+                        <!-- 设备列表 -->
+                        <div class="dhcp-item-device-wrapper">
+                            <table class="device-list-wrapper side-table">
+                                <thead>
+                                    <tr>
+                                        <th>设备名</th>
+                                        <th>MAC地址</th>
+                                        <th>IP地址</th>
+                                        <th>有效时间</th>
+                                    </tr>
+                                </thead>
 
-              <tbody>
-                <tr>
-                  <td>xiaomi</td>
-                  <td>A8-A8-A8-A8-A8-A8</td>
-                  <td>192.168.0.100</td>
-                  <td>01:56:37</td>
-                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>xiaomi</td>
+                                        <td>A8-A8-A8-A8-A8-A8</td>
+                                        <td>192.168.0.100</td>
+                                        <td>01:56:37</td>
+                                    </tr>
 
-                <tr>
-                  <td>xiaomi</td>
-                  <td>A8-A8-A8-A8-A8-A8</td>
-                  <td>192.168.0.100</td>
-                  <td>01:56:37</td>
-                </tr>
+                                    <tr>
+                                        <td>xiaomi</td>
+                                        <td>A8-A8-A8-A8-A8-A8</td>
+                                        <td>192.168.0.100</td>
+                                        <td>01:56:37</td>
+                                    </tr>
 
-              </tbody>
-            </table>
+                                </tbody>
+                            </table>
 
-            <!-- 分页 -->
-            <div class="device-list-pager-wrapper">
+                            <!-- 分页 -->
+                            <div class="device-list-pager-wrapper">
 
-            </div>
+                            </div>
+                        </div>
 
-          </div>
-        </div>
-        <!-- -------------DHCP end------------- -->
+                    </div>
+                </div>
+                <!-- -------------DHCP end------------- -->
 
-        <!-- 设置向导 content-item-->
-        <div class="module-item-wrapper" data-module="route-guide">
-          设置向导
-        </div>
+                <!-- 设置向导 content-item-->
+                <div class="module-item-wrapper" data-module="route-guide">
+                    设置向导
+                </div>
 
-        <!-- 上网设置 -->
-        <div class="module-item-wrapper" data-module="route-internet">
-          <div class="connect-type-wrapper">
-            <span class="sim-label-title">连接类型</span>
+                <!-- 上网设置 -->
+                <div class="module-item-wrapper" data-module="route-internet">
+                    <div class="connect-type-wrapper">
+                        <span class="sim-label-title">连接类型</span>
 
-            <label class="radio-btn on">
+                        <label class="radio-btn on">
               <input class="check-type" type="radio" name="connectType" data-index="0" value="1" checked hidden />
               <span></span>
               宽带拨号
             </label>
-            <label class="radio-btn">
+                        <label class="radio-btn">
               <input class="check-type" type="radio" name="connectType" data-index="1" value="2" hidden />
               <span></span>
               静态IP
             </label>
-            <label class="radio-btn">
+                        <label class="radio-btn">
               <input class="check-type" type="radio" name="connectType" data-index="2" value="3" hidden />
               <span></span>
               动态IP
             </label>
-          </div>
+                    </div>
 
-          <div class="connect-type-main-wrapper model-type-list">
-            <!-- 宽带拨号 -->
-            <div class="model-type-item active">
-              <p><span class="sim-label-title"></span>请输入运营商给您的宽带上网账号及密码。如有遗忘，可拨打运营商电话找回。</p>
-              <form id="setting_wizard_broadband_form">
-                <label class="label-item">
+                    <div class="connect-type-main-wrapper model-type-list">
+                        <!-- 宽带拨号 -->
+                        <div class="model-type-item active">
+                            <p><span class="sim-label-title"></span>请输入运营商给您的宽带上网账号及密码。如有遗忘，可拨打运营商电话找回。</p>
+                            <form id="setting_wizard_broadband_form">
+                                <label class="label-item">
                   <span>宽带账号</span>
                   <input type="text" name="acc" placeholder="请输入宽带账号">
                 </label>
-                <label class="label-item">
+                                <label class="label-item">
                   <span>宽带密码</span>
                   <input type="text" name="pwd" placeholder="请输入宽带密码">
                 </label>
 
-                <label class="label-item">
+                                <label class="label-item">
                   <span>WIFI名称</span>
                   <input type="text" name="wf_name" placeholder="请输入WIFI名称">
                 </label>
-                <label class="label-item">
+                                <label class="label-item">
                   <span>WIFI密码</span>
                   <input type="password" name="wf_pwd" placeholder="请输入WIFI密码">
                 </label>
-              </form>
-              <button class="button submit" id="setting_wizard_broadband_form_submit">保存</button>
-            </div>
+                            </form>
+                            <button class="button submit" id="setting_wizard_broadband_form_submit">保存</button>
+                        </div>
 
-            <!-- 静态ip -->
-            <div class="model-type-item">
-              <p><span class="sim-label-title"></span>请输入运营商给您的IP、子网掩码等信息。如有遗忘，可拨打运营商电话找回</p>
-              <form id="setting_wizard_static_form">
-                <label class="label-item">
+                        <!-- 静态ip -->
+                        <div class="model-type-item">
+                            <p><span class="sim-label-title"></span>请输入运营商给您的IP、子网掩码等信息。如有遗忘，可拨打运营商电话找回</p>
+                            <form id="setting_wizard_static_form">
+                                <label class="label-item">
                   <span>IP</span>
                   <input type="text" name="ip_addr" placeholder="请输入您的IP地址">
                 </label>
-                <label class="label-item">
+                                <label class="label-item">
                   <span>子网掩码</span>
                   <input type="text" name="subnet" placeholder="请输入您的子网掩码">
                 </label>
-                <label class="label-item">
+                                <label class="label-item">
                   <span>默认网关</span>
                   <input type="text" name="wg" placeholder="请输入您的默认网关">
                 </label>
-                <label class="label-item">
+                                <label class="label-item">
                   <span>DNS(首选)</span>
                   <input type="text" name="dns" placeholder="请输入您的DNS（选填）">
                 </label>
-                <label class="label-item">
+                                <label class="label-item">
                   <span>WIFI名称</span>
                   <input type="text" name="" placeholder="请输入WIFI名称">
                 </label>
-                <label class="label-item">
+                                <label class="label-item">
                   <span>WIFI密码</span>
                   <input type="text" name="" placeholder="请输入WIFI密码">
                 </label>
-              </form>
+                            </form>
 
-              <button class="button submit" id="setting_wizard_static_form_submit">保存</button>
-            </div>
+                            <button class="button submit" id="setting_wizard_static_form_submit">保存</button>
+                        </div>
 
-            <!-- 动态ip -->
-            <div class="model-type-item" id="">
-              <p><span class="sim-label-title"></span>动态IP一般适用于内部网络，连上路由器后就可以直接上网。</p>
-              <form id="setting_wizard_dynamic_form">
-                <label class="label-item"><span>WIFI名称</span><input type="text" placeholder="请输入WIFI名称"></label>
-                <label class="label-item"><span>WIFI密码</span><input type="text" placeholder="请输入WIFI密码"></label>
-              </form>
-              <button class="button submit" id="setting_wizard_dynamic_form_submit">保存</button>
-            </div>
-          </div>
-        </div>
+                        <!-- 动态ip -->
+                        <div class="model-type-item" id="">
+                            <p><span class="sim-label-title"></span>动态IP一般适用于内部网络，连上路由器后就可以直接上网。</p>
+                            <form id="setting_wizard_dynamic_form">
+                                <label class="label-item"><span>WIFI名称</span><input type="text" placeholder="请输入WIFI名称"></label>
+                                <label class="label-item"><span>WIFI密码</span><input type="text" placeholder="请输入WIFI密码"></label>
+                            </form>
+                            <button class="button submit" id="setting_wizard_dynamic_form_submit">保存</button>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- LAN口设置 -->
-        <div class="module-item-wrapper" data-module="route-lan">
-          <!-- <p>DHCP服务为所有连接到智能路由器的设备自动分配IP地址。</p>
+                <!-- LAN口设置 -->
+                <div class="module-item-wrapper" data-module="route-lan">
+                    <!-- <p>DHCP服务为所有连接到智能路由器的设备自动分配IP地址。</p>
           <form class="setting-lan-from" id="setting_lan_form">
             <label class="label-item">
               <span>IP</span><input type="text" name="ip" placeholder="请输入您的IP地址">
@@ -223,138 +226,136 @@
             </div>
           </form> -->
 
-          <form class="setting-lan-from" id="setting_lan_form">
-            <p><span class="sim-label-title">MAC地址</span>A8-A8-A8-A8-A8-A8</p>
-            <p>
-              <span class="sim-label-title">LAN口IP设置</span>
-              <label class="radio-btn on">
+                    <form class="setting-lan-from" id="setting_lan_form">
+                        <div><span class="sim-label-title">MAC地址</span>A8-A8-A8-A8-A8-A8</div>
+                        <p>
+                            <span class="sim-label-title">LAN口IP设置</span>
+                            <label class="radio-btn on">
                 <input class="check-type" type="radio" name="dhcpType" data-index="0" value="1" hidden checked />
                 <span></span>
                 自动（推荐）
               </label>
-              <label class="radio-btn">
+                            <label class="radio-btn">
                 <input class="check-type" type="radio" name="dhcpType" data-index="1" value="2" hidden />
                 <span></span>
                 手动
               </label>
-            </p>
+                        </p>
 
-            <div class="lan-type-item dchp-auto">
-              <p><span class="sim-label-title">IP地址</span>192.168.0.1</p>
-              <p><span class="sim-label-title">子网掩码</span>255.255.255.0</p>
-            </div>
+                        <div class="lan-type-item dchp-auto">
+                            <p><span class="sim-label-title">IP地址</span>192.168.0.1</p>
+                            <p><span class="sim-label-title">子网掩码</span>255.255.255.0</p>
+                        </div>
 
-            <div class="lan-type-item dchp-fixed" style="display: none;">
-              <label class="label-item">
+                        <div class="lan-type-item dchp-fixed" style="display: none;">
+                            <label class="label-item">
                 <span>IP地址</span>
                 <input type="text" name="lan_ip" placeholder="请输入您的起始IP地址" value="192.168.1.1" />
               </label>
-              <label class="label-item">
+                            <label class="label-item">
                 <span>子网掩码</span>
                 <input type="text" name="lan_yan" placeholder="请输入您的起始IP地址" value="255.255.255.0" />
               </label>
-            </div>
+                        </div>
 
 
-          </form>
+                    </form>
 
-          <button class="setting-lan-submit button submit" id="setting_lan_submit">保存</button>
-        </div>
+                    <button class="setting-lan-submit button submit" id="setting_lan_submit">保存</button>
+                </div>
 
-        <!-- 路由器管理 -->
-        <div class="module-item-wrapper" data-module="route-manage">
-          <div class="model-title">管理密码</div>
+                <!-- 路由器管理 -->
+                <div class="module-item-wrapper" data-module="route-manage">
+                    <div class="model-title">管理密码</div>
 
-          <div class="model-content">
-            <form id="setting_manage_form">
-              <label class="label-item">
+                    <div class="model-content">
+                        <form id="setting_manage_form">
+                            <label class="label-item">
                 <span>旧密码</span>
                 <input type="text" name="ip_addr" placeholder="请输入旧密码">
               </label>
-              <label class="label-item">
+                            <label class="label-item">
                 <span>新密码</span>
                 <input type="text" name="subnet" placeholder="请输入新密码">
               </label>
-              <label class="label-item">
+                            <label class="label-item">
                 <span>确认新密码</span>
                 <input type="text" name="wg" placeholder="请再次输入新密码">
               </label>
-            </form>
+                        </form>
 
-            <button class="button submit">确认</button>
-          </div>
+                        <button class="button submit">确认</button>
+                    </div>
 
-          <div class="model-title">软件升级</div>
+                    <div class="model-title">软件升级</div>
 
-          <div class="model-content">
-            <!-- <form id="setting_manage_form">
+                    <div class="model-content">
+                        <!-- <form id="setting_manage_form">
               <label class="label-item">
                 <span>选择固件</span>
                 <input type="file" name="ip_addr" placeholder="请输入旧密码">
               </label>
             </form> -->
 
-            <div>
-              <div class="sim-label-title">软件升级</div>
+                        <div>
+                            <div class="sim-label-title">软件升级</div>
 
-              <label class="button">选择固件
+                            <label class="button">选择固件
                 <input type="file" hidden />
               </label>
-              <button class="button">确认上传</button>
-            </div>
+                            <button class="button">确认上传</button>
+                        </div>
 
-            <p><span class="sim-label-title"></span>文件名称</p>
+                        <p><span class="sim-label-title"></span>文件名称</p>
 
-          </div>
+                    </div>
 
-          <div class="model-title">重启和恢复出厂</div>
+                    <div class="model-title">重启和恢复出厂</div>
 
-          <div class="model-content">
-            <p>
-              <span class="sim-label-title">重启路由器</span>
-              <button class="button">重启</button>
-            </p>
+                    <div class="model-content">
+                        <p>
+                            <span class="sim-label-title">重启路由器</span>
+                            <button class="button">重启</button>
+                        </p>
 
-            <p>
-              <span class="sim-label-title">恢复出厂设置</span>
-              <button class="button">恢复</button>
-            </p>
-          </div>
-        </div>
+                        <p>
+                            <span class="sim-label-title">恢复出厂设置</span>
+                            <button class="button">恢复</button>
+                        </p>
+                    </div>
+                </div>
 
-        <!-- 系统日志 -->
-        <div class="module-item-wrapper" data-module="route-log">
-          <div class="route-item-log-wrapper side-table-wrapper">
-            <table class="route-log-wrapper side-table">
-              <thead>
-                <tr>
-                  <th>索引</th>
-                  <th>类型</th>
-                  <th>日志内容</th>
-                </tr>
-              </thead>
+                <!-- 系统日志 -->
+                <div class="module-item-wrapper" data-module="route-log">
+                    <div class="route-item-log-wrapper side-table-wrapper">
+                        <table class="route-log-wrapper side-table">
+                            <thead>
+                                <tr>
+                                    <th>索引</th>
+                                    <th>类型</th>
+                                    <th>日志内容</th>
+                                </tr>
+                            </thead>
 
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>INFO</td>
-                  <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip 192.165.5.60，hdcp1:send
-                    request </td>
-                </tr>
-                <tr>
-                  <td>100000</td>
-                  <td>INFO</td>
-                  <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip 192.165.5.60，hdcp1:send
-                    request </td>
-                </tr>
-              </tbody>
-            </table>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>INFO</td>
+                                    <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip 192.165.5.60，hdcp1:send request </td>
+                                </tr>
+                                <tr>
+                                    <td>100000</td>
+                                    <td>INFO</td>
+                                    <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip 192.165.5.60，hdcp1:send request </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-            <!-- 分页 -->
-            <div class="roter-log-pager-wrapper">
+                        <!-- 分页 -->
+                        <div class="roter-log-pager-wrapper">
 
-            </div>
-            <!-- <div class="pager-view-wrapper right">
+                        </div>
+                        <!-- <div class="pager-view-wrapper right">
               <div class="pager-btn"><i class="icon-arrow-left"></i></div>
               <div class="pager-body">
                 <span class="pager-item active">1</span>
@@ -363,36 +364,36 @@
               </div>
               <div class="pager-btn"><i class="icon-arrow-right"></i></div>
             </div> -->
-          </div>
+                    </div>
 
+                </div>
+                <!-- -------------路由设置模块 end------------- -->
+
+                <!-- -------------云盘操作 start------------- -->
+                <!-- 用户信息 -->
+                <div class="module-item-wrapper">
+                </div>
+
+                <!-- 磁盘操作 -->
+                <div class="module-item-wrapper">
+                </div>
+
+                <!-- 应用下载 -->
+                <div class="module-item-wrapper">
+                </div>
+                <!-- -------------云盘操作 end------------- -->
+
+            </main>
         </div>
-        <!-- -------------路由设置模块 end------------- -->
-
-        <!-- -------------云盘操作 start------------- -->
-        <!-- 用户信息 -->
-        <div class="module-item-wrapper">
-        </div>
-
-        <!-- 磁盘操作 -->
-        <div class="module-item-wrapper">
-        </div>
-
-        <!-- 应用下载 -->
-        <div class="module-item-wrapper">
-        </div>
-        <!-- -------------云盘操作 end------------- -->
-
-      </main>
     </div>
-  </div>
 
-  <div></div>
+    <div></div>
 
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/jquery.cookie.js"></script>
-  <script src="./js/jquery.md5.js"></script>
-  <script src="./js/common.js"></script>
-  <script src="./js/index.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.cookie.js"></script>
+    <script src="./js/jquery.md5.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

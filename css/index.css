@@ -1,104 +1,116 @@
 /* NavMenu start */
+
 .menu-bar-body {
-  width: 160px;
-  cursor: pointer;
-  font-size: 14px;
+    width: 160px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 .menu-item-title,
 .menu-submenu-title {
-  display: flex;
-  height: 50px;
-  align-items: center;
-  padding: 0 20px;
-  color: #fff;
-  justify-content: space-between;
-  background-color: rgb(84, 92, 100);
+    display: flex;
+    height: 50px;
+    align-items: center;
+    padding: 0 20px;
+    color: #fff;
+    justify-content: space-between;
+    background-color: rgb(84, 92, 100);
 }
 
 .menu-item-title:hover,
 .menu-submenu-title:hover {
-  background-color: rgb(67, 74, 80);
+    background-color: rgb(67, 74, 80);
 }
 
 .menu-item-title.checked {
-  color: var(--default-color);
+    color: var(--default-color);
 }
 
 .menu-submenu-title.open .icon-arrow-top {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .menu-submenu-body {
-  display: none;
+    display: none;
 }
+
 
 /* NavMenu end */
 
+
 /* 主体布局 start */
+
 .content-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
+    height: 100%;
+    width: 100%;
+    display: flex;
 }
 
 .nav-menu-wrapper {
-  /* width: 180px; */
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: rgb(84, 92, 100);
+    /* width: 180px; */
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgb(84, 92, 100);
 }
 
 .content-main-wrapper {
-  flex: 1;
+    flex: 1;
 }
 
 .content-main-wrapper {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-header-wrapper {
-  height: 60px;
-  border-bottom: 1px solid #dfe4ed;
+    height: 60px;
+    border-bottom: 1px solid #dfe4ed;
 }
 
 .main-content-wrapper {
-  flex: 1;
-  padding: 20px 50px;
-  overflow-x: hidden;
-  overflow-y: auto;
+    flex: 1;
+    padding: 20px 50px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
+
 
 /* 主体布局 end */
 
+
 /* 主体模块 */
+
 .module-item-wrapper {
-  display: none;
-  height: 100%;
-}
-.module-item-wrapper:first-child {
-  display: block;
+    display: none;
+    height: 100%;
 }
 
+.module-item-wrapper:first-child {
+    display: block;
+}
+
+
 /* 系统日志 */
+
 .route-log-wrapper tr th:nth-child(1),
 .route-log-wrapper tr td:nth-child(1),
 .route-log-wrapper tr th:nth-child(2),
 .route-log-wrapper tr td:nth-child(2) {
-  text-align: center;
-  width: 100px;
+    text-align: center;
+    width: 100px;
 }
 
 .device-list-wrapper tr th,
 .device-list-wrapper tr td {
-  text-align: center;
-  /* width: 100px; */
+    text-align: center;
+    /* width: 100px; */
 }
 
+
 /* LAN口设置 */
+
 .setting-lan-from p {
-  height: 42px;
-  display: flex;
-  align-items: center;
+    height: 42px;
+    display: flex;
+    align-items: center;
 }
