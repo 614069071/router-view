@@ -30,7 +30,7 @@ function createMenuItem(arr, pl) {
     var e = arr[i];
     if (e.list && e.list.length) {
       var nextNode = createMenuItem(e.list, padding + 10);
-      result += '<li class="menu-submenu"><span class="menu-submenu-title" style="padding-left:' + padding + 'px;">' + e.title + '<i class="icon-arrow"></i></span><ul class="menu-submenu-body">' + nextNode + '</ul></li>';
+      result += '<li class="menu-submenu"><span class="menu-submenu-title" style="padding-left:' + padding + 'px;">' + e.title + '<i class="icon-arrow-top"></i></span><ul class="menu-submenu-body">' + nextNode + '</ul></li>';
     } else {
       result += '<li class="menu-item"><span class="menu-item-title" style="padding-left:' + padding + 'px;">' + e.title + '</span></li>';
     }

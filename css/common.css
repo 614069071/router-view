@@ -52,6 +52,13 @@ p {
   padding: 0;
 }
 
+tr,
+td,
+th {
+  margin: 0;
+  padding: 0;
+}
+
 /* 自定义placeholder样式 */
 input::-webkit-input-placeholder {
   color: #c0c9cf;
@@ -300,15 +307,30 @@ input:-ms-input-placeholder {
 }
 
 /* 箭头 */
-.icon-arrow {
+.icon-arrow-top,
+.icon-arrow-right,
+.icon-arrow-bottom,
+.icon-arrow-left {
   display: inline-block;
   width: 10px;
   height: 10px;
-  margin-left: 6px;
-  background-image: url(../images/arrow.png);
   background-position: center;
   background-size: contain;
   transition: all 0.1s;
+}
+
+.icon-arrow-top {
+  background-image: url(../images/arrow-top.png);
+}
+.icon-arrow-right {
+  background-image: url(../images/arrow-right.png);
+}
+.icon-arrow-bottom {
+  background-image: url(../images/arrow-bottom.png);
+}
+
+.icon-arrow-left {
+  background-image: url(../images/arrow-left.png);
 }
 
 /* 自定义样式 */
