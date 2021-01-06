@@ -8,7 +8,6 @@
 //   window.location.href = '/login.html';
 // }
 
-// 创建 NavMenu
 var menuBarArray = [
   {
     title: '网络状态',
@@ -40,6 +39,7 @@ var menuBarArray = [
   },
 ];
 
+// 创建 NavMenu
 new _MenuTree(menuBarArray, $('.nav-menu-wrapper'));
 
 // 创建分页器
@@ -49,7 +49,6 @@ new _Pager($('.pager-view-wrapper-test'), {
     console.log('current', index);
   }
 });
-
 
 /* 主体功能模块 */
 // 路由设置 => 上网设置

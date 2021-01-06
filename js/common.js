@@ -1,13 +1,15 @@
 // 禁止右键
-// (function () {
-//   document.ondragstart = function () { return false };
-//   document.onbeforecopy = function () { return false };
-//   document.onselectstart = function () { return false };
-//   document.oncontextmenu = function () { return false };
-//   document.oncopy = function () { document.selection && document.selection.empty(); };
-//   document.onselect = function () { document.selection && document.selection.empty(); };
-//   document.onmouseup = function () { document.selection && document.selection.empty(); }
-// })();
+function disEvent() {
+  document.ondragstart = function () { return false };
+  document.onbeforecopy = function () { return false };
+  document.onselectstart = function () { return false };
+  document.oncontextmenu = function () { return false };
+  document.oncopy = function () { document.selection && document.selection.empty(); };
+  document.onselect = function () { document.selection && document.selection.empty(); };
+  document.onmouseup = function () { document.selection && document.selection.empty(); }
+}
+
+// disEvent();
 
 // switch组件交互
 var $allSwitchBtns = $("input[role='switch']");
@@ -187,23 +189,23 @@ _Pager.prototype.select = function (item) {
 };
 
 _Pager.prototype.create = function () {
-  var items = [];
   var self = this;
+  var items = new Array(this.cache);
 
-  for (let i = 0; i < this.cache; i++) {
-    var item = $('<span class="pager-item ' + (this.current === (i + 1) ? 'active' : '') + '">' + (i + 1 + this.addPage) + '</span>');
+  $.each(items, function (i) {
+    var item = $('<span class="pager-item ' + (self.current === (i + 1) ? 'active' : '') + '">' + (i + 1 + self.addPage) + '</span>');
     item.on('click', function () {
       $(this).addClass('active').siblings().removeClass('active');
       self.select(i + 1);
     });
-    items.push(item);
-  }
+    items[i] = item;
+  })
 
   return items;
 }
 
 _Pager.prototype.update = function () {
-  var $el = $('.pager-body');
+  var $el = this.root.find('.pager-body');
   var items = this.create();
 
   $el.empty().append(items);
@@ -215,7 +217,6 @@ _Pager.prototype.init = function () {
   var num = Math.ceil(this.total / this.size);
 
   this.cache = num >= this.step ? this.step : num;
-
 
   var $wrapper = $('<div class="pager-view-wrapper right"></div>');
   var $leftBtn = $('<div class="pager-btn"><i class="icon-arrow-left"></i></div>');
@@ -301,5 +302,3 @@ _MenuTree.prototype.appendMenuToEle = function (arr, el) {
   this.initMenuHandel();
 }
 /* ------------------- 创建 NavMenu end ------------------- */
-
-
