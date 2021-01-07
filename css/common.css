@@ -52,11 +52,38 @@ p {
   padding: 0;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 tr,
 td,
 th {
   margin: 0;
   padding: 0;
+}
+
+/* 表格默认 */
+table caption {
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  background-color: #eee;
+  padding-left: 20px;
+  color: var(--default-color);
+}
+
+thead {
+  background-color: #f5f7fa;
+  color: #909399;
+}
+
+th,
+td {
+  vertical-align: middle;
+  padding: 10px;
+  line-height: 20px;
+  box-sizing: border-box;
 }
 
 /* 自定义placeholder样式 */
@@ -423,24 +450,10 @@ input:-ms-input-placeholder {
 }
 
 .side-table {
-  border-collapse: collapse;
   width: 100%;
 }
 
 .side-table tr {
   border-top: 1px solid #ebeef5;
   border-bottom: 1px solid #ebeef5;
-}
-
-.side-table thead {
-  background-color: #f5f7fa;
-  color: #909399;
-}
-
-.side-table th,
-.side-table td {
-  vertical-align: middle;
-  padding: 10px;
-  line-height: 20px;
-  box-sizing: border-box;
 }

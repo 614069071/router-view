@@ -128,4 +128,35 @@
 .download-module-wrapper .download-item {
   text-align: center;
   width: 100px;
+  display: inline-block;
+  margin-right: 40px;
+}
+
+/* 磁盘操作 */
+.cloud-info-form {
+  width: 100%;
+}
+
+.cloud-info-form td {
+  text-align: center;
+}
+
+.cloud-control-btns {
+  margin: 20px 0;
+}
+
+.cloud-control-btns.right {
+  text-align: right;
+}
+
+.cloud-control-btns .cloud-control-tips {
+  display: inline-block;
+  color: var(--hover-color);
+}
+
+.cloud-no-data {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: var(--hover-color);
 }

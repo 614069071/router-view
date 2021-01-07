@@ -382,7 +382,60 @@
 
         <!-- 磁盘操作 -->
         <div class="module-item-wrapper" data-module="cloud-control">
-          磁盘操作
+          <table class="cloud-info-form">
+            <caption>硬盘（私有区+公共区）</caption>
+            <thead>
+              <tr>
+                <th>分区名称</th>
+                <th>文件系统</th>
+                <th>总容量</th>
+                <th>剩余容量</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>sda1</td>
+                <td>ext4(rw)</td>
+                <td>465.62GB</td>
+                <td>465.62GB</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="cloud-control-btns">
+            <button class="button">硬盘格式化</button>
+            <button class="button">安全移除硬盘</button>
+            <div class="cloud-control-tips">（温馨提示：拔掉硬盘钱请先点击“安全移除硬盘”按钮）</div>
+          </div>
+
+          <table class="cloud-info-form">
+            <caption>可移动存储设备（公共区）</caption>
+            <thead>
+              <tr>
+                <th>分区名称</th>
+                <th>文件系统</th>
+                <th>总容量</th>
+                <th>剩余容量</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr> -->
+            </tbody>
+          </table>
+
+          <div class="cloud-no-data">无数据</div>
+
+          <div class="cloud-control-btns right">
+            <button class="button">刷新</button>
+            <button class="button">下一步</button>
+          </div>
         </div>
 
         <!-- 应用下载 -->
