@@ -460,7 +460,7 @@ input:-ms-input-placeholder {
 
 /* 进度条 */
 .progress-wrapper {
-  height: 10px;
+  height: 5px;
   background-color: #eee;
   border-radius: 5px;
   overflow: hidden;
