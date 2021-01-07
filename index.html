@@ -24,6 +24,10 @@
       </header>
       <!-- Main -->
       <main class="main-content-wrapper">
+        <!-- 设置向导 content-item-->
+        <div class="module-item-wrapper active" data-module="route-guide">
+          设置向导
+        </div>
         <!-- -------------路由设置模块 start------------- -->
         <!-- 路由器状态 -->
         <div class="module-item-wrapper" data-module="route-status">
@@ -91,11 +95,6 @@
             </div>
 
           </div>
-        </div>
-
-        <!-- 设置向导 content-item-->
-        <div class="module-item-wrapper" data-module="route-guide">
-          设置向导
         </div>
 
         <!-- 上网设置 -->
@@ -346,16 +345,13 @@
                   <tr>
                     <td>1</td>
                     <td>INFO</td>
-                    <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip
-                      192.165.5.60，hdcp1:send
-                      request </td>
+                    <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip</td>
                   </tr>
+
                   <tr>
                     <td>100000</td>
                     <td>INFO</td>
-                    <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip
-                      192.165.5.60，hdcp1:send
-                      request </td>
+                    <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip</td>
                   </tr>
                 </tbody>
               </table>
@@ -390,8 +386,20 @@
         </div>
 
         <!-- 应用下载 -->
-        <div class="module-item-wrapper" data-module="cloud-download">
-          应用下载
+        <div class="module-item-wrapper download-module-wrapper" data-module="cloud-download">
+          <!-- IOS/android/PC客户端下载链接或二维码 -->
+          <div class="download-item">
+            <p>Ios</p>
+            <div class="img"><img src="/images/qrcode.png" alt=""></div>
+          </div>
+          <div class="download-item">
+            <p>Android</p>
+            <div class="img"><img src="/images/qrcode.png" alt=""></div>
+          </div>
+          <div class="download-item">
+            <p>PC</p>
+            <div class="img"><img src="/images/qrcode.png" alt=""></div>
+          </div>
         </div>
         <!-- -------------云盘操作 end------------- -->
 
@@ -401,9 +409,11 @@
 
   <div></div>
 
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/jquery.cookie.js"></script>
-  <script src="./js/jquery.md5.js"></script>
+  <script src="./js/static/jquery.min.js"></script>
+  <script src="./js/static/jquery.cookie.js"></script>
+  <script src="./js/static/jquery.md5.js"></script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/fetch.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/index.js"></script>
 </body>

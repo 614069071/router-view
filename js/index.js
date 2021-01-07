@@ -14,11 +14,11 @@ var menuBarArray = [
   //   module: 'network-status',
   //   checked: 1
   // },
-  { title: '设置向导', module: 'route-guide' },
+  { title: '设置向导', module: 'route-guide', checked: 1 },
   {
     title: '路由设置',
     list: [
-      { title: '路由器状态', module: 'route-status', checked: 1 },
+      { title: '路由器状态', module: 'route-status' },
       { title: 'DHCP服务器', module: 'device-manage' },
       { title: '上网设置', module: 'route-internet' },
       { title: 'LAN口设置', module: 'route-lan' },
@@ -73,4 +73,4 @@ var $lanTypeItems = $('#setting_lan_form .lan-type-item');
 $lanRadios.on('change', function () {
   var $index = $(this).data('index');
   $lanTypeItems.hide().eq($index).show();
-})
+});

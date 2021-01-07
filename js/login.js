@@ -15,20 +15,7 @@ function loginHandel() {
     // console.log(parmas, $.cookie('LoginStatus'), 'parmas');
     window.location.href = "/main.html";
     return;
-    _request(parmas)
-      .then(function (res) {
-        if (res.error == 0) {
-          $.cookie('LoginStatus', true);
-          window.location.href = "/main.html";
-        } else if (res.error == 10001) {
-          _toast('密码错误');
-        } else {
-          _toast('登录失败');
-        }
-      })
-      .catch(function (err) {
-        _toast(err.status);
-      });
+    _login(parmas);
   } else {
     // $psErrorTip.show().html('请输入密码');
     _toast('请输入密码');

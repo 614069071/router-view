@@ -82,7 +82,7 @@
   height: 100%;
 }
 
-.module-item-wrapper:first-child {
+.module-item-wrapper.active {
   display: block;
 }
 
@@ -122,4 +122,10 @@
   height: 42px;
   display: flex;
   align-items: center;
+}
+
+/* 应用下载 */
+.download-module-wrapper .download-item {
+  text-align: center;
+  width: 100px;
 }
