@@ -100,10 +100,12 @@ $update_file.on('change', function(e) {
 var upgrade_Progress = new _Progress($progressBarwrapper)
 
 $upgrade_submit.on('click', function() {
-    upgrade_Progress.start();
-
     var $file = $update_file.prop('files')[0];
-    console.log($file)
+    if (!$file) {
+        _toast('请选择升级文件！');
+        return;
+    }
+    upgrade_Progress.start();
     uploadFile($file);
 })
 
