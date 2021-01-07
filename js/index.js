@@ -113,6 +113,7 @@ $restartDeviceBtn.on('click', function () {
   _dialog({
     success: function () {
       restartRoute();
+      // _close();
     }
   });
 });
@@ -124,6 +125,7 @@ $restoreDeviceBtn.on('click', function () {
   _dialog({
     success: function () {
       // restoreRoute();
+      // _close();
     }
   });
 });
