@@ -123,17 +123,14 @@ function _dialog(options) {
   var cancel = $('<button class="button info">' + (options.cancelText || "取消") + '</button>');
   var success = $('<button class="button">' + (options.successText || "确定") + '</button>');
 
-  function close() {
-    wrapper.remove();
-  }
 
   cancel.on('click', function () {
-    close();
+    _close();
     options.cancel && options.cancel();
   });
 
   success.on('click', function () {
-    options.success && options.success(close);
+    options.success && options.success();
   });
 
   btns.append(cancel);
@@ -150,6 +147,9 @@ function _dialog(options) {
 function _close() {
   var elToast = document.querySelector('.toast-wrapper');
   var elLoading = document.querySelector('.loading-wrapper');
+  var elDialog = document.querySelector('.dialog-wrapper');
+
   $(elToast).remove();
   $(elLoading).remove();
+  $(elDialog).remove();
 }

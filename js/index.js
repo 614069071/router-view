@@ -110,18 +110,20 @@ $upgrade_submit.on('click', function () {
 var $restartDeviceBtn = $('#restart_device_btn');
 
 $restartDeviceBtn.on('click', function () {
-  restartRoute();
+  _dialog({
+    success: function () {
+      restartRoute();
+    }
+  });
 });
 
 // 设备管理 => 恢复出厂设置
 var $restoreDeviceBtn = $('#restore_device_btn');
 
 $restoreDeviceBtn.on('click', function () {
-
   _dialog({
-    success: function (callback) {
-      callback();
+    success: function () {
+      // restoreRoute();
     }
   });
-  // restoreRoute();
 });
