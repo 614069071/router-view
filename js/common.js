@@ -228,11 +228,7 @@ _Progress.prototype.start = function() {
         if (current + (2 * step) >= $width) {
             // current = $width;
             clearInterval(self.timer);
-            $inner.animate({ width: current + 'px' }, 1000, 'linear', function() {
-                // self.el.children().fadeOut(1000, function() {
-                //     $(this).remove();
-                // })
-            });
+            $inner.animate({ width: current + 'px' }, 1000, 'linear');
         } else {
             $inner.animate({ width: current + 'px' }, 1000, 'linear');
         }
@@ -246,10 +242,7 @@ _Progress.prototype.finish = function() {
     var $inner = self.el.find('.progress-inner');
     var $width = $wrapper.width();
     $inner.animate({ width: $width + 'px' }, 1000, 'linear', function() {
-        clearInterval(self.timer);
-        self.el.children().fadeOut(1000, function() {
-            $(this).remove();
-        })
+        self.close();
     });
 }
 
