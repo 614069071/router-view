@@ -39,7 +39,7 @@ var menuBarArray = [
 // 创建 NavMenu
 new _MenuTree(menuBarArray, $('.nav-menu-wrapper'));
 
-// 创建分页器
+// DCHP设备列表创建分页器
 new _Pager($('.device-list-pager-wrapper'), {
   total: 100,
   callback: function (index) {
@@ -47,7 +47,7 @@ new _Pager($('.device-list-pager-wrapper'), {
   }
 });
 
-// 创建分页器
+// 系统日志 分页器
 new _Pager($('.roter-log-pager-wrapper'), {
   total: 100,
   callback: function (index) {
@@ -75,19 +75,53 @@ $lanRadios.on('change', function () {
   $lanTypeItems.hide().eq($index).show();
 });
 
+// 设备管理 => 修改管理密码
+var $setting_manage_form = $('#setting_manage_form');
+var $setting_manage_form_submit = $('#setting_manage_form_submit');
+
+$setting_manage_form_submit.on('click', function () {
+  var data = _formArrToObject($setting_manage_form);
+  updateManagePassword(data.oldPassword, data.newPassword, data.confirmPassword);
+});
+
 // 设备管理 => 固件升级
+var $update_file = $('#update_file');
 var $upgrade_submit = $('#upgrade_submit');
-var $upgrade_submit2 = $('#upgrade_submit2');
 var $progressBarwrapper = $('.progress-bar-wrapper');
+var $upgrade_name = $('.upgrade-name');
 var upgrade_Progress = null;
 
+$update_file.on('change', function (e) {
+  var file = e.target.files[0] || {};
+  var name = file.name;
+  name && $upgrade_name.text(name);
+})
+
 $upgrade_submit.on('click', function () {
-  upgrade_Progress = new _Progress($progressBarwrapper, 30)
-  upgrade_Progress.start();
+  // upgrade_Progress = new _Progress($progressBarwrapper, 30)
+  // upgrade_Progress.start();
+
+  var $file = $update_file.prop('files')[0];
+  console.log($file)
+  uploadFile($file);
 })
 
-$upgrade_submit2.on('click', function () {
-  upgrade_Progress.finish();
+// 设备管理 => 重启
+var $restartDeviceBtn = $('#restart_device_btn');
 
-})
+$restartDeviceBtn.on('click', function () {
+  restartRoute();
+});
 
+// 设备管理 => 恢复出厂设置
+var $restoreDeviceBtn = $('#restore_device_btn');
+
+$restoreDeviceBtn.on('click', function () {
+
+  _dialog({
+    success: function (callback) {
+      callback();
+    }
+  });
+  // restoreRoute();
+});

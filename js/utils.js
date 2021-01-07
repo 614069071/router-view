@@ -36,7 +36,7 @@ function _request(data, method, url) {
 }
 
 // 会话存储
-_storages = {
+var _storages = {
   set: function (key, value) {
     if (typeof value === 'object' && value !== null) {
       sessionStorage.setItem(key, JSON.stringify(value));
@@ -107,6 +107,43 @@ function _loading(text) {
   var $el = $('<div class="loading-wrapper"><span class="icon-loading"></span>' + content + '</div>');
 
   $('body').append($el);
+}
+
+function _dialog(options) {
+  var options = options || {};
+  var el = document.querySelector('.dialog-wrapper');
+
+  if (el) $(el).remove();
+
+  var wrapper = $('<div class="dialog-wrapper"></div>');
+  var inner = $('<div class="dialog-inner"></div>');
+  var title = $('<div class="dialog-title">' + (options.title || '温馨提示') + '</div>');
+  var main = $('<div class="dialog-main">' + (options.content || '') + '</div>');
+  var btns = $('<div class="dialog-btns"></div>');
+  var cancel = $('<button class="button info">' + (options.cancelText || "取消") + '</button>');
+  var success = $('<button class="button">' + (options.successText || "确定") + '</button>');
+
+  function close() {
+    wrapper.remove();
+  }
+
+  cancel.on('click', function () {
+    close();
+    options.cancel && options.cancel();
+  });
+
+  success.on('click', function () {
+    options.success && options.success(close);
+  });
+
+  btns.append(cancel);
+  btns.append(success);
+  inner.append(title);
+  inner.append(main);
+  inner.append(btns);
+  wrapper.append(inner);
+
+  $('body').append(wrapper);
 }
 
 // 关闭所有弹窗

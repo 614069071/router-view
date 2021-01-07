@@ -216,9 +216,7 @@ _Progress.prototype.start = function () {
   self.timer && clearInterval(self.timer);
   var $wrapper = self.el.find('.progress-wrapper');
   var $inner = self.el.find('.progress-inner');
-  console.log($inner)
   var $width = $wrapper.width();
-
   var step = $width / self.count;
   var current = 0;
 

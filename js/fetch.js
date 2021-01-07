@@ -43,7 +43,7 @@ function _getSystemLog(el, callback) {
 }
 
 // 修改管理密码
-function updateManagePassword(oldPaswword, newPassword, confirmPassword) {
+function updateManagePassword(oldPaswword, newPassword, confirmPassword, callback) {
   var oldPaswword = _trim(oldPaswword);
   var newPassword = _trim(newPassword);
   var confirmPassword = _trim(confirmPassword);
@@ -91,7 +91,7 @@ function updateManagePassword(oldPaswword, newPassword, confirmPassword) {
         return;
       }
 
-      setAccount(newPassword);
+      setAccount(newPassword, callback);
     })
     .catch(function (err) {
       console.log(err, 'updateManagePassword')
@@ -99,31 +99,12 @@ function updateManagePassword(oldPaswword, newPassword, confirmPassword) {
 }
 
 // 修改管理密码
-function setAccount(password, type) {
+function setAccount(password, callback) {
   var modfiy_parmas = { operation: 'login_modfiy', user: 'admin', password: password };
   _request(modfiy_parmas)
     .then(function (res) {
       // 修改成功
-      if (!res.error) {
-        if (type != 'guide') {
-          // Mod_passwd_success
-          _toast('修改成功,请用新密码重新登录');
-        }
-        if (!_guide) {
-          if (type == "wanSet") {
-            window.location.href = '/login.html';
-          } else {
-            // 跳到登录
-            window.location.href = '/login.html';
-            $.cookie('LoginStatus', false);
-          }
-        } else {
-          $.cookie('LoginStatus', false);
-          window.location.href = '/login.html';
-        }
-      } else {
-        console.log(res.error);
-      }
+      callback && callback(res);
     })
     .catch(function (err) {
       console.log(err, 'setAccount')
@@ -178,6 +159,30 @@ function getUpdateFileStatus() {
       } else {
         console.log(res.error)
       }
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
+}
+
+// 重启路由器
+function restartRoute() {
+  var params = { operation: 'device_opt', action: 'reboot' };
+  _request(params)
+    .then(function (res) {
+      console.log(res)
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
+}
+
+// 恢复出厂设置
+function restoreRoute() {
+  var params = { operation: 'device_opt', action: 'default' };
+  _request(params)
+    .then(function (res) {
+      console.log(res)
     })
     .catch(function (err) {
       console.log(err)
