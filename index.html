@@ -92,7 +92,6 @@
 
           </div>
         </div>
-        <!-- -------------DHCP end------------- -->
 
         <!-- 设置向导 content-item-->
         <div class="module-item-wrapper" data-module="route-guide">
@@ -328,35 +327,43 @@
         <!-- 系统日志 -->
         <div class="module-item-wrapper" data-module="route-log">
           <div class="route-item-log-wrapper side-table-wrapper">
-            <table class="route-log-wrapper side-table">
-              <thead>
-                <tr>
-                  <th>索引</th>
-                  <th>类型</th>
-                  <th>日志内容</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>INFO</td>
-                  <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip 192.165.5.60，hdcp1:send
-                    request </td>
-                </tr>
-                <tr>
-                  <td>100000</td>
-                  <td>INFO</td>
-                  <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip 192.165.5.60，hdcp1:send
-                    request </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <!-- 分页 -->
-            <div class="roter-log-pager-wrapper">
-
+            <div class="route-log-btns">
+              <button class="button">保存所有日志</button>
+              <button class="button">清除所有日志</button>
             </div>
+
+            <div class="route-log-inner">
+              <table class="route-log-wrapper side-table">
+                <thead>
+                  <tr>
+                    <th>索引</th>
+                    <th>类型</th>
+                    <th>日志内容</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>INFO</td>
+                    <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip
+                      192.165.5.60，hdcp1:send
+                      request </td>
+                  </tr>
+                  <tr>
+                    <td>100000</td>
+                    <td>INFO</td>
+                    <td>0days,00:00:42,hdcp1:send request to server 192.168.5.254 with request ip
+                      192.165.5.60，hdcp1:send
+                      request </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- 分页 -->
+              <div class="roter-log-pager-wrapper"></div>
+            </div>
+
             <!-- <div class="pager-view-wrapper right">
               <div class="pager-btn"><i class="icon-arrow-left"></i></div>
               <div class="pager-body">
@@ -373,15 +380,18 @@
 
         <!-- -------------云盘操作 start------------- -->
         <!-- 用户信息 -->
-        <div class="module-item-wrapper">
+        <div class="module-item-wrapper" data-module="cloud-userinfo">
+          用户信息
         </div>
 
         <!-- 磁盘操作 -->
-        <div class="module-item-wrapper">
+        <div class="module-item-wrapper" data-module="cloud-control">
+          磁盘操作
         </div>
 
         <!-- 应用下载 -->
-        <div class="module-item-wrapper">
+        <div class="module-item-wrapper" data-module="cloud-download">
+          应用下载
         </div>
         <!-- -------------云盘操作 end------------- -->
 

@@ -14,12 +14,12 @@ var menuBarArray = [
   //   module: 'network-status',
   //   checked: 1
   // },
+  { title: '设置向导', module: 'route-guide' },
   {
     title: '路由设置',
     list: [
       { title: '路由器状态', module: 'route-status', checked: 1 },
       { title: 'DHCP服务器', module: 'device-manage' },
-      { title: '设置向导', module: 'route-guide' },
       { title: '上网设置', module: 'route-internet' },
       { title: 'LAN口设置', module: 'route-lan' },
       { title: '路由器管理', module: 'route-manage' },
@@ -29,9 +29,9 @@ var menuBarArray = [
   {
     title: '云盘操作',
     list: [
-      { title: '用户信息' },
-      { title: '磁盘操作' },
-      { title: '应用下载' },
+      { title: '用户信息', module: 'cloud-userinfo' },
+      { title: '磁盘操作', module: 'cloud-control' },
+      { title: '应用下载', module: 'cloud-download' },
     ]
   },
 ];

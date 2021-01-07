@@ -87,6 +87,20 @@
 }
 
 /* 系统日志 */
+/* .route-item-log-wrapper {
+  margin-top: 20px;
+} */
+
+.route-log-btns {
+  margin-bottom: 20px;
+}
+
+.route-log-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .route-log-wrapper tr th:nth-child(1),
 .route-log-wrapper tr td:nth-child(1),
