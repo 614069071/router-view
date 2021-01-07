@@ -195,4 +195,61 @@ _MenuTree.prototype.appendMenuToEle = function (arr, el) {
   root.append(menuTree);
   this.initMenuHandel();
 }
-    /* ------------------- 创建 NavMenu end ------------------- */
+/* ------------------- 创建 NavMenu end ------------------- */
+
+
+// 进度条
+function _Progress(el, count) {
+  this.el = el || $('body');//挂载点
+  this.count = count || 120;//时长 s
+  this.timer = null;
+  this.create();
+}
+
+_Progress.prototype.create = function () {
+  var $wrapper = $('<div class="progress-wrapper"><div class="progress-inner"></div></div>');
+  this.el.empty().append($wrapper);
+}
+
+_Progress.prototype.start = function () {
+  var self = this;
+  self.timer && clearInterval(self.timer);
+  var $wrapper = self.el.find('.progress-wrapper');
+  var $inner = self.el.find('.progress-inner');
+  console.log($inner)
+  var $width = $wrapper.width();
+
+  var step = $width / self.count;
+  var current = 0;
+
+  self.timer = setInterval(function (callback) {
+    current += step;
+    if (current >= $width) {
+      current = $width;
+      clearInterval(self.timer);
+      callback && callback();
+      $inner.animate({ width: current + 'px' }, 1000, 'linear', function () {
+        self.el.children().fadeOut(1000, function () {
+          $(this).remove();
+        })
+      });
+    } else {
+      $inner.animate({ width: current + 'px' }, 1000, 'linear');
+    }
+  }, 1000);
+}
+
+_Progress.prototype.finish = function (callback) {
+  var self = this;
+  clearInterval(self.timer);
+  var $wrapper = self.el.find('.progress-wrapper');
+  var $inner = self.el.find('.progress-inner');
+  var $width = $wrapper.width();
+  $inner.animate({ width: $width + 'px' }, 1000, 'linear', function () {
+    clearInterval(self.timer);
+    self.el.children().fadeOut(1000, function () {
+      $(this).remove();
+    })
+    callback && callback();
+  });
+}

@@ -74,3 +74,20 @@ $lanRadios.on('change', function () {
   var $index = $(this).data('index');
   $lanTypeItems.hide().eq($index).show();
 });
+
+// 设备管理 => 固件升级
+var $upgrade_submit = $('#upgrade_submit');
+var $upgrade_submit2 = $('#upgrade_submit2');
+var $progressBarwrapper = $('.progress-bar-wrapper');
+var upgrade_Progress = null;
+
+$upgrade_submit.on('click', function () {
+  upgrade_Progress = new _Progress($progressBarwrapper, 30)
+  upgrade_Progress.start();
+})
+
+$upgrade_submit2.on('click', function () {
+  upgrade_Progress.finish();
+
+})
+

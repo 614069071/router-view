@@ -164,3 +164,10 @@
   text-align: center;
   color: var(--hover-color);
 }
+
+/* 路由器管理 => 软件升级 */
+.progress-bar-wrapper {
+  margin-top: 10px;
+  height: 10px;
+  margin-left: 35px;
+}

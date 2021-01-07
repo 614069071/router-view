@@ -130,3 +130,57 @@ function setAccount(password, type) {
     })
 }
 
+// 固件升级
+function uploadFile(file) {
+  if (!file) {
+    _toast('请选择升级文件！');
+    return;
+  }
+
+  var formData = new FormData();
+  formData.append('file', file);
+  formData.append('type', 'upload');
+  formData.append('function', 'upgrade');
+
+  _request(formData)
+    .then(function (res) {
+      console.log(res)
+      getUpdateFileStatus();
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
+}
+
+// 获取升级返回状态
+function getUpdateFileStatus() {
+  var parmas = { type: 'mtd_write', function: 'upgrade' };
+
+  _request(parmas)
+    .then(function (res) {
+      console.log(res);
+      if (res.error == 0) {
+        if (res.status == 1) {
+          clearInterval(interval);
+          isGet = true;
+          timeout = 0;
+
+          if (res.check == 1) {
+            // 升级中...
+            //正在升级，大约需要2分钟。升级过程中请勿操作或断电...
+            // var content = Upgrading_tips1;
+            // GetProgressBar(content);//进度条
+          } else {
+            _toast('升级失败');
+          }
+
+        }
+      } else {
+        console.log(res.error)
+      }
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
+}
+

@@ -300,9 +300,16 @@
               <div class="sim-label-title">软件升级</div>
 
               <label class="button">选择固件
-                <input type="file" hidden />
+                <input type="file" id="update_file" hidden />
               </label>
-              <button class="button">确认上传</button>
+              <button class="button" id="upgrade_submit">确认上传</button>
+              <button class="button" id="upgrade_submit2">finish</button>
+
+              <div class="progress-bar-wrapper">
+                <!-- <div class="progress-wrapper">
+                  <div class="progress-inner"></div>
+                </div> -->
+              </div>
             </div>
 
             <p><span class="sim-label-title"></span>文件名称</p>
