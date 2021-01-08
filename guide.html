@@ -33,7 +33,7 @@
   </div>
 
   <div class="step-list-wrapper">
-    <div class="step-main-item active">
+    <div class="step-main-item setting-route-password-item active">
       <p class="step-main-des">管理员密码时进入路由器管理页面或APP的密码，凭此密码可查看平配置路由器的参数</p>
       <div class="step-main-content">
         <label class="label-item">
@@ -47,11 +47,11 @@
           <input type="password" />
         </label>
 
-        <button class="button submit full">确定</button>
+        <button class="button submit full" id="setting_route_password_btn">确定</button>
       </div>
     </div>
 
-    <div class="step-main-item  internet-setting">
+    <div class="step-main-item setting-route-internet-item internet-setting">
       <p class="step-main-des">检测到您的上网方式为宽带拨号上网，请输入运营商提供的宽带账号和密码。</p>
       <div class="step-main-content">
         <label class="label-item">
@@ -107,20 +107,21 @@
             <input type="text" value="0.0.0.0" />
           </label>
 
-          <button class="button submit full">下一步</button>
+          <button id="internet_static_submit" class="button submit full">下一步</button>
         </div>
 
         <div class="option-item-main">
           <!-- 自动获取IP地址 -->
-          <button class="button submit full">下一步</button>
+          <button id="internet_auto_submit" class="button submit full">下一步</button>
         </div>
       </div>
     </div>
 
-    <div class="step-main-item">
+    <div class="step-main-item setting-route-finish-item">
       <p class="step-main-des">管理员密码时进入路由器管理页面或APP的密码，凭此密码可查看平配置路由器的参数</p>
       <div class="step-main-content">
-
+        <p>无线参数更改已生效，您的设备与路由器的连接已断开，请重新进行无线连接...</p>
+        <p>无线名称：JAVASCEIPR 无线密码：123456789</p>
       </div>
     </div>
   </div>
