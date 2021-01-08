@@ -8,14 +8,13 @@ function loginHandel() {
 
   if (value) {
     $.cookie('LoginStatus', true);
-    window.location.href = "/main.html";
-    return;
-    var str_md5 = $.md5('root' + value);
-    var parmas = { operation: 'login', function: 'set', usrid: str_md5 };
-    // console.log(parmas, $.cookie('LoginStatus'), 'parmas');
-    window.location.href = "/main.html";
-    return;
-    _login(parmas);
+    _login(value)
+      .then(function (res) {
+
+      })
+      .cache(function (err) {
+
+      })
   } else {
     // $psErrorTip.show().html('请输入密码');
     _toast('请输入密码');
@@ -29,7 +28,6 @@ $(function () {
   });
 
   $loginSubmitInput.on('keyup', function (event) {
-    console.log(11111)
     var e = event || window.event || {};
     if (e.keyCode == 13) {
       loginHandel();

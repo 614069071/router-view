@@ -1,45 +1,22 @@
 // 登录
-function _login(parmas, callback) {
-  _request(parmas)
-    .then(function (res) {
-      if (res.error == 0) {
-        $.cookie('LoginStatus', true);
-        window.location.href = "/main.html";
-      } else if (res.error == 10001) {
-        _toast('密码错误');
-      } else {
-        _toast('登录失败');
-      }
-      callback && callback();
-    })
-    .catch(function (err) {
-      console.log(err.status);
-    });
+function _login(password) {
+  var str_md5 = $.md5('root' + password);
+  var parmas = { operation: 'login', function: 'set', usrid: str_md5 };
+
+  return _request(parmas);
 }
 
 // 设置向导
-function _setStaticConfigWizard(parmas) {
+function _setStaticConfigWizard() {
 
 }
 
 // 获取日志
-function _getSystemLog(el, callback) {
+function _getSystemLog() {
   var parmas = { operation: 'sys_log', function: 'get' };
   var url = "http://" + document.domain + "/cgi-bin/log.sh";
 
-  _request(parmas, 'post', url)
-    .thne(function (res) {
-      var arr = res.data;
-      var list = '';
-      $.each(arr, function (i, e) {
-        list += '<tr><td>' + e.index + '</td><td>' + e.type + '</td><td>' + e.info + '</td></tr>';
-      })
-      el.empty().html(list);
-      callback && callback();
-    })
-    .catch(function (err) {
-      console.log(err);
-    })
+  return _request(parmas, 'post', url);
 }
 
 // 修改管理密码
@@ -79,36 +56,16 @@ function updateManagePassword(oldPaswword, newPassword, confirmPassword, callbac
     return;
   }
 
-  var name = 'root';
-  var str_md5 = $.md5(name + oldPaswword);
-  var parmas = { operation: 'login', function: 'set', usrid: str_md5 };
-
   // 验证旧密码
-  _request(parmas)
-    .then(function (res) {
-      if (res.error) {
-        _toast('旧密码验证错误');
-        return;
-      }
-
-      setAccount(newPassword, callback);
-    })
-    .catch(function (err) {
-      console.log(err, 'updateManagePassword')
-    })
+  return _login(oldPaswword);
+  // setAccount 修改管理密码
 }
 
 // 修改管理密码
-function setAccount(password, callback) {
+function setAccount(password) {
   var modfiy_parmas = { operation: 'login_modfiy', user: 'admin', password: password };
-  _request(modfiy_parmas)
-    .then(function (res) {
-      // 修改成功
-      callback && callback(res);
-    })
-    .catch(function (err) {
-      console.log(err, 'setAccount')
-    })
+
+  return _request(modfiy_parmas)
 }
 
 // 固件升级
@@ -118,68 +75,27 @@ function uploadFile(file) {
   formData.append('type', 'upload');
   formData.append('function', 'upgrade');
 
-  _request(formData)
-    .then(function (res) {
-      console.log(res)
-      // getUpdateFileStatus();
-    })
-    .catch(function (err) {
-      console.log(err)
-    })
+  return _request(formData)
+  // getUpdateFileStatus();// 获取升级状态
 }
 
 // 获取升级返回状态
 function getUpdateFileStatus() {
   var parmas = { type: 'mtd_write', function: 'upgrade' };
 
-  _request(parmas)
-    .then(function (res) {
-      console.log(res);
-      if (res.error == 0) {
-        if (res.status == 1) {
-          clearInterval(interval);
-          isGet = true;
-          timeout = 0;
-
-          if (res.check == 1) {
-            // 升级中...
-            //正在升级，大约需要2分钟。升级过程中请勿操作或断电...
-            // var content = Upgrading_tips1;
-            // GetProgressBar(content);//进度条
-          } else {
-            _toast('升级失败');
-          }
-
-        }
-      } else {
-        console.log(res.error)
-      }
-    })
-    .catch(function (err) {
-      console.log(err)
-    })
+  return _request(parmas)
 }
 
 // 重启路由器
 function restartRoute() {
   var params = { operation: 'device_opt', action: 'reboot' };
-  _request(params)
-    .then(function (res) {
-      console.log(res)
-    })
-    .catch(function (err) {
-      console.log(err)
-    })
+
+  return _request(params);
 }
 
 // 恢复出厂设置
 function restoreRoute() {
   var params = { operation: 'device_opt', action: 'default' };
-  _request(params)
-    .then(function (res) {
-      console.log(res)
-    })
-    .catch(function (err) {
-      console.log(err)
-    })
+
+  return _request(params);
 }
