@@ -23,12 +23,43 @@ $allSwitchBtns.on('change', function () {
   isChecked ? parent.addClass('on') : parent.removeClass('on');
 });
 
+// 单选框
 var $allRadioBtns = $("input[type=radio]");
 $allRadioBtns.on('change', function () {
   var name = $(this).prop('name');
   var list = $('input[name=' + name + ']');
   list.parent().removeClass('on');
   $(this).parent().toggleClass('on');
+});
+
+// 下拉框
+var $allSelectChecks = $('.select-checked');
+var $allSelectOptions = $('.select-option');
+
+$allSelectChecks.on('click', function (e) {
+  var $next = $(this).next();
+  $(this).toggleClass('open');
+  $next.slideToggle();
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+});
+
+$allSelectOptions.on('click', function (e) {
+  var $value = $(this).data('value');
+  var $text = $(this).text();
+  var $check = $(this).parent().prev();
+  var $parent = $(this).parent();
+  $parent.slideUp();
+  $(this).addClass('active').siblings().removeClass('active');
+  $check.toggleClass('open').data('value', $value).children('span').text($text);
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+});
+
+$('body').on('click', function (e) {
+  $('.select-options').slideUp().prev().removeClass('open');
 });
 
 // 设置所有input元素的autocomplete属性
