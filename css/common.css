@@ -211,14 +211,14 @@ input:-ms-input-placeholder {
   height: 30px;
   line-height: 30px;
   text-align: right;
-  width: 90px;
+  width: 105px;
   margin-right: 12px;
 }
 
 .sim-label-title {
   display: inline-block;
   text-align: right;
-  width: 90px;
+  width: 105px;
   margin-right: 12px;
   color: #606266;
 }
@@ -258,7 +258,7 @@ input:-ms-input-placeholder {
 }
 
 .button.submit {
-  margin-left: 102px;
+  margin-left: 117px;
 }
 
 .button.info {

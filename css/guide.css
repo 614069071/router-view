@@ -5,7 +5,7 @@ body {
 
 .steps-wrapper {
   display: flex;
-  height: 100px;
+  height: 66px;
   justify-content: space-between;
   position: relative;
 }

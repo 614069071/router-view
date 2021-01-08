@@ -33,39 +33,39 @@
   </div>
 
   <div class="step-list-wrapper">
-    <div class="step-main-item ">
-      <div class="step-main-des">管理员密码时进入路由器管理页面或APP的密码，凭此密码可查看平配置路由器的参数</div>
+    <div class="step-main-item active">
+      <p class="step-main-des">管理员密码时进入路由器管理页面或APP的密码，凭此密码可查看平配置路由器的参数</p>
       <div class="step-main-content">
         <label class="label-item">
           <span>设置密码</span>
           <input type="password" maxlength="15" />
         </label>
-        <p>密码长度为5-15位数字字母组合密码</p>
+        <p><span class="sim-label-title"></span>密码长度为5-15位数字、字母、特殊符号的组合</p>
 
         <label class="label-item">
           <span>确认密码</span>
           <input type="password" />
         </label>
 
-        <button class="button">确定</button>
+        <button class="button submit full">确定</button>
       </div>
     </div>
 
-    <div class="step-main-item active internet-setting">
-      <div class="step-main-des">检测到您的上网方式为宽带拨号上网，请输入运营商提供的宽带账号和密码。</div>
+    <div class="step-main-item  internet-setting">
+      <p class="step-main-des">检测到您的上网方式为宽带拨号上网，请输入运营商提供的宽带账号和密码。</p>
       <div class="step-main-content">
         <label class="label-item">
           <span>上网方式</span>
 
-          <div class="select-wrapper">
-            <div class="select-checked">
-              <span>请选择</span>
+          <div class="select-wrapper internet-connect-select">
+            <div class="select-checked" data-value="0">
+              <span>宽带拨号上网</span>
               <i class="icon-arrow-bottom"></i>
             </div>
             <ul class="select-options">
-              <li class="select-option" data-value="1" class="active">宽带拨号上网</li>
-              <li class="select-option" data-value="2">固定IP地址</li>
-              <li class="select-option" data-value="3">自动获取IP地址</li>
+              <li class="select-option active" data-value="0">宽带拨号上网</li>
+              <li class="select-option" data-value="1">固定IP地址</li>
+              <li class="select-option" data-value="2">自动获取IP地址</li>
             </ul>
           </div>
         </label>
@@ -118,7 +118,7 @@
     </div>
 
     <div class="step-main-item">
-      <div class="step-main-des">管理员密码时进入路由器管理页面或APP的密码，凭此密码可查看平配置路由器的参数</div>
+      <p class="step-main-des">管理员密码时进入路由器管理页面或APP的密码，凭此密码可查看平配置路由器的参数</p>
       <div class="step-main-content">
 
       </div>
