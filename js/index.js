@@ -9,12 +9,6 @@
 // }
 
 var menuBarArray = [
-  // {
-  //   title: '网络状态',
-  //   module: 'network-status',
-  //   checked: 1
-  // },
-  { title: '设置向导', module: 'route-guide', checked: 1 },
   {
     title: '路由设置',
     list: [
