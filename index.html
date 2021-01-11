@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/index.css">
-  <title>Cloud-link</title>
+  <title>百盒</title>
 </head>
 
 <body>
@@ -27,8 +27,75 @@
       <main class="main-content-wrapper">
         <!-- -------------路由设置模块 start------------- -->
         <!-- 路由器状态 -->
-        <div class="module-item-wrapper" data-module="route-status">
-          路由器状态
+        <div class="module-item-wrapper active" data-module="route-status">
+          <div class="model-title">设备信息</div>
+          <div>
+            <label class="label-item"><span>产品型号：</span>NSS-H-1</label>
+            <label class="label-item"><span>SN地址：</span>NJ-NJ-NJ-NJ-NJ-NJ-NJ</label>
+            <label class="label-item"><span>MAC地址：</span>E0-67-B3-71-FF-FF</label>
+            <label class="label-item"><span>版本信息：</span>V1.0.6</label>
+            <label class="label-item"><span>运行状态：</span>已稳定运行8天12小时</label>
+          </div>
+
+          <div class="model-title">设备状态</div>
+          <div class="device-state-wrapper">
+            <div class="device-state-item">
+              <div class="device-state-item-title">网络状态</div>
+              <div class="device-state-item-img">
+                <div>
+                  <span>0k/s</span>
+                  <span>0k/s</span>
+                </div>
+              </div>
+              <div>网络状态：在线</div>
+              <div class="device-state-item-other">
+                <div class="other-item"><span>WAN口速率：</span>0k/s</div>
+                <div class="other-item"><span>LAN口速率：</span>0k/s</div>
+              </div>
+            </div>
+
+            <div class="device-state-item">
+              <div class="device-state-item-title">内置硬盘</div>
+              <div class="device-state-item-img">
+                <div>
+                  <span>500G/1T</span>
+                </div>
+              </div>
+              <div>硬盘信息</div>
+              <div class="device-state-item-other">
+                <div class="other-item"><span>硬盘格式：</span>NTFS</div>
+                <div class="other-item"><span>使用容量：</span>500G</div>
+                <div class="other-item"><span>总容量：</span>1T</div>
+                <div class="other-item"><span>家庭空间：</span>250G</div>
+                <div class="other-item"><span>个人空间：</span>250G</div>
+              </div>
+            </div>
+
+            <div class="device-state-item">
+              <div class="device-state-item-title">USB外接设备</div>
+              <div class="device-state-item-img">
+                <div>
+                  <span>1G/4T</span>
+                </div>
+              </div>
+              <div>USB外接设备信息</div>
+              <div class="device-state-item-other">
+                <di class="other-item"><span>使用容量：</span>1G</di>
+                <di class="other-item"><span>总容量：</span>4G</di>
+              </div>
+            </div>
+
+            <div class="device-state-item">
+              <div class="device-state-item-title">LAN口连接终端数量</div>
+              <div class="device-state-item-img">
+                <div>
+                  <span>0个</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
         <!-- -------------DHCP start------------- -->
@@ -260,7 +327,7 @@
         </div>
 
         <!-- 路由器管理 -->
-        <div class="module-item-wrapper active" data-module="route-manage">
+        <div class="module-item-wrapper " data-module="route-manage">
           <div class="model-title">管理密码</div>
 
           <div class="model-content">

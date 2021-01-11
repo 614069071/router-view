@@ -8,26 +8,37 @@
 //   window.location.href = '/login.html';
 // }
 
+// var menuBarArray = [
+//   {
+//     title: '路由设置',
+//     list: [
+//       { title: '路由器状态', module: 'route-status' },
+//       { title: 'DHCP服务器', module: 'device-manage' },
+//       { title: 'WAN口设置', module: 'route-internet' },
+//       { title: 'LAN口设置', module: 'route-lan' },
+//       { title: '路由器管理', module: 'route-manage' },
+//       { title: '系统日志', module: 'route-log' },
+//     ]
+//   },
+//   {
+//     title: '云盘操作',
+//     list: [
+//       { title: '用户信息', module: 'cloud-userinfo' },
+//       { title: '磁盘操作', module: 'cloud-control' },
+//       { title: '应用下载', module: 'cloud-download' },
+//     ]
+//   },
+// ];
+
 var menuBarArray = [
-  {
-    title: '路由设置',
-    list: [
-      { title: '路由器状态', module: 'route-status' },
-      { title: 'DHCP服务器', module: 'device-manage' },
-      { title: 'WAN口设置', module: 'route-internet' },
-      { title: 'LAN口设置', module: 'route-lan' },
-      { title: '路由器管理', module: 'route-manage' },
-      { title: '系统日志', module: 'route-log' },
-    ]
-  },
-  {
-    title: '云盘操作',
-    list: [
-      { title: '用户信息', module: 'cloud-userinfo' },
-      { title: '磁盘操作', module: 'cloud-control' },
-      { title: '应用下载', module: 'cloud-download' },
-    ]
-  },
+  { title: '设备状态', module: 'route-status', checked: true },
+  { title: 'DHCP服务器', module: 'device-manage' },
+  { title: 'WAN口设置', module: 'route-internet' },
+  { title: 'LAN口设置', module: 'route-lan' },
+  { title: '路由器管理', module: 'route-manage' },
+  { title: '系统日志', module: 'route-log' },
+  { title: '磁盘操作', module: 'cloud-control' },
+  { title: '关于我们', module: 'cloud-download' },
 ];
 
 // 创建 NavMenu

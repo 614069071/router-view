@@ -90,6 +90,32 @@
   display: block;
 }
 
+/* 设备状态 首页*/
+.device-state-wrapper {
+  display: flex;
+}
+.device-state-item {
+  display: inline-block;
+  width: 140px;
+  margin-right: 20px;
+}
+
+.device-state-item .device-state-item-img {
+  height: 140px;
+  border: 1px solid red;
+  text-align: center;
+  line-height: 140px;
+}
+
+.device-state-item-other .other-item {
+  display: flex;
+}
+
+.device-state-item-other .other-item span {
+  width: 100px;
+  text-align: left;
+}
+
 /* 系统日志 */
 /* .route-item-log-wrapper {
   margin-top: 20px;
