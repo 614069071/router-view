@@ -14,7 +14,7 @@ var menuBarArray = [
     list: [
       { title: '路由器状态', module: 'route-status' },
       { title: 'DHCP服务器', module: 'device-manage' },
-      { title: '上网设置', module: 'route-internet' },
+      { title: 'WAN口设置', module: 'route-internet' },
       { title: 'LAN口设置', module: 'route-lan' },
       { title: '路由器管理', module: 'route-manage' },
       { title: '系统日志', module: 'route-log' },
@@ -75,7 +75,7 @@ var $setting_manage_form_submit = $('#setting_manage_form_submit');
 
 $setting_manage_form_submit.on('click', function () {
   var data = _formArrToObject($setting_manage_form);
-  updateManagePassword(data.oldPassword, data.newPassword, data.confirmPassword);
+  var f = validateManagePassword(data.oldPassword, data.newPassword, data.confirmPassword);
 });
 
 // 设备管理 => 固件升级

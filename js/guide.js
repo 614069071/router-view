@@ -4,10 +4,25 @@ var $setting_route_password_item = $('.setting-route-password-item');
 var $setting_route_internet_item = $('.setting-route-internet-item');
 var $setting_route_finish_item = $('.setting-route-finish-item');
 
-$setting_route_password_btn.click(function () {
+function settingPasswordNext() {
   $setting_route_password_item.hide();
   $setting_route_finish_item.hide();
   $setting_route_internet_item.show();
+}
+
+$setting_route_password_btn.click(function () {
+  var newPassword = $('#setting_login_password').val();
+  var confirmPassword = $('#confirm_login_password').val();
+  var f = validateManagePassword('admin', newPassword, confirmPassword);
+  if (!f) return;
+
+  _login(newPassword)
+    .then(function (res) {
+      console.log(res)
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
 });
 
 // 上网设置
