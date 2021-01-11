@@ -21,7 +21,7 @@ function _request(data, method, url) {
       timeout: 3000,
       data: data,
       // dataType: "json",
-      dataType: "jsonp",
+      dataType: "json",
       success: function (res) {
         resolve(res);
       },

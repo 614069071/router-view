@@ -8,12 +8,13 @@ function loginHandel() {
 
   if (value) {
     $.cookie('LoginStatus', true);
+
     _login(value)
       .then(function (res) {
-
+        console.log(res)
       })
-      .cache(function (err) {
-
+      .catch(function (err) {
+        console.log(err)
       })
   } else {
     // $psErrorTip.show().html('请输入密码');

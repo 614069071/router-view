@@ -1,5 +1,5 @@
 // 请求地址
-window._action = "/cgi-bin/cdata.cgi";
+window._action = "http://" + document.domain + "/cgi-bin/cdata.cgi";
 window._guide = -1; // guide  = 0 when checkconfig(),else guide = 1 when click menu .a
 
 // 禁止右键

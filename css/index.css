@@ -24,6 +24,7 @@
 
 .menu-item-title.checked {
   color: var(--default-color);
+  background-color: rgb(67, 74, 80);
 }
 
 .menu-submenu-title.open .icon-arrow-top {
@@ -104,7 +105,11 @@
   height: 140px;
   border: 1px solid red;
   text-align: center;
-  line-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .device-state-item-other .other-item {
@@ -112,7 +117,6 @@
 }
 
 .device-state-item-other .other-item span {
-  width: 100px;
   text-align: left;
 }
 
