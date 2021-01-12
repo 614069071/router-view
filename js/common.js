@@ -170,7 +170,7 @@ _Pager.prototype.init = function () {
 /* -------------------创建分页器 end -------------------*/
 
 /* ------------------- 创建 NavMenu start ------------------- */
-window._MenuTree = function (arr, el) {
+function _MenuTree(arr, el) {
   this.appendMenuToEle(arr, el);
 }
 
