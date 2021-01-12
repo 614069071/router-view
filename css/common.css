@@ -3,6 +3,8 @@
   --hover-color: #66b1ff;
   --check-color: #3a8ee6;
   --de-btn-color: #dcdfe6;
+  --table-color: #606266;
+  --holder-color: #c0c9cf;
 }
 
 body,
@@ -88,22 +90,22 @@ td {
 
 /* 自定义placeholder样式 */
 input::-webkit-input-placeholder {
-  color: #c0c9cf;
+  color: var(--holder-color);
 }
 
 input::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: #c0c9cf;
+  color: var(--holder-color);
 }
 
 input:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: #c0c9cf;
+  color: var(--holder-color);
 }
 
 input:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #c0c9cf;
+  color: var(--holder-color);
 }
 
 /* 单选按钮 */
@@ -204,7 +206,7 @@ input:-ms-input-placeholder {
   align-items: center;
   /* overflow: hidden; */
   margin-bottom: 20px;
-  color: #606266;
+  color: var(--table-color);
 }
 
 .label-item > span {
@@ -220,13 +222,13 @@ input:-ms-input-placeholder {
   text-align: right;
   width: 110px;
   margin-right: 12px;
-  color: #606266;
+  color: var(--table-color);
 }
 
 .label-item > input {
   height: 40px;
   width: 220px;
-  border: 1px solid #dcdfe6;
+  border: 1px solid var(--de-btn-color);
   padding: 0 15px;
   border-radius: 4px;
 }
@@ -262,9 +264,9 @@ input:-ms-input-placeholder {
 }
 
 .button.info {
-  color: #606266;
+  color: var(--table-color);
   background-color: #fff;
-  border-color: #dcdfe6;
+  border-color: var(--de-btn-color);
 }
 
 .button.info:hover {
@@ -285,7 +287,7 @@ input:-ms-input-placeholder {
 .select-wrapper {
   width: 250px;
   height: 40px;
-  border: 1px solid #dcdfe6;
+  border: 1px solid var(--de-btn-color);
   border-radius: 4px;
   position: relative;
 }
@@ -319,7 +321,7 @@ input:-ms-input-placeholder {
   border: 1px solid #e4e7ed;
   border-radius: 4px;
   overflow: hidden;
-  color: #606266;
+  color: var(--table-color);
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -331,7 +333,7 @@ input:-ms-input-placeholder {
 }
 
 .select-wrapper .select-options li.active {
-  color: #409eff;
+  color: var(--default-color);
 }
 
 .select-wrapper .select-options li:hover {
@@ -416,7 +418,8 @@ input:-ms-input-placeholder {
   height: 40px;
   border-radius: 50%;
   border-width: 2px;
-  border-color: transparent #409eff #409eff #409eff;
+  border-color: transparent var(--default-color) var(--default-color)
+    var(--default-color);
   border-style: solid;
   animation: loading 1.2s linear infinite;
 }
@@ -468,7 +471,7 @@ input:-ms-input-placeholder {
 
 .dialog-wrapper .dialog-main {
   padding: 30px 0;
-  color: #606266;
+  color: var(--table-color);
 }
 
 .dialog-inner .dialog-title .dialog-close {
@@ -536,7 +539,7 @@ input:-ms-input-placeholder {
   width: 30px;
   text-align: center;
   font-size: 14px;
-  color: #606266;
+  color: var(--table-color);
   background-color: #f4f4f5;
   border-radius: 2px;
   cursor: pointer;
@@ -548,12 +551,12 @@ input:-ms-input-placeholder {
 }
 
 .pager-item:hover {
-  color: #409eff;
+  color: var(--default-color);
 }
 
 .pager-body .pager-item.active {
   color: #fff;
-  background-color: #409eff;
+  background-color: var(--default-color);
 }
 
 /* 自定义样式 */
