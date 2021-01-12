@@ -91,3 +91,43 @@ function restoreRoute() {
 
   return _request(params);
 }
+
+// 宽带拨号
+function setConnectPPPoE(account, password) {
+  var params = {
+    operation: "wan_setup_wizard",
+    function: "set",
+    user: account,//待确认
+    passwd: password,//待确认
+    mode: 2,
+    mtu: '1480',//宽带1480 自动和静态1500
+    dns: '',
+    dns1: '',
+    mac: '',
+    pppoe_server: '',
+    math: Math.random()
+  };
+
+  return _request(params);
+}
+
+// 获取路由信息
+function getRouterInfo() {
+  var parmas = { operation: 'route_info', function: 'get' };
+
+  return _request(parmas);
+}
+
+// 获取时间
+function getTimeSync() {
+  var parmas = { operation: 'time_sync', function: 'get', server: '' };
+
+  return _request(parmas);
+}
+
+// 获取设备列表
+function getOlineList() {
+  var parmas = { operation: 'get_host', function: 'get' };
+
+  return _request(parmas);
+}

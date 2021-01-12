@@ -40,7 +40,7 @@ function _init() {
   $allSelectChecks.on('click', function (e) {
     var $next = $(this).next();
     $(this).toggleClass('open');
-    $next.slideToggle();
+    $next.stop(true).slideToggle();
     e.preventDefault();
     e.stopPropagation();
     return false;
