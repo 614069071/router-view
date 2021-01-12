@@ -141,7 +141,7 @@ function loadContent() {
     name && $upgrade_name.text(name);
   })
 
-  var upgrade_Progress = new _Progress($progressBarwrapper, 120)
+  var upgrade_Progress = new _Progress($progressBarwrapper, 120);
 
   $upgrade_submit.on('click', function () {
     var $file = $update_file.prop('files')[0];

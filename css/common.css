@@ -611,11 +611,18 @@ input:-ms-input-placeholder {
   height: 5px;
   background-color: #eee;
   border-radius: 5px;
-  overflow: hidden;
+  position: relative;
 }
 
-.progress-inner {
+.progress-wrapper .progress-inner {
   height: 100%;
   width: 0;
   background-color: var(--default-color);
+}
+
+.progress-wrapper .progress-percentage {
+  position: absolute;
+  right: -36px;
+  top: -4px;
+  font-size: 12px;
 }

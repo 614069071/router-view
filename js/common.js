@@ -240,7 +240,7 @@ function _Progress(el, count) {
 }
 
 _Progress.prototype.create = function () {
-  var $wrapper = $('<div class="progress-wrapper" style="display:none;"><div class="progress-inner"></div><span class="progress-percentage">10%</span></div>');
+  var $wrapper = $('<div class="progress-wrapper" style="display:none;"><div class="progress-inner"></div><span class="progress-percentage">0%</span></div>');
   this.el.empty().append($wrapper);
 }
 
@@ -259,7 +259,7 @@ _Progress.prototype.start = function () {
 
   self.timer = setInterval(function () {
     current += step;
-    if (current + (2 * step) >= $width) {
+    if (current + step >= $width) {
       clearInterval(self.timer);
     }
 
