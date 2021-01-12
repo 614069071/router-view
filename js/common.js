@@ -13,58 +13,60 @@ function disEvent() {
   document.onmouseup = function () { document.selection && document.selection.empty(); }
 }
 
-// disEvent();
+function _init() {
+  // disEvent();
 
-// switch组件交互
-var $allSwitchBtns = $("input[role='switch']");
-$allSwitchBtns.on('change', function () {
-  var isChecked = $(this).prop('checked');
-  var parent = $(this).parent();
-  isChecked ? parent.addClass('on') : parent.removeClass('on');
-});
+  // switch组件交互
+  var $allSwitchBtns = $("input[role='switch']");
+  $allSwitchBtns.on('change', function () {
+    var isChecked = $(this).prop('checked');
+    var parent = $(this).parent();
+    isChecked ? parent.addClass('on') : parent.removeClass('on');
+  });
 
-// 单选框
-var $allRadioBtns = $("input[type=radio]");
-$allRadioBtns.on('change', function () {
-  var name = $(this).prop('name');
-  var list = $('input[name=' + name + ']');
-  list.parent().removeClass('on');
-  $(this).parent().toggleClass('on');
-});
+  // 单选框
+  var $allRadioBtns = $("input[type=radio]");
+  $allRadioBtns.on('change', function () {
+    var name = $(this).prop('name');
+    var list = $('input[name=' + name + ']');
+    list.parent().removeClass('on');
+    $(this).parent().toggleClass('on');
+  });
 
-// 下拉框
-var $allSelectChecks = $('.select-checked');
-var $allSelectOptions = $('.select-option');
+  // 下拉框
+  var $allSelectChecks = $('.select-checked');
+  var $allSelectOptions = $('.select-option');
 
-$allSelectChecks.on('click', function (e) {
-  var $next = $(this).next();
-  $(this).toggleClass('open');
-  $next.slideToggle();
-  e.preventDefault();
-  e.stopPropagation();
-  return false;
-});
+  $allSelectChecks.on('click', function (e) {
+    var $next = $(this).next();
+    $(this).toggleClass('open');
+    $next.slideToggle();
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  });
 
-$allSelectOptions.on('click', function (e) {
-  var $value = $(this).data('value');
-  var $text = $(this).text();
-  var $check = $(this).parent().prev();
-  var $parent = $(this).parent();
-  $parent.slideUp();
-  $(this).addClass('active').siblings().removeClass('active');
-  $check.toggleClass('open').data('value', $value).children('span').text($text);
-  e.preventDefault();
-  e.stopPropagation();
-  return false;
-});
+  $allSelectOptions.on('click', function (e) {
+    var $value = $(this).data('value');
+    var $text = $(this).text();
+    var $check = $(this).parent().prev();
+    var $parent = $(this).parent();
+    $parent.slideUp();
+    $(this).addClass('active').siblings().removeClass('active');
+    $check.toggleClass('open').data('value', $value).children('span').text($text);
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  });
 
-$('body').on('click', function (e) {
-  $('.select-options').slideUp().prev().removeClass('open');
-});
+  $('body').on('click', function (e) {
+    $('.select-options').slideUp().prev().removeClass('open');
+  });
 
-// 设置所有input元素的autocomplete属性
-var $inputTypeTexts = $('input');
-$inputTypeTexts.prop('autocomplete', 'off');
+  // 设置所有input元素的autocomplete属性
+  var $inputTypeTexts = $('input');
+  $inputTypeTexts.prop('autocomplete', 'off');
+}
 
 
 /* -------------------创建分页器 start -------------------*/
@@ -238,7 +240,7 @@ function _Progress(el, count) {
 }
 
 _Progress.prototype.create = function () {
-  var $wrapper = $('<div class="progress-wrapper" style="display:none;"><div class="progress-inner"></div></div>');
+  var $wrapper = $('<div class="progress-wrapper" style="display:none;"><div class="progress-inner"></div><span class="progress-percentage">10%</span></div>');
   this.el.empty().append($wrapper);
 }
 
@@ -248,6 +250,7 @@ _Progress.prototype.start = function () {
   var self = this;
   self.timer && clearInterval(self.timer);
   var $wrapper = self.el.find('.progress-wrapper');
+  var $percentage = self.el.find('.progress-percentage');
   $wrapper.show();
   var $inner = self.el.find('.progress-inner');
   var $width = $wrapper.width();
@@ -257,12 +260,12 @@ _Progress.prototype.start = function () {
   self.timer = setInterval(function () {
     current += step;
     if (current + (2 * step) >= $width) {
-      // current = $width;
       clearInterval(self.timer);
-      $inner.animate({ width: current + 'px' }, 1000, 'linear');
-    } else {
-      $inner.animate({ width: current + 'px' }, 1000, 'linear');
     }
+
+    var percentage = parseInt((current / $width) * 100) + '%';
+    $percentage.html(percentage);
+    $inner.animate({ width: current + 'px' }, 1000, 'linear');
   }, 1000);
 }
 

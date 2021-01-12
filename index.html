@@ -14,14 +14,43 @@
 </head>
 
 <body>
-  <div class="content-wrapper">
+  <!-- 登录模块 -->
+  <section class="login-wrapper wrapper" id="login_wrapper">
+    <div class="login-inner container">
+      <div class="login-title">
+        <div>Router-LINK</div>
+        <div>Router-WR886N</div>
+      </div>
+
+      <div class="login-main">
+        <div class="login-form-title">管理员密码</div>
+        <div class="login-form-item login-password">
+          <div class="login-password--prepend">密码</div>
+          <div class="login-password-wrap">
+            <input class="login-password--inp" id="login_password" type="password" maxlength="32" placeholder="请输入管理员密码"
+              autocomplete="off">
+            <!-- <span class="input-password-error-tip" id="ps_error_tip"></span> -->
+          </div>
+        </div>
+        <div class="login-form-item login-submit" id="login_submit">确定</div>
+        <div class="login-form-item login-forgot">
+          <button class="forgot-password-btn" id="forgot_password_btn">忘记密码？</button>
+          <div class="forgot-tips" id="forgot_tips">
+            如忘记密码，请恢复出厂设置。恢复方法：在设备通电的情况下，按住路由器的“Reset”按钮，5到8秒后松开
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主体模块 -->
+  <section class="content-wrapper wrapper" id="content_wrapper">
     <!-- NavMenu -->
     <nav class="nav-menu-wrapper custom-scroll-bars"></nav>
     <div class="content-main-wrapper">
-      <!-- Header -->
       <header class="main-header-wrapper">
         <div>百盒</div>
-        <div>退出</div>
+        <div class="exit-btn" id="exit_btn">退出</div>
       </header>
       <!-- Main -->
       <main class="main-content-wrapper">
@@ -156,7 +185,7 @@
         <!-- 上网设置 -->
         <div class="module-item-wrapper" data-module="route-internet">
           <div class="connect-type-wrapper">
-            <span class="sim-label-title">连接类型</span>
+            <!-- <span class="sim-label-title">WAN口连接类型</span>
 
             <label class="radio-btn on">
               <input class="check-type" type="radio" name="connectType" data-index="0" value="1" checked hidden />
@@ -166,16 +195,35 @@
             <label class="radio-btn">
               <input class="check-type" type="radio" name="connectType" data-index="1" value="2" hidden />
               <span></span>
-              静态IP
+              固定IP地址
             </label>
             <label class="radio-btn">
               <input class="check-type" type="radio" name="connectType" data-index="2" value="3" hidden />
               <span></span>
-              动态IP
+              自动获取IP地址
+            </label> -->
+
+            <label class="label-item">
+              <span>WAN口连接类型</span>
+
+              <div class="select-wrapper internet-connect-select">
+                <div class="select-checked" data-value="0">
+                  <span>宽带拨号</span>
+                  <i class="icon-arrow-bottom"></i>
+                </div>
+                <ul class="select-options">
+                  <li class="select-option active" data-value="0">宽带拨号上网</li>
+                  <li class="select-option" data-value="1">固定IP地址</li>
+                  <li class="select-option" data-value="2">自动获取IP地址</li>
+                </ul>
+              </div>
             </label>
           </div>
 
+
+
           <div class="connect-type-main-wrapper model-type-list">
+
             <!-- 宽带拨号 -->
             <div class="model-type-item active">
               <p><span class="sim-label-title"></span>请输入运营商给您的宽带上网账号及密码。如有遗忘，可拨打运营商电话找回。</p>
@@ -189,16 +237,16 @@
                   <input type="text" name="pwd" placeholder="请输入宽带密码">
                 </label>
 
-                <label class="label-item">
+                <!-- <label class="label-item">
                   <span>WIFI名称</span>
                   <input type="text" name="wf_name" placeholder="请输入WIFI名称">
                 </label>
                 <label class="label-item">
                   <span>WIFI密码</span>
                   <input type="password" name="wf_pwd" placeholder="请输入WIFI密码">
-                </label>
+                </label> -->
               </form>
-              <button class="button submit" id="setting_wizard_broadband_form_submit">保存</button>
+              <button class="button submit full" id="setting_wizard_broadband_form_submit">保存</button>
             </div>
 
             <!-- 静态ip -->
@@ -207,41 +255,41 @@
               <form id="setting_wizard_static_form">
                 <label class="label-item">
                   <span>IP</span>
-                  <input type="text" name="ip_addr" placeholder="请输入您的IP地址">
+                  <input type="text" name="ip_addr" placeholder="请输入您的IP地址" />
                 </label>
                 <label class="label-item">
                   <span>子网掩码</span>
-                  <input type="text" name="subnet" placeholder="请输入您的子网掩码">
+                  <input type="text" name="subnet" placeholder="请输入您的子网掩码" />
                 </label>
                 <label class="label-item">
                   <span>默认网关</span>
-                  <input type="text" name="wg" placeholder="请输入您的默认网关">
+                  <input type="text" name="wg" placeholder="请输入您的默认网关" />
                 </label>
                 <label class="label-item">
                   <span>DNS(首选)</span>
-                  <input type="text" name="dns" placeholder="请输入您的DNS（选填）">
+                  <input type="text" name="dns" placeholder="请输入您的DNS（选填）" />
                 </label>
-                <label class="label-item">
+                <!-- <label class="label-item">
                   <span>WIFI名称</span>
                   <input type="text" name="" placeholder="请输入WIFI名称">
                 </label>
                 <label class="label-item">
                   <span>WIFI密码</span>
                   <input type="text" name="" placeholder="请输入WIFI密码">
-                </label>
+                </label> -->
               </form>
 
-              <button class="button submit" id="setting_wizard_static_form_submit">保存</button>
+              <button class="button submit full" id="setting_wizard_static_form_submit">保存</button>
             </div>
 
             <!-- 动态ip -->
             <div class="model-type-item" id="">
               <p><span class="sim-label-title"></span>动态IP一般适用于内部网络，连上路由器后就可以直接上网。</p>
-              <form id="setting_wizard_dynamic_form">
+              <!-- <form id="setting_wizard_dynamic_form">
                 <label class="label-item"><span>WIFI名称</span><input type="text" placeholder="请输入WIFI名称"></label>
                 <label class="label-item"><span>WIFI密码</span><input type="text" placeholder="请输入WIFI密码"></label>
-              </form>
-              <button class="button submit" id="setting_wizard_dynamic_form_submit">保存</button>
+              </form> -->
+              <button class="button submit full" id="setting_wizard_dynamic_form_submit">保存</button>
             </div>
           </div>
         </div>
@@ -281,8 +329,8 @@
           </form> -->
 
           <form class="setting-lan-from" id="setting_lan_form">
-            <div><span class="sim-label-title">MAC地址</span>A8-A8-A8-A8-A8-A8</div>
-            <p>
+            <p><span class="sim-label-title">MAC地址</span>A8-A8-A8-A8-A8-A8</p>
+            <!-- <p>
               <span class="sim-label-title">LAN口IP设置</span>
               <label class="radio-btn on">
                 <input class="check-type" type="radio" name="dhcpType" data-index="0" value="1" hidden checked />
@@ -294,7 +342,22 @@
                 <span></span>
                 手动
               </label>
-            </p>
+            </p> -->
+
+            <label class="label-item">
+              <span>LAN口IP设置</span>
+
+              <div class="select-wrapper internet-connect-select">
+                <div class="select-checked" data-value="0">
+                  <span>自动（推荐）</span>
+                  <i class="icon-arrow-bottom"></i>
+                </div>
+                <ul class="select-options">
+                  <li class="select-option active" data-value="0">自动（推荐）</li>
+                  <li class="select-option" data-value="1">手动</li>
+                </ul>
+              </div>
+            </label>
 
             <div class="lan-type-item dchp-auto">
               <p><span class="sim-label-title">IP地址</span>192.168.0.1</p>
@@ -338,7 +401,7 @@
               </label>
             </form>
 
-            <button class="button submit" id="setting_manage_form_submit">确认</button>
+            <button class="button submit full" id="setting_manage_form_submit">确认</button>
           </div>
 
           <div class="model-title">软件升级</div>
@@ -489,7 +552,7 @@
         </div>
 
         <!-- 应用下载 -->
-        <div class="module-item-wrapper download-module-wrapper" data-module="cloud-download">
+        <div class="module-item-wrapper download-module-wrapper" data-module="cloud-about">
           <!-- IOS/android/PC客户端下载链接或二维码 -->
           <div class="download-item">
             <p>Ios</p>
@@ -508,7 +571,7 @@
 
       </main>
     </div>
-  </div>
+  </section>
 
   <script src="./js/static/jquery.min.js"></script>
   <script src="./js/static/jquery.cookie.js"></script>

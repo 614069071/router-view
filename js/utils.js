@@ -87,16 +87,17 @@ function _formArrToObject(el) {
   @awit 延迟时间
   return el
 */
-function _toast(text, awit) {
+function _toast(text, type, awit) {
+  var type = type || 'success';
   var elToast = document.querySelector('.toast-wrapper');
 
   if (elToast) $(elToast).remove();
 
-  var $el = $('<div class="toast-wrapper">' + (text || 'toast') + '</div>');
+  var $el = $('<div class="toast-wrapper ' + type + '"><div class="toast-inner"><i class="toast-icon"></i>' + (text || 'toast') + '</div></div>');
 
   $('body').append($el);
 
-  return $el.fadeIn(200).delay(awit || 2000).fadeOut(function () {
+  return $el.fadeIn(200).delay(awit || 3000).fadeOut(function () {
     $el.remove();
   });
 }
