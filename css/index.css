@@ -1,41 +1,3 @@
-/* NavMenu start */
-.menu-bar-body {
-  width: 160px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.menu-item-title,
-.menu-submenu-title {
-  display: flex;
-  height: 50px;
-  align-items: center;
-  padding: 0 20px;
-  color: #fff;
-  justify-content: space-between;
-  background-color: rgb(84, 92, 100);
-}
-
-.menu-item-title:hover,
-.menu-submenu-title:hover {
-  background-color: rgb(67, 74, 80);
-}
-
-.menu-item-title.checked {
-  color: var(--default-color);
-  background-color: rgb(67, 74, 80);
-}
-
-.menu-submenu-title.open .icon-arrow-top {
-  transform: rotate(180deg);
-}
-
-.menu-submenu-body {
-  display: none;
-}
-
-/* NavMenu end */
-
 /* 主体布局 start */
 .wrapper {
   width: 100%;
@@ -188,7 +150,6 @@
 /* 主体布局 end */
 
 /* 主体模块 */
-
 .module-item-wrapper {
   display: none;
   height: 100%;
@@ -239,4 +200,14 @@
   margin-top: 10px;
   height: 10px;
   margin-left: 35px;
+}
+
+.lan-dhcp-set-wrapper .lan-dhcp-start,
+.lan-dhcp-set-wrapper .lan-dhcp-end {
+  width: 40px;
+  margin-left: 10px;
+}
+
+.lan-dhcp-line {
+  padding: 0 10px;
 }

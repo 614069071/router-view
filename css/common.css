@@ -65,6 +65,43 @@ th {
   padding: 0;
 }
 
+/* NavMenu start */
+.menu-bar-body {
+  width: 160px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menu-item-title,
+.menu-submenu-title {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  padding: 0 20px;
+  color: #fff;
+  justify-content: space-between;
+  background-color: rgb(84, 92, 100);
+}
+
+.menu-item-title:hover,
+.menu-submenu-title:hover {
+  background-color: rgb(67, 74, 80);
+}
+
+.menu-item-title.checked {
+  color: var(--default-color);
+  background-color: rgb(67, 74, 80);
+}
+
+.menu-submenu-title.open .icon-arrow-top {
+  transform: rotate(180deg);
+}
+
+.menu-submenu-body {
+  display: none;
+}
+/* NavMenu end */
+
 /* 表格默认 */
 table caption {
   height: 40px;
@@ -245,6 +282,7 @@ input:-ms-input-placeholder {
   position: absolute;
   left: 122px;
   top: 100%;
+  display: none;
 }
 
 /* 自定义按钮 */

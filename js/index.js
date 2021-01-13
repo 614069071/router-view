@@ -77,14 +77,6 @@ function loadContent() {
   // 创建 NavMenu
   new _MenuTree(menuBarArray, $('.nav-menu-wrapper'));
 
-  // DCHP设备列表创建分页器
-  // new _Pager($('.device-list-pager-wrapper'), {
-  //   total: 100,
-  //   callback: function (index) {
-  //     console.log('device', index);
-  //   }
-  // });
-
   // 退出
   $('#exit_btn').click(function () {
     $.cookie('LoginStatus', false);
@@ -100,7 +92,82 @@ function loadContent() {
     $internet_connect_select_items.eq($index).show().siblings().hide();
   });
 
+  // 提交
+  var $setting_wizard_dynamic_form_submit = $('#setting_wizard_dynamic_form_submit');
+  var $setting_wizard_broadband_form = $('#setting_wizard_broadband_form');
+  var $setting_wizard_broadband_form_submit = $('#setting_wizard_broadband_form_submit');
+  var $setting_wizard_broadband_form_tips = $setting_wizard_broadband_form.find('.label-item-tip');
+  var $setting_wizard_static_form = $('#setting_wizard_static_form');
+  var $setting_wizard_static_form_submit = $('#setting_wizard_static_form_submit');
+  var $setting_wizard_static_form_tips = $setting_wizard_static_form.find('.label-item-tip');
+
+  $setting_wizard_dynamic_form_submit.on('click', function () {
+    console.log('DHCP（推荐）')
+  });
+
+  // 宽带拨号提交
+  $setting_wizard_broadband_form_submit.on('click', function () {
+    var data = _formArrToObject($setting_wizard_broadband_form);
+    console.log('宽带拨号', data);
+    if (!data.name1) {
+      $setting_wizard_broadband_form_tips.eq(0).html('请输入宽带账号').slideDown();
+      return;
+    } else if (_space(data.name1)) {
+      $setting_wizard_broadband_form_tips.eq(0).html('输入不能包含空格').slideDown();
+      return;
+    } else {
+      $setting_wizard_broadband_form_tips.eq(0).html('').slideUp();
+    }
+
+    if (!data.name2) {
+      $setting_wizard_broadband_form_tips.eq(1).html('请输入宽带密码').slideDown();
+      return;
+    } else if (_space(data.name2)) {
+      $setting_wizard_broadband_form_tips.eq(1).html('输入不能包含空格').slideDown();
+      return;
+    } else {
+      $setting_wizard_broadband_form_tips.eq(1).html('').slideUp();
+    }
+
+    // ajax
+
+  });
+
+  // 静态ip提交
+  $setting_wizard_static_form_submit.on('click', function () {
+    var data = _formArrToObject($setting_wizard_static_form);
+    console.log('静态ip', data)
+    if (!data.name1) {
+      $setting_wizard_static_form_tips.eq(0).html('请输入宽带账号').slideDown();
+      return;
+    } else if (_space(data.name1)) {
+      $setting_wizard_static_form_tips.eq(0).html('输入不能包含空格').slideDown();
+      return;
+    } else {
+      $setting_wizard_static_form_tips.eq(0).html('').slideUp();
+    }
+
+    if (!data.name2) {
+      $setting_wizard_static_form_tips.eq(1).html('请输入宽带账号').slideDown();
+      return;
+    } else if (_space(data.name2)) {
+      $setting_wizard_static_form_tips.eq(1).html('输入不能包含空格').slideDown();
+      return;
+    } else {
+      $setting_wizard_static_form_tips.eq(1).html('').slideUp();
+    }
+    // ajax
+
+  });
+
   // lan设置
+  // DCHP设备列表创建分页器
+  // new _Pager($('.device-list-pager-wrapper'), {
+  //   total: 100,
+  //   callback: function (index) {
+  //     console.log('device', index);
+  //   }
+  // });
   var $lan_set_select_options = $('.lan-connect-select .select-option');
   var $lan_set_select_items = $('.lan-set-wrapper .lan-type-item');
 
@@ -112,9 +179,52 @@ function loadContent() {
   // 设备管理 => 修改管理密码
   var $setting_manage_form = $('#setting_manage_form');
   var $setting_manage_form_submit = $('#setting_manage_form_submit');
+  var $setting_manage_form_tips = $setting_manage_form.find('.label-item-tip');
 
   $setting_manage_form_submit.on('click', function () {
     var data = _formArrToObject($setting_manage_form);
+    if (!data.name1) {
+      $setting_manage_form_tips.eq(0).html('请输入旧密码').slideDown();
+      return;
+    } else if (_space(data.name1)) {
+      $setting_manage_form_tips.eq(0).html('输入不能包含空格').slideDown();
+      return;
+    } else if (!_validePassword(data.name1)) {
+      $setting_manage_form_tips.eq(0).html('请输入5-16位字母数字组合密码').slideDown();
+      return;
+    } else {
+      $setting_manage_form_tips.eq(0).html('').slideUp();
+    }
+
+    if (!data.name2) {
+      $setting_manage_form_tips.eq(1).html('请输入新密码').slideDown();
+      return;
+    } else if (_space(data.name2)) {
+      $setting_manage_form_tips.eq(1).html('输入不能包含空格').slideDown();
+      return;
+    } else if (!_validePassword(data.name2)) {
+      $setting_manage_form_tips.eq(1).html('请输入5-16位字母数字组合密码').slideDown();
+      return;
+    } else {
+      $setting_manage_form_tips.eq(1).html('').slideUp();
+    }
+
+    if (!data.name3) {
+      $setting_manage_form_tips.eq(2).html('请再次输入密码').slideDown();
+      return;
+    } else if (_space(data.name3)) {
+      $setting_manage_form_tips.eq(2).html('输入不能包含空格').slideDown();
+      return;
+    } else if (data.name3 !== data.name2) {
+      $setting_manage_form_tips.eq(2).html('两次输入的密码不一致').slideDown();
+      return;
+    } else {
+      $setting_manage_form_tips.eq(2).html('').slideUp();
+    }
+
+    console.log(data, 123)
+
+    return;
     var f = validateManagePassword(data.oldPassword, data.newPassword, data.confirmPassword);
   });
 

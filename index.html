@@ -27,7 +27,7 @@
         <div class="login-form-item login-password">
           <div class="login-password--prepend">密码</div>
           <div class="login-password-wrap">
-            <input class="login-password--inp" id="login_password" type="password" maxlength="32" placeholder="请输入管理员密码"
+            <input class="login-password--inp" id="login_password" type="password" maxlength="16" placeholder="请输入管理员密码"
               autocomplete="off">
             <!-- <span class="input-password-error-tip" id="ps_error_tip"></span> -->
           </div>
@@ -132,11 +132,11 @@
                 </div>
                 <ul class="select-options">
                   <!-- 自动获取IP地址 -->
-                  <li class="select-option active" data-value="2">DHCP（推荐）</li>
+                  <li class="select-option active" data-value="1">DHCP（推荐）</li>
                   <!-- 宽带拨号上网 -->
-                  <li class="select-option" data-value="0">PPPoE</li>
+                  <li class="select-option" data-value="2">PPPoE</li>
                   <!-- 固定IP地址 -->
-                  <li class="select-option" data-value="1">静态IP</li>
+                  <li class="select-option" data-value="3">静态IP</li>
                 </ul>
               </div>
             </label>
@@ -149,17 +149,17 @@
             </div>
 
             <!-- 宽带拨号 -->
-            <div class="model-type-item active">
+            <div class="model-type-item">
               <form id="setting_wizard_broadband_form">
                 <label class="label-item">
                   <span>宽带账号</span>
-                  <input type="text" name="acc" placeholder="请输入宽带账号">
-                  <div class="label-item-tip">请输入正确的密码格式</div>
+                  <input type="text" name="name1" placeholder="请输入宽带账号">
+                  <div class="label-item-tip"></div>
                 </label>
                 <label class="label-item">
                   <span>宽带密码</span>
-                  <input type="text" name="pwd" placeholder="请输入宽带密码">
-                  <div class="label-item-tip">请输入正确的密码格式</div>
+                  <input type="text" name="name2" placeholder="请输入宽带密码">
+                  <div class="label-item-tip"></div>
                 </label>
               </form>
               <button class="button submit full" id="setting_wizard_broadband_form_submit">更新</button>
@@ -170,19 +170,21 @@
               <form id="setting_wizard_static_form">
                 <label class="label-item">
                   <span>IP</span>
-                  <input type="text" name="ip_addr" placeholder="请输入您的IP地址" />
+                  <input type="text" name="name1" placeholder="请输入您的IP地址" />
+                  <div class="label-item-tip"></div>
                 </label>
                 <label class="label-item">
                   <span>子网掩码</span>
-                  <input type="text" name="subnet" placeholder="请输入您的子网掩码" />
+                  <input type="text" name="name2" placeholder="请输入您的子网掩码" />
+                  <div class="label-item-tip"></div>
                 </label>
                 <label class="label-item">
                   <span>网关</span>
-                  <input type="text" name="wg" placeholder="请输入您的默认网关" />
+                  <input type="text" name="name3" placeholder="请输入您的默认网关" />
                 </label>
                 <label class="label-item">
                   <span>DNS服务器</span>
-                  <input type="text" name="dns" placeholder="请输入您的DNS（选填）" />
+                  <input type="text" name="name4" placeholder="请输入您的DNS（选填）" />
                 </label>
               </form>
 
@@ -247,8 +249,9 @@
             </div>
             <div class="label-item">
               <span>IP分配范围</span>
-              192.168.199. <input type="text">
-              192.168.199. <input type="text">
+              192.168.199. <input class="lan-dhcp-start" name="name1" maxlength="3" type="text">
+              <i class="lan-dhcp-line">-</i>
+              192.168.199. <input class="lan-dhcp-end" name="name2" maxlength="3" type="text">
             </div>
           </div>
 
@@ -297,16 +300,18 @@
             <form id="setting_manage_form">
               <label class="label-item">
                 <span>旧密码</span>
-                <input type="password" name="oldPassword" placeholder="请输入旧密码">
-                <div class="label-item-tip">请输入正确的密码格式</div>
+                <input type="password" name="name1" maxlength="16" placeholder="请输入旧密码">
+                <div class="label-item-tip"></div>
               </label>
               <label class="label-item">
                 <span>新密码</span>
-                <input type="password" name="newPassword" placeholder="请输入新密码">
+                <input type="password" name="name2" maxlength="16" placeholder="请输入新密码">
+                <div class="label-item-tip"></div>
               </label>
               <label class="label-item">
                 <span>确认新密码</span>
-                <input type="password" name="confirmPassword" placeholder="请再次输入新密码">
+                <input type="password" name="name3" maxlength="16" placeholder="请再次输入新密码">
+                <div class="label-item-tip"></div>
               </label>
             </form>
 

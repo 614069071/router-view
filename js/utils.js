@@ -1,6 +1,18 @@
 //去除空白符
 function _trim(str) {
-  return str.replace(/(^\s*)|(\s*$)/g, "");
+  return str.replace(/\s/g, "");
+}
+
+// 空白
+function _space(str) {
+  return (/\s/g).test(str);
+}
+
+// 数字密码组合
+function _validePassword(str) {
+  var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,16}$/;
+
+  return reg.test(str);
 }
 
 // 校验ip
@@ -73,6 +85,7 @@ function _formArrToObject(el) {
   var arr = el.serializeArray();
   var form = {};
   $(arr).each(function (i, e) {
+    // form[e.name] = _trim(e.value);
     form[e.name] = e.value;
   });
 
