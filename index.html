@@ -295,7 +295,7 @@
         </div>
 
         <!-- 修改密码 -->
-        <div class="module-item-wrapper active" data-module="route-manage">
+        <div class="module-item-wrapper" data-module="route-manage">
           <div class="model-content">
             <form id="setting_manage_form">
               <label class="label-item">
@@ -320,25 +320,27 @@
         </div>
 
         <!-- 软件升级 -->
-        <div class="module-item-wrapper" data-module="route-update">
+        <div class="module-item-wrapper active" data-module="route-update">
           <div class="model-title">在线升级</div>
           <div class="label-item"><span>当前版本：</span>2.2.3</div>
+          <div class="label-item"><span></span>
+            <div class="button detection-update-btn" id="detection_update_btn">检查新版本</div>
+          </div>
 
           <div class="model-title">本地升级</div>
 
-          <div class="model-content">
-            <div>
-              <div class="sim-label-title">软件升级</div>
+          <div>
+            <div class="sim-label-title">软件升级</div>
 
-              <label class="button">选择固件
-                <input type="file" id="update_file" hidden />
-              </label>
+            <label class="button">选择固件
+              <input type="file" id="update_file" hidden />
+            </label>
 
-              <button class="button" id="upgrade_submit">确认上传</button><span class="upgrade-name"></span>
+            <button class="button" id="upgrade_submit">确认上传</button><span class="upgrade-name"></span>
 
-              <div class="progress-bar-wrapper"></div>
-            </div>
+            <div class="progress-bar-wrapper"></div>
           </div>
+
         </div>
 
         <!-- 关于我们 -->

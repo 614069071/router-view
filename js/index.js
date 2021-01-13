@@ -228,6 +228,17 @@ function loadContent() {
     var f = validateManagePassword(data.oldPassword, data.newPassword, data.confirmPassword);
   });
 
+  // 检测更新
+  var $detection_update_btn = $('#detection_update_btn');
+
+  $detection_update_btn.on('click', function () {
+    _dialog({
+      success: function (callback) {
+        // callback();
+      }
+    });
+  });
+
   // 设备管理 => 固件升级
   var $update_file = $('#update_file');
   var $upgrade_submit = $('#upgrade_submit');
@@ -245,7 +256,7 @@ function loadContent() {
   $upgrade_submit.on('click', function () {
     var $file = $update_file.prop('files')[0];
     if (!$file) {
-      _toast('请选择升级文件！');
+      _toast('请选择升级文件！', 'warning');
       return;
     }
     upgrade_Progress.start();
@@ -263,9 +274,9 @@ function loadContent() {
 
   $restartDeviceBtn.on('click', function () {
     _dialog({
-      success: function () {
-        restartRoute();
-        // _close();
+      success: function (callback) {
+        // restartRoute();
+        // callback();
       }
     });
   });
@@ -275,9 +286,9 @@ function loadContent() {
 
   $restoreDeviceBtn.on('click', function () {
     _dialog({
-      success: function () {
+      success: function (callback) {
         // restoreRoute();
-        // _close();
+        // callback();
       }
     });
   });
