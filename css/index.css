@@ -226,80 +226,12 @@
 .device-state-item-other .other-item span {
   text-align: left;
 }
-
-/* 系统日志 */
-/* .route-item-log-wrapper {
-  margin-top: 20px;
-} */
-
-.route-log-btns {
-  margin-bottom: 20px;
-}
-
-.route-log-inner {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.route-log-wrapper tr th:nth-child(1),
-.route-log-wrapper tr td:nth-child(1),
-.route-log-wrapper tr th:nth-child(2),
-.route-log-wrapper tr td:nth-child(2) {
-  text-align: center;
-  width: 100px;
-}
-
-.device-list-wrapper tr th,
-.device-list-wrapper tr td {
-  text-align: center;
-  /* width: 100px; */
-}
-
 /* LAN口设置 */
 
 .setting-lan-from p {
   height: 42px;
   display: flex;
   align-items: center;
-}
-
-/* 应用下载 */
-.download-module-wrapper .download-item {
-  text-align: center;
-  width: 100px;
-  display: inline-block;
-  margin-right: 40px;
-}
-
-/* 磁盘操作 */
-.cloud-info-form {
-  width: 100%;
-}
-
-.cloud-info-form td {
-  text-align: center;
-}
-
-.cloud-control-btns {
-  margin: 20px 0;
-}
-
-.cloud-control-btns.right {
-  text-align: right;
-}
-
-.cloud-control-btns .cloud-control-tips {
-  display: inline-block;
-  color: var(--hover-color);
-}
-
-.cloud-no-data {
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  color: var(--hover-color);
 }
 
 /* 路由器管理 => 软件升级 */

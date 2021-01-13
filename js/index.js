@@ -66,13 +66,11 @@ function loadContent() {
   _init();
   /* -------------- 主体模块 start-------------- */
   var menuBarArray = [
-    { title: '设备状态', module: 'route-status', checked: true },
+    { title: '首页', module: 'route-status', checked: true },
     { title: 'WAN口设置', module: 'route-internet' },
     { title: 'LAN口设置', module: 'route-lan' },
-    { title: '路由器管理', module: 'route-manage' },
-    // { title: 'DHCP服务器', module: 'device-manage' },
-    // { title: '系统日志', module: 'route-log' },
-    // { title: '磁盘操作', module: 'cloud-control' },
+    { title: '修改密码', module: 'route-manage' },
+    { title: '软件升级', module: 'route-update' },
     { title: '关于我们', module: 'cloud-about' },
   ];
 
@@ -87,37 +85,28 @@ function loadContent() {
   //   }
   // });
 
-  // 系统日志 分页器
-  // new _Pager($('.roter-log-pager-wrapper'), {
-  //   total: 100,
-  //   callback: function (index) {
-  //     console.log('log', index);
-  //   }
-  // });
-
   // 退出
   $('#exit_btn').click(function () {
     $.cookie('LoginStatus', false);
     loadLogin();
   });
   /* 主体功能模块 */
-  // 路由设置 => 上网设置
-  var $connectRadioBtns = $('.connect-type-wrapper .check-type');
-  var $connectModels = $('.connect-type-main-wrapper .model-type-item');
+  // WAN口设置
+  var $internet_connect_select_options = $('.internet-connect-select .select-option');
+  var $internet_connect_select_items = $('.connect-type-main-wrapper .model-type-item');
 
-  // tab切换
-  $connectRadioBtns.on('change', function () {
-    var $index = $(this).data('index');
-    $connectModels.hide().eq($index).show();
+  $internet_connect_select_options.on('click', function () {
+    var $index = $(this).index();
+    $internet_connect_select_items.eq($index).show().siblings().hide();
   });
 
   // lan设置
-  var $lanRadios = $('#setting_lan_form .check-type');
-  var $lanTypeItems = $('#setting_lan_form .lan-type-item');
+  var $lan_set_select_options = $('.lan-connect-select .select-option');
+  var $lan_set_select_items = $('.lan-set-wrapper .lan-type-item');
 
-  $lanRadios.on('change', function () {
-    var $index = $(this).data('index');
-    $lanTypeItems.hide().eq($index).show();
+  $lan_set_select_options.on('click', function () {
+    var $index = $(this).index();
+    $lan_set_select_items.eq($index).show().siblings().hide();
   });
 
   // 设备管理 => 修改管理密码
