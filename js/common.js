@@ -12,9 +12,9 @@ function disEvent() {
   document.onselect = function () { document.selection && document.selection.empty(); };
   document.onmouseup = function () { document.selection && document.selection.empty(); }
 }
+// disEvent();
 
 function _init() {
-  // disEvent();
 
   // switch组件交互
   var $allSwitchBtns = $("input[role='switch']");
