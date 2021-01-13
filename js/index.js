@@ -276,9 +276,9 @@ function loadContent() {
   })
 
   // 设备管理 => 重启
-  var $restartDeviceBtn = $('#restart_device_btn');
+  var $restart_device_btn = $('#restart_device_btn');
 
-  $restartDeviceBtn.on('click', function () {
+  $restart_device_btn.on('click', function () {
     _dialog({
       success: function (callback) {
         // restartRoute();
@@ -288,9 +288,9 @@ function loadContent() {
   });
 
   // 设备管理 => 恢复出厂设置
-  var $restoreDeviceBtn = $('#restore_device_btn');
+  var $restore_device_btn = $('#restore_device_btn');
 
-  $restoreDeviceBtn.on('click', function () {
+  $restore_device_btn.on('click', function () {
     _dialog({
       success: function (callback) {
         // restoreRoute();
