@@ -233,7 +233,7 @@ function loadContent() {
   // 设备管理 => 固件升级
   var $upgrade_popup_warpper = $('.upgrade-popup-warpper');
   var $progress_wrapper = $('.upgrade-progress-wrapper');
-  var upgrade_Progress = new _Progress($progress_wrapper, 12);
+  var upgrade_Progress = new _Progress($progress_wrapper, 100);
   // 线上更新
   var $detection_update_btn = $('#detection_update_btn');
 
@@ -265,7 +265,9 @@ function loadContent() {
       _toast('请选择升级文件！', 'warning');
       return;
     }
+    $upgrade_popup_warpper.show();
     upgrade_Progress.start();
+    return;
     uploadFile($file)
       .then(function (res) {
         console.log(res)

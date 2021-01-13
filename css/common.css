@@ -254,6 +254,12 @@ input:-ms-input-placeholder {
   margin-right: 12px;
 }
 
+.label-item.required > span::before {
+  content: "*";
+  color: #f56c6c;
+  padding-right: 4px;
+}
+
 .sim-label-title {
   display: inline-block;
   text-align: right;

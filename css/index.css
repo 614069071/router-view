@@ -228,8 +228,8 @@
   padding: 20px;
   background-color: #fff;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 25%;
+  transform: translate(-50%);
 }
 
 .upgrade-popup-progress-wrapper {
