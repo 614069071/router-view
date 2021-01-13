@@ -13,13 +13,13 @@ function loadLogin() {
   $login_wrapper.height('100%').html(_LogintHtml).show();
   _init();
 
-  var $loginSubmitBtn = $('#login_submit');
-  var $loginSubmitInput = $('#login_password');
-  var $psErrorTip = $('#ps_error_tip');
+  var $login_submit_btn = $('#login_submit');
+  var $login_submit_input = $('#login_password');
+  var $ps_error_tip = $('#ps_error_tip');
   // 判断状态加载数据
 
   function loginHandel() {
-    var value = $loginSubmitInput.val();
+    var value = $login_submit_input.val();
 
     if (value) {
       $.cookie('LoginStatus', true);
@@ -34,17 +34,17 @@ function loadLogin() {
       //     console.log(err)
       //   })
     } else {
-      // $psErrorTip.show().html('请输入密码');
+      // $ps_error_tip.show().html('请输入密码');
       _toast('请输入密码');
     }
   }
 
   // 登录模块
-  $loginSubmitBtn.on('click', function () {
+  $login_submit_btn.on('click', function () {
     loginHandel();
   });
 
-  $loginSubmitInput.on('keyup', function (event) {
+  $login_submit_input.on('keyup', function (event) {
     var e = event || window.event || {};
     if (e.keyCode == 13) {
       loginHandel();
@@ -52,10 +52,10 @@ function loadLogin() {
   });
 
   // 忘记密码弹窗显隐 - 按钮控制
-  var $forgotBtn = $('#forgot_password_btn');
-  var $forgotTip = $('#forgot_tips');
-  $forgotBtn.on('click', function () {
-    $forgotTip.toggle();
+  var $forgot_btn = $('#forgot_password_btn');
+  var $forgot_tip = $('#forgot_tips');
+  $forgot_btn.on('click', function () {
+    $forgot_tip.toggle();
   });
 }
 
@@ -227,8 +227,6 @@ function loadContent() {
     return;
     var f = validateManagePassword(data.oldPassword, data.newPassword, data.confirmPassword);
   });
-
-
 
   // 设备管理 => 固件升级
   var $upgrade_popup_warpper = $('.upgrade-popup-warpper');
