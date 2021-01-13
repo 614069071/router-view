@@ -235,3 +235,8 @@
 .upgrade-popup-progress-wrapper {
   height: 10px;
 }
+
+/* 关于我们 */
+.about-module-wrapper .img {
+  width: 100px;
+}
