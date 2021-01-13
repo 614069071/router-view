@@ -169,15 +169,25 @@
   margin-right: 20px;
 }
 
+.device-state-item-title {
+  margin-bottom: 10px;
+}
+
 .device-state-item .device-state-item-img {
   height: 140px;
-  border: 1px solid red;
+  position: relative;
   text-align: center;
+}
+
+.device-state-item-img .device-state-item-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .device-state-item-other .other-item {

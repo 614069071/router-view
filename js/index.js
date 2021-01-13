@@ -303,8 +303,6 @@ function loadContent() {
 $(function () {
   var state = $.cookie('LoginStatus');
 
-  console.log(state);
-
   if (state == 'true') {
     loadContent();
   } else {
