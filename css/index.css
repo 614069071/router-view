@@ -211,3 +211,27 @@
 .lan-dhcp-line {
   padding: 0 10px;
 }
+
+.upgrade-popup-warpper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.upgrade-popup-inner {
+  position: absolute;
+  width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.upgrade-popup-progress-wrapper {
+  height: 10px;
+}

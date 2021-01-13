@@ -228,21 +228,29 @@ function loadContent() {
     var f = validateManagePassword(data.oldPassword, data.newPassword, data.confirmPassword);
   });
 
-  // 检测更新
+
+
+  // 设备管理 => 固件升级
+  var $upgrade_popup_warpper = $('.upgrade-popup-warpper');
+  var $progress_wrapper = $('.upgrade-progress-wrapper');
+  var upgrade_Progress = new _Progress($progress_wrapper, 12);
+  // 线上更新
   var $detection_update_btn = $('#detection_update_btn');
 
   $detection_update_btn.on('click', function () {
     _dialog({
+      content: '检测到最新软件版本：2.2.4是否升级',
       success: function (callback) {
-        // callback();
+        $upgrade_popup_warpper.show();
+        upgrade_Progress.start();
+        callback();
       }
     });
   });
 
-  // 设备管理 => 固件升级
+  // 本地更新
   var $update_file = $('#update_file');
   var $upgrade_submit = $('#upgrade_submit');
-  var $progressBarwrapper = $('.progress-bar-wrapper');
   var $upgrade_name = $('.upgrade-name');
 
   $update_file.on('change', function (e) {
@@ -250,8 +258,6 @@ function loadContent() {
     var name = file.name;
     name && $upgrade_name.text(name);
   })
-
-  var upgrade_Progress = new _Progress($progressBarwrapper, 120);
 
   $upgrade_submit.on('click', function () {
     var $file = $update_file.prop('files')[0];

@@ -240,7 +240,7 @@ function _Progress(el, count) {
 }
 
 _Progress.prototype.create = function () {
-  var $wrapper = $('<div class="progress-wrapper" style="display:none;"><div class="progress-inner"></div><span class="progress-percentage">0%</span></div>');
+  var $wrapper = $('<div class="progress-wrapper"><span class="progress-percentage">0%</span><div class="progress-inner"></div></div>');
   this.el.empty().append($wrapper);
 }
 
@@ -275,15 +275,16 @@ _Progress.prototype.finish = function () {
   var $wrapper = self.el.find('.progress-wrapper');
   var $inner = self.el.find('.progress-inner');
   var $width = $wrapper.width();
+  var $percentage = self.el.find('.progress-percentage');
   $inner.animate({ width: $width + 'px' }, 1000, 'linear', function () {
-    self.close();
+    $percentage.html('100%');
   });
 }
 
 _Progress.prototype.close = function () {
   clearInterval(self.timer);
   this.el.find('.progress-wrapper').fadeOut(1000, function () {
-    $(this).remove();
+    // $(this).remove();
   })
 }
 
