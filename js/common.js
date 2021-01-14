@@ -294,7 +294,7 @@ _Progress.prototype.close = function () {
   @awit 延迟时间
   return el
 */
-function _toast(text, type, awit) {
+function _toast(text, type, callback) {
   var type = type || 'success';
   var elToast = document.querySelector('.toast-wrapper');
 
@@ -304,8 +304,9 @@ function _toast(text, type, awit) {
 
   $('body').append($el);
 
-  return $el.fadeIn(200).delay(awit || 3000).fadeOut(function () {
+  $el.fadeIn(200).delay(3000).fadeOut(function () {
     $el.remove();
+    callback && callback();
   });
 }
 

@@ -14,47 +14,8 @@ function _getSystemLog() {
   return _request(parmas, 'post', url);
 }
 
-// 校验管理密码
-function validateManagePassword(oldPaswword, newPassword, confirmPassword) {
-  var oldPaswword = _trim(oldPaswword);
-  var newPassword = _trim(newPassword);
-  var confirmPassword = _trim(confirmPassword);
-
-  if (!oldPaswword) {
-    _toast('请输入旧密码');
-    return false;
-  }
-
-  if (!newPassword) {
-    _toast('请输入新密码');
-    return false;
-  }
-
-  var reg = /[\':;*?~`!@#$%^&+={}\[\]\<\\(\),\.\。\，]/;
-  if (newPassword.indexOf("%u") != -1 || reg.test(newPassword)) {
-    _toast('密码不能包含中文字符或者特殊字符！');
-    return false;
-  }
-
-  if (newPassword.length < 5 || newPassword.length > 15) {
-    _toast('请输入5-15位新密码');
-    return false;
-  }
-
-  if (!confirmPassword) {
-    _toast('请再次输入确认密码');
-    return false;
-  }
-
-  if (newPassword != confirmPassword) {
-    _toast('两次密码不一致');
-    return false;
-  }
-  return true;
-}
-
 // 修改管理密码
-function setAccount(password) {
+function _setAccount(password) {
   var modfiy_parmas = { operation: 'login_modfiy', user: 'admin', password: password };
 
   return _request(modfiy_parmas)

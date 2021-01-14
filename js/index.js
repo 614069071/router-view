@@ -277,10 +277,32 @@ function loadContent() {
       $setting_manage_form_tips.eq(2).html('').slideUp();
     }
 
-    console.log(data, 123)
+    _loading();
+    _login()
+      .then(function () {
+        if (res.error == 0) {
+          // 密码校验正确
+          return _setAccount(data.name3);
+        } else if (res.error == 10001) {
+          _toast('密码错误');
+        } else {
+          _toast('系统异常', 'error');
+        }
+      })
+      .then(function (res) {
+        if (res.error === 0) {
+          _toast('修改成功，3秒后将自动回到首页重新登录', 'success', function () {
+            $.cookie('__accessToken__', 0);
+            loadLogin();
+          });
+        } else {
+          _toast('修改失败');
+        }
+      })
+      .catch(function () {
+        _toast('系统异常', 'error');
+      })
 
-    return;
-    var f = validateManagePassword(data.oldPassword, data.newPassword, data.confirmPassword);
   });
 
   // 设备管理 => 固件升级

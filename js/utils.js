@@ -35,9 +35,11 @@ function _request(data, method, url) {
       // dataType: "json",
       dataType: "json",
       success: function (res) {
+        console.log(res);
         resolve(res);
       },
       error: function (err) {
+        console.log(err);
         reject(err);
       },
       complete: function (xhr) {
