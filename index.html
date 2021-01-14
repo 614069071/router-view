@@ -74,8 +74,8 @@
                 <svg viewBox="0 0 100 100">
                   <path d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94" stroke="#e5e9f2" stroke-width="4.8"
                     fill="none" style="stroke-dasharray: 295.31px, 295.31px;"></path>
-                  <path d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94" stroke="#20a0ff" stroke-width="4.8"
-                    fill="none" style="stroke-dasharray: 73.8274px, 295.31px;">
+                  <path class="network-state-svg" d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94"
+                    stroke="#20a0ff" stroke-width="4.8" fill="none" style="stroke-dasharray: 0px, 295.31px;">
                   </path>
                 </svg>
                 <div class="device-state-item-text">
@@ -247,7 +247,7 @@
 
             <div class="lan-set-wrapper">
               <div class="lan-type-item dchp-auto">
-                <p><span class="sim-label-title">IP地址</span>192.168.0.1</p>
+                <p><span class="sim-label-title">IP地址</span>192.168.1.1</p>
                 <p><span class="sim-label-title">子网掩码</span>255.255.255.0</p>
               </div>
 
@@ -264,7 +264,11 @@
             </div>
           </form>
 
-          <button class="setting-lan-submit button submit full" id="setting_lan_submit">保存</button>
+          <div class="label-item">
+            <span></span>
+            <button class="setting-lan-submit button" id="setting_lan_submit">保存</button>
+          </div>
+
 
           <!-- 局域网DHCP设置 -->
           <div class="model-title">局域网DHCP设置</div>
@@ -279,9 +283,22 @@
             </div>
             <div class="label-item">
               <span>IP分配范围</span>
-              192.168.199. <input class="lan-dhcp-start" name="name1" maxlength="3" type="text">
-              <i class="lan-dhcp-line">-</i>
-              192.168.199. <input class="lan-dhcp-end" name="name2" maxlength="3" type="text">
+              <div class="lan-dhcp-item-option ">
+                <input type="text" class="lan-dhcp-start" name="name1" maxlength="3" value="192.168.199.1">
+                <i class="lan-dhcp-line">-</i>
+                <input type="text" class="lan-dhcp-end" name="name2" maxlength="3" value="192.168.199.200">
+              </div>
+
+              <div class="lan-dhcp-item-option active">
+                <div class="lan-dhcp-start">192.168.199.1</div>
+                <i class="lan-dhcp-line">-</i>
+                <div class="lan-dhcp-end">192.168.199.200</div>
+              </div>
+            </div>
+
+            <div class="label-item">
+              <span></span>
+              <button class="setting-lan-submit button" id="setting_lan_dhcp_submit">保存</button>
             </div>
           </div>
 
@@ -318,9 +335,7 @@
             </table>
 
             <!-- 分页 -->
-            <div class="device-list-pager-wrapper">
-
-            </div>
+            <div class="device-list-pager-wrapper"></div>
           </div>
         </div>
 

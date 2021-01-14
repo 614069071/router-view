@@ -22,7 +22,7 @@ function loadLogin() {
     var value = $login_submit_input.val();
 
     if (value) {
-      $.cookie('LoginStatus', true);
+      $.cookie('__accessToken__', 1);
 
 
       // _login(value)
@@ -79,10 +79,23 @@ function loadContent() {
 
   // 退出
   $('#exit_btn').click(function () {
-    $.cookie('LoginStatus', false);
+    $.cookie('__accessToken__', 1);
     loadLogin();
   });
   /* 主体功能模块 */
+  // 首页（设备状态）
+  function setSvgStyle(num) {
+    return 'stroke-dasharray: ' + (num || 0) + 'px, 295.31px; transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;';
+  }
+
+  var $network_state_svg = $('.network-state-svg');
+
+  setTimeout(function () {
+    $network_state_svg.prop('style', setSvgStyle(20));
+  }, 3000)
+
+
+
   // WAN口设置
   var $internet_connect_select_options = $('.internet-connect-select .select-option');
   var $internet_connect_select_items = $('.connect-type-main-wrapper .model-type-item');
@@ -162,12 +175,13 @@ function loadContent() {
 
   // lan设置
   // DCHP设备列表创建分页器
-  // new _Pager($('.device-list-pager-wrapper'), {
-  //   total: 100,
-  //   callback: function (index) {
-  //     console.log('device', index);
-  //   }
-  // });
+  new _Pager($('.device-list-pager-wrapper'), {
+    total: 100,
+    callback: function (index) {
+      console.log('device', index);
+    }
+  });
+
   var $lan_set_select_options = $('.lan-connect-select .select-option');
   var $lan_set_select_items = $('.lan-set-wrapper .lan-type-item');
 
@@ -301,9 +315,10 @@ function loadContent() {
 }
 
 $(function () {
-  var state = $.cookie('LoginStatus');
+  var state = $.cookie('__accessToken__');
+  console.log(state)
 
-  if (state == 'true') {
+  if (state == '1') {
     loadContent();
   } else {
     loadLogin();

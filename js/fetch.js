@@ -131,3 +131,21 @@ function getOlineList() {
 
   return _request(parmas);
 }
+
+// 设置静态IP
+function setConnectStatic(ip, mask, gw, dns, dns1, mac, mtu) {
+  var parmas = {
+    operation: 'wan_setup',
+    function: 'set',
+    ip: ip,
+    mask: mask,
+    gw: gw,
+    mode: 3,
+    mtu: mtu,
+    dns: dns,
+    dns1: dns1,
+    mac: mac,
+  };
+
+  return _request(parmas);
+}

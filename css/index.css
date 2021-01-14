@@ -214,8 +214,16 @@
 
 .lan-dhcp-set-wrapper .lan-dhcp-start,
 .lan-dhcp-set-wrapper .lan-dhcp-end {
-  width: 40px;
-  margin-left: 10px;
+  display: inline-block;
+  width: 220px;
+}
+
+.lan-dhcp-set-wrapper .lan-dhcp-item-option {
+  display: none;
+}
+
+.lan-dhcp-set-wrapper .lan-dhcp-item-option.active {
+  display: block;
 }
 
 .lan-dhcp-line {
