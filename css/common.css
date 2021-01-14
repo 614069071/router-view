@@ -273,7 +273,7 @@ input:-ms-input-placeholder {
 input[type="text"],
 input[type="password"] {
   height: 40px;
-  width: 220px;
+  width: 190px;
   border: 1px solid var(--de-btn-color);
   padding: 0 15px;
   border-radius: 4px;
@@ -348,11 +348,11 @@ input[type="password"]:focus {
 }
 
 .button.full {
-  width: 252px;
+  width: 220px;
 }
 
 .select-wrapper {
-  width: 250px;
+  width: 220px;
   height: 40px;
   border: 1px solid var(--de-btn-color);
   border-radius: 4px;
@@ -360,7 +360,7 @@ input[type="password"]:focus {
 }
 
 .select-wrapper .select-checked {
-  width: 220px;
+  /* width: 220px; */
   height: 40px;
   line-height: 40px;
   padding: 0 15px;

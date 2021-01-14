@@ -205,6 +205,10 @@
   align-items: center;
 }
 
+.lan-dhcp-item-option .dhcp-item {
+  width: 150px;
+}
+
 /* 路由器管理 => 软件升级 */
 .progress-bar-wrapper {
   margin-top: 10px;

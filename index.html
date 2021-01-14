@@ -7,9 +7,9 @@
   <meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width">
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="Pragma" content="no-cache">
-  <link rel="stylesheet" href="./css/normalize.css">
-  <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/index.css">
   <title>百盒</title>
 </head>
 
@@ -285,7 +285,7 @@
             <div class="label-item">
               <span>开关</span>
               <label class="switch-btn">
-                <input class="lan-dhcp-switch" type="checkbox" name="dhcp" hidden role="switch">
+                <input class="lan-dhcp-switch" type="checkbox" name="dhcp" hidden role="switch" />
                 <span></span>
               </label>
             </div>
@@ -293,15 +293,15 @@
               <span>IP分配范围</span>
 
               <div class="lan-dhcp-item-option active">
-                <div class="input-disabled">192.168.199.1</div>
+                <div class="input-disabled dhcp-item">192.168.199.1</div>
                 <i class="lan-dhcp-line">-</i>
-                <div class="input-disabled">192.168.199.200</div>
+                <div class="input-disabled dhcp-item">192.168.199.200</div>
               </div>
 
               <div class="lan-dhcp-item-option">
-                <input type="text" class="lan-dhcp-start" name="name1" maxlength="3" value="192.168.199.1">
+                <input type="text" class="lan-dhcp-start dhcp-item" name="name1" maxlength="15" value="192.168.199.1">
                 <i class="lan-dhcp-line">-</i>
-                <input type="text" class="lan-dhcp-end" name="name2" maxlength="3" value="192.168.199.200">
+                <input type="text" class="lan-dhcp-end dhcp-item" name="name2" maxlength="15" value="192.168.199.200">
               </div>
             </div>
 
@@ -410,13 +410,13 @@
     </div>
   </section>
 
-  <script src="./js/static/jquery.min.js"></script>
-  <script src="./js/static/jquery.cookie.js"></script>
-  <script src="./js/static/jquery.md5.js"></script>
-  <script src="./js/utils.js"></script>
-  <script src="./js/fetch.js"></script>
-  <script src="./js/common.js"></script>
-  <script src="./js/index.js"></script>
+  <script src="/js/static/jquery.min.js"></script>
+  <script src="/js/static/jquery.cookie.js"></script>
+  <script src="/js/static/jquery.md5.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/fetch.js"></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/index.js"></script>
 </body>
 
 </html>

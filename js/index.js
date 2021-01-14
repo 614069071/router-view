@@ -212,12 +212,18 @@ function loadContent() {
   // DHCP分配范围设置
   var $lan_dhcp_switch_btn = $('.lan-dhcp-switch');
   var $lan_dhcp_item_options = $('.lan-dhcp-item-option');
+  var $setting_lan_dhcp_submit = $('#setting_lan_dhcp_submit');
 
   $lan_dhcp_switch_btn.on('change', function () {
     var isChecked = $(this).prop('checked') ? 1 : 0;
     var index = isChecked ? 1 : 0;
     $lan_dhcp_item_options.hide().eq(index).show();
     console.log('DHCP服务器', isChecked)
+  });
+
+  $setting_lan_dhcp_submit.on('click', function () {
+    var isChecked = $lan_dhcp_switch_btn.prop('checked');
+    console.log(isChecked)
   });
 
   // 设备管理 => 修改管理密码
