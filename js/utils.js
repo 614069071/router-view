@@ -38,14 +38,12 @@ function _request(data, method, url) {
         resolve(res);
       },
       error: function (err) {
-        // err.error(function (err) {
-
         reject(err);
-        // })
       },
-      // complete: function (xhr) {
-      //   xhr.abort();
-      // }
+      complete: function (xhr) {
+        xhr.abort();
+        _close();
+      }
     });
   })
 }

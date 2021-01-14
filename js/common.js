@@ -15,7 +15,7 @@ function disEvent() {
 
 disEvent();
 
-function _init() {
+window._init = function () {
 
   // switch组件交互
   var $allSwitchBtns = $("input[role='switch']");

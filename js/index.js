@@ -22,17 +22,22 @@ function loadLogin() {
     var value = $login_submit_input.val();
 
     if (value) {
-      $.cookie('__accessToken__', 1);
-
-
-      // _login(value)
-      //   .then(function (res) {
-      //     console.log(res);
-      loadContent();
-      //   })
-      //   .catch(function (err) {
-      //     console.log(err)
-      //   })
+      _loading();
+      _login(value)
+        .then(function (res) {
+          console.log('login suc', res);
+          if (res.error == 0) {
+            loadContent();
+            $.cookie('__accessToken__', 1);
+          } else if (res.error == 10001) {
+            _toast('密码错误');
+          } else {
+            _toast('登录失败');
+          }
+        })
+        .catch(function (err) {
+          console.log('login err', err)
+        })
     } else {
       // $ps_error_tip.show().html('请输入密码');
       _toast('请输入密码');
@@ -79,7 +84,7 @@ function loadContent() {
 
   // 退出
   $('#exit_btn').click(function () {
-    $.cookie('__accessToken__', 1);
+    $.cookie('__accessToken__', 0);
     loadLogin();
   });
   /* 主体功能模块 */
