@@ -12,7 +12,8 @@ function disEvent() {
   document.onselect = function () { document.selection && document.selection.empty(); };
   document.onmouseup = function () { document.selection && document.selection.empty(); }
 }
-// disEvent();
+
+disEvent();
 
 function _init() {
 

@@ -190,6 +190,36 @@ function loadContent() {
     $lan_set_select_items.eq($index).show().siblings().hide();
   });
 
+  // 自动设置（默认设置）
+  var $setting_lan_auto_submit = $('#setting_lan_auto_submit');
+
+  $setting_lan_auto_submit.on('click', function () {
+    var parmas = { name1: '192.168.1.1', name2: '255.255.255.0' };
+
+    console.log('自动', parmas)
+  });
+  // 手动设置
+  var $setting_lan_custom_submit = $('#setting_lan_custom_submit');
+  var $setting_lan_custom_frorm = $('#setting_lan_custom_frorm');
+
+  $setting_lan_custom_submit.on('click', function () {
+    var parmas = _formArrToObject($setting_lan_custom_frorm);
+
+    console.log('手动', parmas)
+
+  });
+
+  // DHCP分配范围设置
+  var $lan_dhcp_switch_btn = $('.lan-dhcp-switch');
+  var $lan_dhcp_item_options = $('.lan-dhcp-item-option');
+
+  $lan_dhcp_switch_btn.on('change', function () {
+    var isChecked = $(this).prop('checked') ? 1 : 0;
+    var index = isChecked ? 1 : 0;
+    $lan_dhcp_item_options.hide().eq(index).show();
+    console.log('DHCP服务器', isChecked)
+  });
+
   // 设备管理 => 修改管理密码
   var $setting_manage_form = $('#setting_manage_form');
   var $setting_manage_form_submit = $('#setting_manage_form_submit');

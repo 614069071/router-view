@@ -212,12 +212,6 @@
   margin-left: 35px;
 }
 
-.lan-dhcp-set-wrapper .lan-dhcp-start,
-.lan-dhcp-set-wrapper .lan-dhcp-end {
-  display: inline-block;
-  width: 220px;
-}
-
 .lan-dhcp-set-wrapper .lan-dhcp-item-option {
   display: none;
 }
