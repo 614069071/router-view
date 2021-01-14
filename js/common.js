@@ -207,9 +207,9 @@ _MenuTree.prototype.createMenuItem = function (arr, pl) {
     var e = arr[i];
     if (e.list && e.list.length) {
       var nextNode = this.createMenuItem(e.list, padding + 10);
-      result += '<li class="menu-submenu"><span class="menu-submenu-title" style="padding-left:' + padding + 'px;">' + e.title + '<i class="icon-arrow-top"></i></span><ul class="menu-submenu-body">' + nextNode + '</ul></li>';
+      result += '<li class="menu-submenu"><span class="menu-submenu-title" style="padding-left:' + padding + 'px;">' + (e.icon ? '<i class="iconfont icon-' + e.icon + '"></i>' : '') + e.title + '<i class="icon-arrow-top"></i></span><ul class="menu-submenu-body">' + nextNode + '</ul></li>';
     } else {
-      result += '<li class="menu-item"><span class="menu-item-title ' + (e.checked ? "checked" : "") + '" data-module="' + e.module + '" style="padding-left:' + padding + 'px;">' + e.title + '</span></li>';
+      result += '<li class="menu-item"><span class="menu-item-title ' + (e.checked ? "checked" : "") + '" data-module="' + e.module + '" style="padding-left:' + padding + 'px;">' + (e.icon ? '<i class="iconfont icon-' + e.icon + '"></i>' : '') + e.title + '</span></li>';
     }
   }
 

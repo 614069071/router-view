@@ -71,12 +71,12 @@ function loadContent() {
   _init();
   /* -------------- 主体模块 start-------------- */
   var menuBarArray = [
-    { title: '首页', module: 'route-status', checked: true },
-    { title: 'WAN口设置', module: 'route-internet' },
-    { title: 'LAN口设置', module: 'route-lan' },
-    { title: '修改密码', module: 'route-manage' },
-    { title: '软件升级', module: 'route-update' },
-    { title: '关于我们', module: 'cloud-about' },
+    { title: '首页', module: 'route-status', icon: 'cloud', checked: true },
+    { title: 'WAN口设置', module: 'route-internet', icon: 'WANkou' },
+    { title: 'LAN口设置', module: 'route-lan', icon: 'LANkou' },
+    { title: '修改密码', module: 'route-manage', icon: 'edit' },
+    { title: '软件升级', module: 'route-update', icon: 'rocket' },
+    { title: '关于我们', module: 'cloud-about', icon: 'question' },
   ];
 
   // 创建 NavMenu
