@@ -244,10 +244,12 @@ function loadContent() {
     } else if (_space(data.name1)) {
       $setting_manage_form_tips.eq(0).html('输入不能包含空格').slideDown();
       return;
-    } else if (!_validePassword(data.name1)) {
-      $setting_manage_form_tips.eq(0).html('请输入5-16位字母数字组合密码').slideDown();
-      return;
-    } else {
+    }
+    //  else if (!_validePassword(data.name1)) {
+    //   $setting_manage_form_tips.eq(0).html('请输入5-16位字母数字组合密码').slideDown();
+    //   return;
+    // } 
+    else {
       $setting_manage_form_tips.eq(0).html('').slideUp();
     }
 
@@ -278,29 +280,33 @@ function loadContent() {
     }
 
     _loading();
-    _login()
-      .then(function () {
-        if (res.error == 0) {
-          // 密码校验正确
-          return _setAccount(data.name3);
-        } else if (res.error == 10001) {
-          _toast('密码错误');
-        } else {
-          _toast('系统异常', 'error');
-        }
-      })
+    _login(data.name1)
       .then(function (res) {
-        if (res.error === 0) {
-          _toast('修改成功，3秒后将自动回到首页重新登录', 'success', function () {
-            $.cookie('__accessToken__', 0);
-            loadLogin();
-          });
+        $setting_manage_form_tips.eq(0).html('').slideUp();
+
+        if (res.error == 0) {
+          // 修改密码
+          _setAccount(data.name3)
+            .then(function (res) {
+              console.log('修改密码', res);
+
+              if (res.error === 0) {
+                _toast('修改成功，3秒后将自动回到登录页', 'success', function () {
+                  $.cookie('__accessToken__', 0);
+                  loadLogin();
+                });
+              } else {
+                _toast('修改失败');
+              }
+            });
+        } else if (res.error == 10001) {
+          $setting_manage_form_tips.eq(0).html('旧密码验证错误').slideDown();
         } else {
-          _toast('修改失败');
+          // _toast('系统异常', 'error');
         }
       })
       .catch(function () {
-        _toast('系统异常', 'error');
+
       })
 
   });
