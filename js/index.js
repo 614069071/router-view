@@ -105,7 +105,7 @@ function loadContent() {
       success: function (callback) {
         callback();
 
-        _loading('设备重启中，请等待...');
+        _loading('设备重置中，请等待...');
 
         _restartRoute()
           .then(function (res) {
