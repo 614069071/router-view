@@ -20,10 +20,10 @@ function loadLogin() {
 
   function loginHandel() {
     var value = $login_submit_input.val();
-    loadContent();
-    $.cookie('__accessToken__', 1);
+    // loadContent();
+    // $.cookie('__accessToken__', 1);
 
-    return;
+    // return;
     if (value) {
       _loading();
       _login(value)
@@ -100,7 +100,7 @@ function loadContent() {
   $('#reset_btn').click(function () {
     console.log('重置（恢复出厂设置）');
     _dialog({
-      content: '是否重启？',
+      content: '是否重置？',
       icon: 'warning',
       success: function (callback) {
         callback();
@@ -123,21 +123,28 @@ function loadContent() {
   $('#restart_btn').click(function () {
     console.log('重启');
 
-    _restoreRoute()
-      .then(function (res) {
-        console.log(res, 'default')
-      })
-      .catch(function (err) {
-        _toast('设备重置失败，请检查设备连接是否正常！', 'error');
-      })
+    _dialog({
+      content: '是否重启？',
+      icon: 'warning',
+      success: function (callback) {
+        _restoreRoute()
+          .then(function (res) {
+            console.log(res, 'default')
+          })
+          .catch(function (err) {
+            _toast('设备重置失败，请检查设备连接是否正常！', 'error');
+          })
 
-    _restartRoute()
-      .then(function (res) {
-        console.log(res, 'reboot')
-      })
-      .catch(function (err) {
-        _toast('设备重启失败，请检查设备连接是否正常！', 'error');
-      })
+        _restartRoute()
+          .then(function (res) {
+            console.log(res, 'reboot')
+          })
+          .catch(function (err) {
+            _toast('设备重启失败，请检查设备连接是否正常！', 'error');
+          })
+        callback();
+      }
+    });
   })
 
   /* 主体功能模块 */
