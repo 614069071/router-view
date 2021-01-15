@@ -221,13 +221,6 @@
   width: 150px;
 }
 
-/* 路由器管理 => 软件升级 */
-.progress-bar-wrapper {
-  margin-top: 10px;
-  height: 10px;
-  margin-left: 35px;
-}
-
 .lan-dhcp-set-wrapper .lan-dhcp-item-option {
   display: none;
 }
@@ -262,6 +255,31 @@
 
 .upgrade-popup-progress-wrapper {
   height: 10px;
+}
+
+/* 路由器管理 => 软件升级 */
+.progress-bar-wrapper {
+  margin-top: 10px;
+  height: 10px;
+  margin-left: 35px;
+}
+
+.update-paragraph {
+  color: #606266;
+}
+
+.update-paragraph span {
+  color: var(--default-color);
+}
+
+.display-file-name {
+  width: 240px;
+  text-align: left;
+}
+
+.display-file-look {
+  color: var(--default-color) !important;
+  border-color: #cee0ff !important;
 }
 
 /* 关于我们 */

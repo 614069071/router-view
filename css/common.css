@@ -446,7 +446,7 @@ input[type="password"]:hover {
 }
 
 .button.info {
-  color: var(--table-color);
+  color: #c0c4cc;
   background-color: #fff;
   border-color: var(--de-btn-color);
 }
@@ -736,6 +736,7 @@ input[type="password"]:hover {
   padding-left: 24px;
   background-color: #f5f7fa;
   margin-bottom: 20px;
+  font-size: 18px;
 }
 
 .model-content {
