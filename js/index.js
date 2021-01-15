@@ -319,8 +319,21 @@ function loadContent() {
   var $detection_update_btn = $('#detection_update_btn');
 
   $detection_update_btn.on('click', function () {
+    // 已经是最新版本
+    // _dialog({
+    //   content: '当前软件版本已是最新～',
+    //   icon: 'warning',
+    // }, true);
+
+    //检测版本失败
+    // _dialog({
+    //   content: '检测版本失败，请检查网络后重试',
+    //   icon: 'error',
+    // }, true);
+
+    // 检测到新版本
     _dialog({
-      content: '检测到最新软件版本：2.2.4是否升级',
+      content: '检测到最新软件版本：2.2.4，是否升级？',
       icon: 'success',
       success: function (callback) {
         $upgrade_popup_warpper.show();
