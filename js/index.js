@@ -88,6 +88,7 @@ function loadContent() {
   // 退出
   $('#exit_btn').click(function () {
     $.cookie('__accessToken__', 0);
+    _storages.set('_module_', '')
     loadLogin();
   });
   /* 主体功能模块 */
