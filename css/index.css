@@ -320,6 +320,35 @@
 }
 
 /* 关于我们 */
-.about-module-wrapper .img {
-  width: 100px;
+.about-main-wrapper {
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-main-wrapper .img {
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  background-color: var(--default-color);
+  border-radius: 6px;
+  font-size: 40px;
+  color: #fff;
+}
+
+.about-main-wrapper .about-subtitle {
+  font-size: 20px;
+  height: 28px;
+  line-height: 28px;
+  margin-top: 30px;
+}
+
+.about-main-wrapper .about-copyright {
+  font-size: 16px;
+  height: 22px;
+  line-height: 22px;
+  color: #909399;
+  margin-top: 6px;
 }
