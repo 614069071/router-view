@@ -329,7 +329,7 @@ function _loading(text) {
   $('body').append($el);
 }
 
-function _dialog(options) {
+function _dialog(options, flag) {
   var options = options || {};
   var el = document.querySelector('.dialog-wrapper');
 
@@ -338,11 +338,16 @@ function _dialog(options) {
   var wrapper = $('<div class="dialog-wrapper"></div>');
   var inner = $('<div class="dialog-inner"></div>');
   var title = $('<div class="dialog-title">' + (options.title || '温馨提示') + '</div>');
+  var close = $('<i class="dialog-close iconfont icon-close"></i>');
   var main = $('<div class="dialog-main">' + (options.content || '') + '</div>');
   var btns = $('<div class="dialog-btns"></div>');
   var cancel = $('<button class="button info">' + (options.cancelText || "取消") + '</button>');
   var success = $('<button class="button">' + (options.successText || "确定") + '</button>');
 
+  close.on('click', function () {
+    _close();
+    options.cancel && options.cancel();
+  });
 
   cancel.on('click', function () {
     _close();
@@ -353,11 +358,14 @@ function _dialog(options) {
     options.success && options.success(_close);
   });
 
-  btns.append(cancel);
-  btns.append(success);
+  title.append(close);
   inner.append(title);
   inner.append(main);
-  inner.append(btns);
+  if (!flag) {
+    btns.append(cancel);
+    btns.append(success);
+    inner.append(btns);
+  }
   wrapper.append(inner);
 
   $('body').append(wrapper);
