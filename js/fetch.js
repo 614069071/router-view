@@ -22,7 +22,7 @@ function _setAccount(password) {
 }
 
 // 固件升级
-function uploadFile(file) {
+function _uploadFile(file) {
   var formData = new FormData();
   formData.append('file', file);
   formData.append('type', 'upload');
@@ -33,28 +33,28 @@ function uploadFile(file) {
 }
 
 // 获取升级返回状态
-function getUpdateFileStatus() {
+function _getUpdateFileStatus() {
   var parmas = { type: 'mtd_write', function: 'upgrade' };
 
   return _request(parmas)
 }
 
 // 重启路由器
-function restartRoute() {
+function _restartRoute() {
   var params = { operation: 'device_opt', action: 'reboot' };
 
   return _request(params);
 }
 
 // 恢复出厂设置
-function restoreRoute() {
+function _restoreRoute() {
   var params = { operation: 'device_opt', action: 'default' };
 
   return _request(params);
 }
 
 // 宽带拨号
-function setConnectPPPoE(account, password) {
+function _setConnectPPPoE(account, password) {
   var params = {
     operation: "wan_setup_wizard",
     function: "set",
@@ -73,28 +73,28 @@ function setConnectPPPoE(account, password) {
 }
 
 // 获取路由信息
-function getRouterInfo() {
+function _getRouterInfo() {
   var parmas = { operation: 'route_info', function: 'get' };
 
   return _request(parmas);
 }
 
 // 获取时间
-function getTimeSync() {
+function _getTimeSync() {
   var parmas = { operation: 'time_sync', function: 'get', server: '' };
 
   return _request(parmas);
 }
 
 // 获取设备列表
-function getOlineList() {
+function _getOlineList() {
   var parmas = { operation: 'get_host', function: 'get' };
 
   return _request(parmas);
 }
 
 // 设置静态IP
-function setConnectStatic(ip, mask, gw, dns, dns1, mac, mtu) {
+function _setConnectStatic(ip, mask, gw, dns, dns1, mac, mtu) {
   var parmas = {
     operation: 'wan_setup',
     function: 'set',

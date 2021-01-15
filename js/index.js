@@ -20,10 +20,10 @@ function loadLogin() {
 
   function loginHandel() {
     var value = $login_submit_input.val();
-    // loadContent();
-    // $.cookie('__accessToken__', 1);
+    loadContent();
+    $.cookie('__accessToken__', 1);
 
-    // return;
+    return;
     if (value) {
       _loading();
       _login(value)
@@ -86,11 +86,43 @@ function loadContent() {
   new _MenuTree(menuBarArray, $('.nav-menu-wrapper'));
 
   // 退出
-  $('#exit_btn').click(function () {
+  function exitHandel() {
     $.cookie('__accessToken__', 0);
     _storages.set('_module_', '')
     loadLogin();
+  }
+
+  $('#exit_btn').click(function () {
+    exitHandel();
   });
+
+  // 重置（恢复出厂设置）
+  $('#reset_btn').click(function () {
+    console.log('重置（恢复出厂设置）');
+    _dialog({
+      content: '是否重启？',
+      icon: 'warning',
+      success: function (callback) {
+        callback();
+
+        _loading('设备重启中，请等待...');
+
+        _restartRoute()
+          .then(function (res) {
+            console.log(res, '重启suc');
+          })
+          .catch(function (err) {
+            _toast('设备重启失败，请检查设备连接是否正常！', 'error');
+          })
+      }
+    });
+  })
+
+  // 重启
+  $('#restart_btn').click(function () {
+    console.log('重启');
+  })
+
   /* 主体功能模块 */
   // 首页（设备状态）
   function setSvgStyle(num) {
