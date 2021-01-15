@@ -338,11 +338,22 @@ function _dialog(options, flag) {
 
   if (el) $(el).remove();
 
+  var icon = '';
+  if (options.icon === 'success') {
+    icon = '<i class="iconfont icon-success"></i>';
+  } else if (options.icon === 'error') {
+    icon = '<i class="iconfont icon-error"></i>';
+  } else if (options.icon === 'warning') {
+    icon = '<i class="iconfont icon-warning"></i>';
+  } else {
+    icon = '';
+  }
+
   var wrapper = $('<div class="dialog-wrapper"></div>');
   var inner = $('<div class="dialog-inner"></div>');
   var title = $('<div class="dialog-title">' + (options.title || '温馨提示') + '</div>');
   var close = $('<i class="dialog-close iconfont icon-close"></i>');
-  var main = $('<div class="dialog-main">' + (options.content || '') + '</div>');
+  var main = $('<div class="dialog-main">' + icon + (options.content || '') + '</div>');
   var btns = $('<div class="dialog-btns"></div>');
   var cancel = $('<button class="button info">' + (options.cancelText || "取消") + '</button>');
   var success = $('<button class="button">' + (options.successText || "确定") + '</button>');

@@ -658,6 +658,25 @@ input[type="password"]:hover {
 .dialog-wrapper .dialog-main {
   padding: 20px 0;
   color: var(--table-color);
+  display: flex;
+  align-items: center;
+}
+
+.dialog-wrapper .dialog-main .iconfont {
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.dialog-main .iconfont.icon-success {
+  color: #67c23a;
+}
+
+.dialog-main .iconfont.icon-warning {
+  color: #e6a23c;
+}
+
+.dialog-main .iconfont.icon-error {
+  color: #f57778;
 }
 
 .dialog-inner .dialog-title .dialog-close {

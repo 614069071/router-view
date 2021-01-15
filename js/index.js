@@ -321,6 +321,7 @@ function loadContent() {
   $detection_update_btn.on('click', function () {
     _dialog({
       content: '检测到最新软件版本：2.2.4是否升级',
+      icon: 'success',
       success: function (callback) {
         $upgrade_popup_warpper.show();
         upgrade_Progress.start();
