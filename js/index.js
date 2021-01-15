@@ -110,6 +110,7 @@ function loadContent() {
         _restartRoute()
           .then(function (res) {
             console.log(res, '重启suc');
+            exitHandel();
           })
           .catch(function (err) {
             _toast('设备重启失败，请检查设备连接是否正常！', 'error');
@@ -121,6 +122,22 @@ function loadContent() {
   // 重启
   $('#restart_btn').click(function () {
     console.log('重启');
+
+    _restoreRoute()
+      .then(function (res) {
+        console.log(res, 'default')
+      })
+      .catch(function (err) {
+        _toast('设备重置失败，请检查设备连接是否正常！', 'error');
+      })
+
+    _restartRoute()
+      .then(function (res) {
+        console.log(res, 'reboot')
+      })
+      .catch(function (err) {
+        _toast('设备重启失败，请检查设备连接是否正常！', 'error');
+      })
   })
 
   /* 主体功能模块 */
