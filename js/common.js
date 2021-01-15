@@ -351,7 +351,7 @@ function _dialog(options, flag) {
 
   var wrapper = $('<div class="dialog-wrapper"></div>');
   var inner = $('<div class="dialog-inner"></div>');
-  var title = $('<div class="dialog-title">' + (options.title || '温馨提示') + '</div>');
+  var title = $('<div class="dialog-title">' + (options.title || '提示') + '</div>');
   var close = $('<i class="dialog-close iconfont icon-close"></i>');
   var main = $('<div class="dialog-main">' + icon + (options.content || '') + '</div>');
   var btns = $('<div class="dialog-btns"></div>');
