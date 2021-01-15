@@ -96,7 +96,7 @@ function loadContent() {
     exitHandel();
   });
 
-  // 重置（恢复出厂设置）
+  // 重置（恢复出厂设置） 待测试
   $('#reset_btn').click(function () {
     console.log('重置（恢复出厂设置）');
     _dialog({
@@ -106,27 +106,6 @@ function loadContent() {
         callback();
 
         _loading('设备重置中，请等待...');
-
-        _restartRoute()
-          .then(function (res) {
-            console.log(res, '重启suc');
-            exitHandel();
-          })
-          .catch(function (err) {
-            _toast('设备重启失败，请检查设备连接是否正常！', 'error');
-          })
-      }
-    });
-  })
-
-  // 重启
-  $('#restart_btn').click(function () {
-    console.log('重启');
-
-    _dialog({
-      content: '是否重启？',
-      icon: 'warning',
-      success: function (callback) {
         _restoreRoute()
           .then(function (res) {
             console.log(res, 'default')
@@ -134,7 +113,27 @@ function loadContent() {
           .catch(function (err) {
             _toast('设备重置失败，请检查设备连接是否正常！', 'error');
           })
+        // 重启
+        // _restartRoute()
+        //   .then(function (res) {
+        //     console.log(res, '重启suc');
+        //     exitHandel();
+        //   })
+        //   .catch(function (err) {
+        //     _toast('设备重启失败，请检查设备连接是否正常！', 'error');
+        //   })
+      }
+    });
+  })
 
+  // 重启 待测试
+  $('#restart_btn').click(function () {
+    console.log('重启');
+
+    _dialog({
+      content: '是否重启？',
+      icon: 'warning',
+      success: function (callback) {
         _restartRoute()
           .then(function (res) {
             console.log(res, 'reboot')
