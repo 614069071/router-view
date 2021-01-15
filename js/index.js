@@ -373,7 +373,7 @@ function loadContent() {
   // 设备管理 => 固件升级
   var $upgrade_popup_warpper = $('.upgrade-popup-warpper');
   var $progress_wrapper = $('.upgrade-progress-wrapper');
-  var upgrade_Progress = new _Progress($progress_wrapper, 1200);
+  var upgrade_Progress = new _Progress($progress_wrapper);
   // 线上更新
   var $detection_update_btn = $('#detection_update_btn');
 
