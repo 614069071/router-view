@@ -241,7 +241,18 @@ function _Progress(el, count) {
 }
 
 _Progress.prototype.create = function () {
-  var $wrapper = $('<div class="progress-wrapper"><span class="progress-percentage">0%</span><div class="progress-inner"></div></div>');
+  var $wrapper = $(`
+  <div class="progress-wrapper">
+    <span class="progress-percentage">0%</span>
+    <svg viewBox="0 0 100 100">
+      <path d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94" stroke="#e5e9f2" stroke-width="4.8"
+        fill="none" style="stroke-dasharray: 295.31px, 295.31px;"></path>
+      <path class="progress-bar" d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94"
+        stroke="#20a0ff" stroke-width="4.8" fill="none" style="stroke-dasharray: 0px, 295.31px;">
+      </path>
+    </svg>
+  </div>`
+  );
   this.el.empty().append($wrapper);
 }
 
@@ -249,37 +260,29 @@ _Progress.prototype.start = function () {
   var el = document.querySelector('.progress-wrapper');
   if (!el) this.create();
   var self = this;
-  self.timer && clearInterval(self.timer);
-  var $wrapper = self.el.find('.progress-wrapper');
-  var $percentage = self.el.find('.progress-percentage');
-  $wrapper.show();
-  var $inner = self.el.find('.progress-inner');
-  var $width = $wrapper.width();
-  var step = Math.floor($width / self.count);
+  var sum = 295.31;
+  var step = sum / self.count;
   var current = 0;
+  var $progress_bar = $('.progress-wrapper .progress-bar');
+  var $progress_percentage = $('.progress-wrapper .progress-percentage');
 
   self.timer = setInterval(function () {
     current += step;
-    if (current + step >= $width) {
+    if (current + step >= sum) {
       clearInterval(self.timer);
+      return;
     }
-
-    var percentage = parseInt((current / $width) * 100) + '%';
-    $percentage.html(percentage);
-    $inner.animate({ width: current + 'px' }, 1000, 'linear');
+    var scale = parseInt((current / sum) * 100) + '%';
+    $progress_percentage.text(scale);
+    $progress_bar.prop('style', 'stroke-dasharray: ' + current + 'px, 295.31px;');
   }, 1000);
+
 }
 
 _Progress.prototype.finish = function () {
   var self = this;
   clearInterval(self.timer);
-  var $wrapper = self.el.find('.progress-wrapper');
-  var $inner = self.el.find('.progress-inner');
-  var $width = $wrapper.width();
-  var $percentage = self.el.find('.progress-percentage');
-  $inner.animate({ width: $width + 'px' }, 1000, 'linear', function () {
-    $percentage.html('100%');
-  });
+
 }
 
 _Progress.prototype.close = function () {

@@ -250,7 +250,16 @@
   background-color: #fff;
   left: 50%;
   top: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transform: translate(-50%);
+}
+
+.upgrade-popup-inner p {
+  text-align: center;
+  color: #606266;
+  line-height: 22px;
 }
 
 .upgrade-popup-progress-wrapper {
@@ -284,6 +293,10 @@
 .display-file-look {
   color: var(--default-color) !important;
   border-color: #cee0ff !important;
+}
+
+.upgrade-progress-wrapper {
+  width: 140px;
 }
 
 /* 关于我们 */
