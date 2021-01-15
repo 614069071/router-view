@@ -296,11 +296,19 @@ _Progress.prototype.close = function () {
 */
 function _toast(text, type, callback) {
   var type = type || 'success';
+  var ie = '';
+  if (type === 'error') {
+    ie = '<i class="toast-icon iconfont icon-error"></i>';
+  } else if (type === 'warning') {
+    ie = '<i class="toast-icon iconfont icon-warning"></i>';
+  } else {
+    ie = '<i class="toast-icon iconfont icon-success"></i>';
+  }
   var elToast = document.querySelector('.toast-wrapper');
 
   if (elToast) $(elToast).remove();
 
-  var $el = $('<div class="toast-wrapper ' + type + '"><div class="toast-inner"><i class="toast-icon"></i>' + (text || 'toast') + '</div></div>');
+  var $el = $('<div class="toast-wrapper ' + type + '"><div class="toast-inner">' + ie + (text || 'toast') + '</div></div>');
 
   $('body').append($el);
 

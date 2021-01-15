@@ -560,7 +560,8 @@ input[type="password"]:hover {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background-color: red;
+  line-height: 16px;
+  font-size: 16px;
   margin-right: 8px;
 }
 
