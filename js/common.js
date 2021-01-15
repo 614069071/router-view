@@ -193,9 +193,11 @@ _MenuTree.prototype.initMenuHandel = function () {
     // 获取对应模块
     var $module = $(this).data('module') || '';
     var $modules = $('.module-item-wrapper');
-    $modules.hide();
+    $modules.hide().removeClass('active');
     var $content = $('.module-item-wrapper[data-module="' + $module + '"]');
-    $content.show();
+    $content.show().addClass('active');
+
+    _storages.set('_module_', $module);
   });
 }
 
@@ -228,6 +230,24 @@ _MenuTree.prototype.appendMenuToEle = function (arr, el) {
   var menuTree = this.createMenuTree(arr);
   root.append(menuTree);
   this.initMenuHandel();
+  this.finish();
+}
+
+_MenuTree.prototype.finish = function () {
+  var _module_ = _storages.get('_module_');
+  var $menu_item_titles = $('.menu-item-title');
+  var $content = $('.module-item-wrapper');
+
+  if (_module_) {
+    $menu_item_titles.each(function (i, e) {
+      var $module = $(e).data('module') || '';
+      if ($module === _module_) {
+        $menu_item_titles.removeClass('checked');
+        $(e).addClass('checked');
+        $content.hide().removeClass('active').eq(i).show().addClass('active');
+      }
+    });
+  }
 }
 /* ------------------- 创建 NavMenu end ------------------- */
 
