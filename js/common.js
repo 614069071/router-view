@@ -234,20 +234,19 @@ _MenuTree.prototype.appendMenuToEle = function (arr, el) {
 }
 
 _MenuTree.prototype.finish = function () {
-  var _module_ = _storages.get('_module_');
   var $menu_item_titles = $('.menu-item-title');
+  var _fistModule_ = $menu_item_titles.eq(0).data('module');
+  var _module_ = _storages.get('_module_') || _fistModule_;
   var $content = $('.module-item-wrapper');
 
-  if (_module_) {
-    $menu_item_titles.each(function (i, e) {
-      var $module = $(e).data('module') || '';
-      if ($module === _module_) {
-        $menu_item_titles.removeClass('checked');
-        $(e).addClass('checked');
-        $content.hide().removeClass('active').eq(i).show().addClass('active');
-      }
-    });
-  }
+  $menu_item_titles.each(function (i, e) {
+    var $module = $(e).data('module') || '';
+    if ($module === _module_) {
+      $menu_item_titles.removeClass('checked');
+      $(e).addClass('checked');
+      $content.hide().removeClass('active').eq(i).show().addClass('active');
+    }
+  });
 }
 /* ------------------- 创建 NavMenu end ------------------- */
 

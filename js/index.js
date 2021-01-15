@@ -20,10 +20,10 @@ function loadLogin() {
 
   function loginHandel() {
     var value = $login_submit_input.val();
-    loadContent();
-    $.cookie('__accessToken__', 1);
+    // loadContent();
+    // $.cookie('__accessToken__', 1);
 
-    return;
+    // return;
     if (value) {
       _loading();
       _login(value)
