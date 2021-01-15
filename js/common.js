@@ -146,13 +146,13 @@ _Pager.prototype.init = function () {
   this.cache = num >= this.step ? this.step : num;
 
   var $wrapper = $('<div class="pager-view-wrapper right"></div>');
-  var $leftBtn = $('<div class="pager-btn"><i class="icon-arrow-left"></i></div>');
+  var $leftBtn = $('<div class="pager-btn"><i class="iconfont icon-arrow-left"></i></div>');
   $leftBtn.on('click', function () {
     self.switch('left');
     self.update();
   })
 
-  var $rightBtn = $('<div class="pager-btn"><i class="icon-arrow-right"></i></div>');
+  var $rightBtn = $('<div class="pager-btn"><i class="iconfont icon-arrow-right"></i></div>');
   $rightBtn.on('click', function () {
     self.switch('right');
     self.update();

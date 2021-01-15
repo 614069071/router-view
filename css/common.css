@@ -673,33 +673,6 @@ input[type="password"]:hover {
   text-align: right;
 }
 
-/* 箭头 */
-.icon-arrow-top,
-.icon-arrow-right,
-.icon-arrow-bottom,
-.icon-arrow-left {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background-position: center;
-  background-size: contain;
-  transition: all 0.1s;
-}
-
-.icon-arrow-top {
-  background-image: url(../images/arrow-top.png);
-}
-.icon-arrow-right {
-  background-image: url(../images/arrow-right.png);
-}
-.icon-arrow-bottom {
-  background-image: url(../images/arrow-bottom.png);
-}
-
-.icon-arrow-left {
-  background-image: url(../images/arrow-left.png);
-}
-
 /* 分页器 */
 .pager-view-wrapper {
   display: flex;
@@ -711,11 +684,11 @@ input[type="password"]:hover {
   justify-content: flex-end;
 }
 
-.pager-body {
+.pager-view-wrapper .pager-body {
   display: flex;
 }
 
-.pager-btn,
+.pager-view-wrapper .pager-btn,
 .pager-body .pager-item {
   height: 30px;
   line-height: 30px;
@@ -727,17 +700,14 @@ input[type="password"]:hover {
   border-radius: 2px;
   cursor: pointer;
   user-select: none;
+  margin-left: 10px;
 }
 
-.pager-body .pager-item {
-  margin: 0 5px;
-}
-
-.pager-item:hover {
+.pager-view-wrapper .pager-item:hover {
   color: var(--default-color);
 }
 
-.pager-body .pager-item.active {
+.pager-view-wrapper .pager-body .pager-item.active {
   color: #fff;
   background-color: var(--default-color);
 }
@@ -759,11 +729,10 @@ input[type="password"]:hover {
 
 /* 多行模块 */
 .model-title {
-  height: 50px;
-  line-height: 50px;
-  padding-left: 50px;
+  height: 65px;
+  line-height: 65px;
+  padding-left: 24px;
   background-color: #f5f7fa;
-  color: #666;
   margin-bottom: 20px;
 }
 
