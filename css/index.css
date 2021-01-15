@@ -138,8 +138,8 @@
 }
 
 .main-header-wrapper {
-  height: 60px;
-  padding: 0 20px;
+  height: 48px;
+  padding: 0 50px;
   border-bottom: 1px solid #dfe4ed;
   display: flex;
   justify-content: space-between;
@@ -147,8 +147,18 @@
 }
 
 .header-right-wrapper span {
-  margin-left: 10px;
+  margin-left: 14px;
+  padding: 5px;
   cursor: pointer;
+}
+
+.header-right-wrapper span i {
+  font-size: 18px;
+  transition: all 0.2s;
+}
+
+.header-right-wrapper span:hover i {
+  color: var(--default-color);
 }
 
 .main-content-wrapper {
