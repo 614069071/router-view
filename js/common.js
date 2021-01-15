@@ -254,7 +254,7 @@ _MenuTree.prototype.finish = function () {
 // 进度条
 function _Progress(el, count) {
   this.el = el || $('body'); //挂载点
-  this.count = count || 60; //时长 s
+  this.count = count || 600; //时长 s
   this.timer = null;
   this.create();
 }
@@ -280,35 +280,33 @@ _Progress.prototype.start = function () {
   if (!el) this.create();
   var self = this;
   var sum = 295.31;
-  var step = sum / self.count;
+  var step = sum / 100;
   var current = 0;
   var $progress_bar = $('.progress-wrapper .progress-bar');
   var $progress_percentage = $('.progress-wrapper .progress-percentage');
 
   self.timer = setInterval(function () {
-    current += step;
-    if (current + step >= sum) {
+    current += 1;
+    if (current >= 100) {
       clearInterval(self.timer);
       return;
     }
-    var scale = parseInt((current / sum) * 100) + '%';
+    var scale = current + '%';
     $progress_percentage.text(scale);
-    $progress_bar.prop('style', 'stroke-dasharray: ' + current + 'px, 295.31px;');
-  }, 1000);
+    $progress_bar.prop('style', 'stroke-dasharray: ' + (current * step) + 'px, 295.31px;');
+  }, self.count);
 
 }
 
 _Progress.prototype.finish = function () {
   var self = this;
   clearInterval(self.timer);
-
+  $('.progress-wrapper .progress-percentage').text('100%');
+  $progress_bar.prop('style', 'stroke-dasharray: 295.31px, 295.31px;');
 }
 
 _Progress.prototype.close = function () {
   clearInterval(self.timer);
-  this.el.find('.progress-wrapper').fadeOut(1000, function () {
-    // $(this).remove();
-  })
 }
 
 /* 
