@@ -332,12 +332,12 @@ function loadContent() {
   // 本地更新
   var $update_file = $('#update_file');
   var $upgrade_submit = $('#upgrade_submit');
-  var $upgrade_name = $('.upgrade-name');
+  var $upgrade_name = $('.display-file-name');
 
   $update_file.on('change', function (e) {
     var file = e.target.files[0] || {};
     var name = file.name;
-    name && $upgrade_name.text(name);
+    name && $upgrade_name.addClass('active').text(name);
   })
 
   $upgrade_submit.on('click', function () {

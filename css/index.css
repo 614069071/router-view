@@ -277,6 +277,10 @@
   text-align: left;
 }
 
+.display-file-name.active {
+  color: var(--default-color);
+}
+
 .display-file-look {
   color: var(--default-color) !important;
   border-color: #cee0ff !important;
