@@ -413,6 +413,7 @@ input[type="password"]:hover {
   left: 122px;
   top: 100%;
   display: none;
+  white-space: nowrap;
 }
 
 /* 自定义按钮 */

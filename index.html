@@ -276,10 +276,12 @@
                 <label class="label-item">
                   <span>IP地址</span>
                   <input type="text" name="name1" placeholder="请输入您的起始IP地址" value="192.168.1.1" />
+                  <div class="label-item-tip"></div>
                 </label>
                 <label class="label-item">
                   <span>子网掩码</span>
                   <input type="text" name="name2" placeholder="请输入您的起始IP地址" value="255.255.255.0" />
+                  <div class="label-item-tip"></div>
                 </label>
                 <div class="label-item">
                   <span></span>
@@ -304,16 +306,28 @@
               <span>IP分配范围</span>
 
               <div class="lan-dhcp-item-option active">
-                <div class="input-disabled dhcp-item">192.168.199.1</div>
-                <i class="lan-dhcp-line">-</i>
-                <div class="input-disabled dhcp-item">192.168.199.200</div>
+                <div class="lan-dhcp-item-option-inner">
+                  <div class="input-disabled dhcp-item">192.168.199.1</div>
+                  <i class="lan-dhcp-line">-</i>
+                  <div class="input-disabled dhcp-item">192.168.199.200</div>
+                </div>
               </div>
 
-              <div class="lan-dhcp-item-option">
-                <input type="text" class="lan-dhcp-start dhcp-item" name="name1" maxlength="15" value="192.168.199.1">
-                <i class="lan-dhcp-line">-</i>
-                <input type="text" class="lan-dhcp-end dhcp-item" name="name2" maxlength="15" value="192.168.199.200">
-              </div>
+              <form class="lan-dhcp-item-option" id="lan_dhcp_form">
+                <div class="lan-dhcp-item-option-inner">
+                  <div class="label-item">
+                    <input type="text" class="lan-dhcp-start dhcp-item" name="name1" maxlength="15"
+                      value="192.168.199.1">
+                    <div class="label-item-tip"></div>
+                  </div>
+                  <i class="lan-dhcp-line">-</i>
+                  <div class="label-item">
+                    <input type="text" class="lan-dhcp-end dhcp-item" name="name2" maxlength="15"
+                      value="192.168.199.200">
+                    <div class="label-item-tip"></div>
+                  </div>
+                </div>
+              </form>
             </div>
 
             <div class="label-item">

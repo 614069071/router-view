@@ -265,11 +265,38 @@ function loadContent() {
   // 手动设置
   var $setting_lan_custom_submit = $('#setting_lan_custom_submit');
   var $setting_lan_custom_frorm = $('#setting_lan_custom_frorm');
+  var $setting_lan_custom_form_tips = $setting_lan_custom_frorm.find('.label-item-tip');
 
   $setting_lan_custom_submit.on('click', function () {
-    var parmas = _formArrToObject($setting_lan_custom_frorm);
+    var data = _formArrToObject($setting_lan_custom_frorm);
 
-    console.log('手动', parmas)
+    console.log($setting_lan_custom_form_tips)
+
+    if (!data.name1) {
+      $setting_lan_custom_form_tips.eq(0).html('请输入IP地址').slideDown();
+      return;
+    } else if (_space(data.name1)) {
+      $setting_lan_custom_form_tips.eq(0).html('输入不能包含空格').slideDown();
+      return;
+    } else if (!_ip(data.name1)) {
+      $setting_lan_custom_form_tips.eq(0).html('请输入正确的IP地址').slideDown();
+      return;
+    } else {
+      $setting_lan_custom_form_tips.eq(0).html('').slideUp();
+    }
+
+    if (!data.name2) {
+      $setting_lan_custom_form_tips.eq(1).html('请输入IP地址').slideDown();
+      return;
+    } else if (_space(data.name2)) {
+      $setting_lan_custom_form_tips.eq(1).html('输入不能包含空格').slideDown();
+      return;
+    } else if (!_ip(data.name2)) {
+      $setting_lan_custom_form_tips.eq(1).html('请输入正确的子网掩码').slideDown();
+      return;
+    } else {
+      $setting_lan_custom_form_tips.eq(1).html('').slideUp();
+    }
 
   });
 
@@ -277,6 +304,8 @@ function loadContent() {
   var $lan_dhcp_switch_btn = $('.lan-dhcp-switch');
   var $lan_dhcp_item_options = $('.lan-dhcp-item-option');
   var $setting_lan_dhcp_submit = $('#setting_lan_dhcp_submit');
+  var $lan_dhcp_form = $('#lan_dhcp_form');
+  var $lan_dhcp_form_tips = $lan_dhcp_form.find('.label-item-tip');
 
   $lan_dhcp_switch_btn.on('change', function () {
     var isChecked = $(this).prop('checked') ? 1 : 0;
@@ -287,7 +316,38 @@ function loadContent() {
 
   $setting_lan_dhcp_submit.on('click', function () {
     var isChecked = $lan_dhcp_switch_btn.prop('checked');
-    console.log(isChecked)
+    // 默认
+    var data1 = { name1: '192.168.199.1', name2: '192.168.199.200' };
+    // 范围
+    var data2 = _formArrToObject($lan_dhcp_form);
+
+    if (!data2.name1) {
+      $lan_dhcp_form_tips.eq(0).html('请输入IP地址').slideDown();
+      return;
+    } else if (_space(data2.name1)) {
+      $lan_dhcp_form_tips.eq(0).html('输入不能包含空格').slideDown();
+      return;
+    } else if (!_ip(data2.name1)) {
+      $lan_dhcp_form_tips.eq(0).html('请输入正确的IP地址').slideDown();
+      return;
+    } else {
+      $lan_dhcp_form_tips.eq(0).html('').slideUp();
+    }
+
+    if (!data2.name2) {
+      $lan_dhcp_form_tips.eq(1).html('请输入IP地址').slideDown();
+      return;
+    } else if (_space(data2.name2)) {
+      $lan_dhcp_form_tips.eq(1).html('输入不能包含空格').slideDown();
+      return;
+    } else if (!_ip(data2.name2)) {
+      $lan_dhcp_form_tips.eq(1).html('请输入正确的IP地址').slideDown();
+      return;
+    } else {
+      $lan_dhcp_form_tips.eq(1).html('').slideUp();
+    }
+
+    console.log(isChecked, data2);
   });
 
   // 设备管理 => 修改管理密码
