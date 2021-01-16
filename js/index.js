@@ -33,10 +33,10 @@ function loadLogin() {
       $ps_error_tip.html('').slideUp();
     }
 
-    loadContent();
-    $.cookie('__accessToken__', 1);
+    // loadContent();
+    // $.cookie('__accessToken__', 1);
 
-    return;
+    // return;
     _loading();
     _login(value)
       .then(function (res) {
