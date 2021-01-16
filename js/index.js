@@ -9,8 +9,8 @@ $content_wrapper.empty();
 
 // 加载登录内容
 function loadLogin() {
-  $content_wrapper.empty().height(0).hide();
-  $login_wrapper.height('100%').html(_LogintHtml).show();
+  $content_wrapper.height(0).hide().empty();
+  $login_wrapper.html(_LogintHtml).height('100%').show();
   _init();
 
   var $login_submit_btn = $('#login_submit');
@@ -69,8 +69,8 @@ function loadLogin() {
 
 // 加载主体内容
 function loadContent() {
-  $login_wrapper.height(0).empty().hide();
-  $content_wrapper.height('100%').html(_ContentHtml).show();
+  $login_wrapper.height(0).hide().empty();
+  $content_wrapper.html(_ContentHtml).height('100%').show();
   _init();
   /* -------------- 主体模块 start-------------- */
   var menuBarArray = [
