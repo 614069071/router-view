@@ -7,104 +7,98 @@
 
 /* 登录模块 */
 .login-wrapper {
-  background-color: #6585bb;
+  background-color: #252e37;
   color: #fff;
   display: none;
+  position: relative;
 }
 
-.login-title {
+.login-inner {
+  height: 437px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -600px;
+  margin-top: -218px;
   display: flex;
+  box-sizing: border-box;
+  padding: 0 90px 0 40px;
   justify-content: space-between;
-  padding-top: 20px;
+}
+
+.login-logo {
+  width: 440px;
+  height: 321px;
+  margin-top: 73px;
 }
 
 .login-main {
-  width: 300px;
-  margin: 250px auto 0;
+  width: 323px;
+  height: 241px;
+  padding: 0 32px;
+  background-color: #313b48;
+  margin-top: 113px;
+  border-radius: 9px;
+  box-sizing: border-box;
 }
 
-.login-form-title {
-  font-size: 22px;
-  margin-bottom: 40px;
-}
-
-.login-form-item {
-  width: 300px;
-  border-radius: 3px;
-}
-
-.login-password {
-  display: flex;
-  height: 35px;
-  background-color: #fff;
-  border-radius: 3px;
-}
-
-.login-password .login-password--prepend {
-  width: 46px;
-  border-right: 1px solid #6585bb;
-  color: #000;
-  height: 100%;
-  line-height: 35px;
-  text-align: center;
-}
-
-.login-password .login-password-wrap {
-  flex: 1;
-  padding-left: 10px;
+.password-input-wrapper {
+  margin-top: 50px;
+  margin-bottom: 30px;
   position: relative;
 }
 
-.login-password .login-password--inp {
-  width: 100%;
-  height: 100%;
-}
-
-.login-password .login-password-wrap span {
+.password-input-wrapper .password-tip {
   position: absolute;
-  padding-left: 10px;
-  left: 100%;
-  top: 50%;
-  z-index: 10;
-  color: red;
-  font-size: 12px;
-  margin-top: -7px;
-  white-space: nowrap;
-}
-
-.login-submit {
-  height: 32px;
-  line-height: 32px;
-  text-align: center;
-  color: #000;
-  background-color: #f9eb53;
-  margin-top: 25px;
-  cursor: pointer;
-}
-
-.login-forgot {
-  margin-top: 10px;
-  position: relative;
-}
-
-.forgot-password-btn {
-  color: #fff;
-  font-size: 12px;
-  cursor: pointer;
-  background-color: transparent;
-
-  text-decoration: underline;
-}
-
-.forgot-tips {
-  position: absolute;
+  padding-top: 5px;
+  top: 100%;
   left: 0;
-  top: 28px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  padding: 15px 10px;
-  line-height: 20px;
   font-size: 12px;
+  color: #f56c6c;
+}
+
+.forgot-password-wrapper {
+  margin-top: 14px;
+  text-align: right;
+  position: relative;
+}
+
+.forgot-password-wrapper .forgot-password-btn {
+  height: 17px;
+  line-height: 17px;
+  color: #fff;
+}
+
+.forgot-password-tips {
+  text-align: left;
+  width: 348px;
+  padding: 14px 20px;
+  background-color: #fff;
+  color: #606266;
+  box-sizing: border-box;
+  border-radius: 4px;
+  position: absolute;
+  top: 31px;
+  right: 7px;
+  white-space: nowrap;
+  line-height: 20px;
+}
+
+.forgot-password-tips span {
+  color: var(--default-color);
+}
+
+.forgot-password-tips::before {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border-style: solid;
+  border-width: 7px;
+  border-color: transparent transparent #fff transparent;
+  position: absolute;
+  right: 28px;
+  top: -13px;
   display: none;
 }
 

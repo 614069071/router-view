@@ -379,6 +379,11 @@ input:-ms-input-placeholder {
   color: var(--table-color);
 }
 
+input[type="text"],
+input[type="password"] {
+  box-sizing: border-box;
+}
+
 .label-item .input-disabled,
 input[type="text"],
 input[type="password"] {
@@ -389,6 +394,12 @@ input[type="password"] {
   border-radius: 4px;
   transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+
+input[type="text"].fill,
+input[type="password"].fill {
+  width: 100%;
+}
+
 .label-item .input-disabled {
   background-color: #f5f7fa;
   line-height: 42px;
@@ -465,6 +476,10 @@ input[type="password"]:hover {
 
 .button.full {
   width: 220px;
+}
+
+.button.fill {
+  width: 100%;
 }
 
 .select-wrapper {
@@ -739,7 +754,7 @@ input[type="password"]:hover {
 /* 自定义样式 */
 
 .container {
-  width: 980px;
+  width: 1200px;
   margin: 0 auto;
 }
 

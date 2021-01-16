@@ -17,26 +17,24 @@
   <!-- 登录模块 -->
   <section class="login-wrapper wrapper" id="login_wrapper" style="display: none;">
     <div class="login-inner container">
-      <div class="login-title">
-        <div>Router-LINK</div>
-        <div>Router-WR886N</div>
+      <div class="login-logo">
+        <img src="/images/banner.png" alt="">
       </div>
 
       <div class="login-main">
-        <div class="login-form-title">管理员密码</div>
-        <div class="login-form-item login-password">
-          <div class="login-password--prepend">密码</div>
-          <div class="login-password-wrap">
-            <input class="login-password--inp" id="login_password" type="password" maxlength="16" placeholder="请输入管理员密码"
-              autocomplete="off">
-            <!-- <span class="input-password-error-tip" id="ps_error_tip"></span> -->
-          </div>
+        <div class="password-input-wrapper">
+          <input class="fill" type="password" maxlength="16" placeholder="请输入密码" />
+          <div class="password-tip">请输入密码</div>
         </div>
-        <div class="login-form-item login-submit" id="login_submit">确定</div>
-        <div class="login-form-item login-forgot">
-          <button class="forgot-password-btn" id="forgot_password_btn">忘记密码？</button>
-          <div class="forgot-tips" id="forgot_tips">
-            如忘记密码，请恢复出厂设置。恢复方法：在设备通电的情况下，按住路由器的“Reset”按钮，5到8秒后松开
+        <button class="button fill">登录</button>
+
+        <div class="forgot-password-wrapper">
+          <span class="forgot-password-btn">忘记密码？</span>
+          <div class="forgot-password-tips">
+            若忘记密码，请恢复出厂设置。<br />
+            恢复方法：在设备通电的情况下，长按"<span>Reset</span>"键<br />
+            至设备状态灯开始蓝色闪烁松手。设备状态灯恢复<br />
+            蓝色常亮表示已完成重置<br />
           </div>
         </div>
       </div>
