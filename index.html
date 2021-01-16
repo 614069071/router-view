@@ -23,14 +23,14 @@
 
       <div class="login-main">
         <div class="password-input-wrapper">
-          <input class="fill" type="password" maxlength="16" placeholder="请输入密码" />
-          <div class="password-tip">请输入密码</div>
+          <input class="fill" id="login_password" type="password" maxlength="16" placeholder="请输入密码" />
+          <div class="password-tip" id="ps_error_tip">请输入密码</div>
         </div>
-        <button class="button fill">登录</button>
+        <button class="button fill" id="login_submit">登录</button>
 
         <div class="forgot-password-wrapper">
-          <span class="forgot-password-btn">忘记密码？</span>
-          <div class="forgot-password-tips">
+          <span class="forgot-password-btn" id="forgot_password_btn">忘记密码？</span>
+          <div class="forgot-password-tips" id="forgot_tips">
             若忘记密码，请恢复出厂设置。<br />
             恢复方法：在设备通电的情况下，长按"<span>Reset</span>"键<br />
             至设备状态灯开始蓝色闪烁松手。设备状态灯恢复<br />

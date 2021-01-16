@@ -55,6 +55,7 @@
   left: 0;
   font-size: 12px;
   color: #f56c6c;
+  display: none;
 }
 
 .forgot-password-wrapper {
@@ -82,6 +83,7 @@
   right: 7px;
   white-space: nowrap;
   line-height: 20px;
+  display: none;
 }
 
 .forgot-password-tips span {

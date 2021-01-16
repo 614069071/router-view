@@ -16,35 +16,43 @@ function loadLogin() {
   var $login_submit_btn = $('#login_submit');
   var $login_submit_input = $('#login_password');
   var $ps_error_tip = $('#ps_error_tip');
+  var $forgot_btn = $('#forgot-password-btn');
+  var $forgot_tip = $('#forgot_tips');
   // 判断状态加载数据
 
   function loginHandel() {
     var value = $login_submit_input.val();
+
+    if (!value) {
+      $ps_error_tip.html('请输入密码').slideDown();
+      return;
+    } else if (_space(value)) {
+      $ps_error_tip.html('输入不能包含空格').slideDown();
+      return;
+    } else {
+      $ps_error_tip.html('').slideUp();
+    }
+
     loadContent();
     $.cookie('__accessToken__', 1);
 
     return;
-    if (value) {
-      _loading();
-      _login(value)
-        .then(function (res) {
-          console.log('login suc', res);
-          if (res.error == 0) {
-            loadContent();
-            $.cookie('__accessToken__', 1);
-          } else if (res.error == 10001) {
-            _toast('密码错误');
-          } else {
-            _toast('登录失败');
-          }
-        })
-        .catch(function (err) {
-          _toast('密码错误', 'error');
-        })
-    } else {
-      // $ps_error_tip.show().html('请输入密码');
-      _toast('请输入密码');
-    }
+    _loading();
+    _login(value)
+      .then(function (res) {
+        console.log('login suc', res);
+        if (res.error == 0) {
+          loadContent();
+          $.cookie('__accessToken__', 1);
+        } else if (res.error == 10001) {
+          _toast('密码错误');
+        } else {
+          _toast('登录失败');
+        }
+      })
+      .catch(function (err) {
+        _toast('密码错误', 'error');
+      })
   }
 
   // 登录模块
