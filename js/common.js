@@ -171,8 +171,9 @@ _Pager.prototype.init = function() {
     /* -------------------创建分页器 end -------------------*/
 
 /* ------------------- 创建 NavMenu start ------------------- */
-function _MenuTree(arr, el) {
+function _MenuTree(arr, el, complete) {
     this.appendMenuToEle(arr, el);
+    this.complete = complete;
 }
 
 _MenuTree.prototype.initMenuHandel = function() {
@@ -217,8 +218,9 @@ _MenuTree.prototype.createMenuItem = function(arr, el, pl) {
         } else {
             var span = $('<span class="menu-item-title ' + (e.checked ? "checked" : "") + '" data-module="' + e.module + '" style="padding-left:' + padding + 'px;">' + (e.icon ? '<i class="iconfont icon-' + e.icon + '"></i>' : '') + e.title + '</span>');
 
-            e.callback && span.on('click', function() {
-                e.callback();
+            span.on('click', function() {
+                self.complete && self.complete();
+                e.callback && e.callback();
             });
 
             item = $('<li class="menu-item"></li>');
@@ -232,16 +234,9 @@ _MenuTree.prototype.createMenuItem = function(arr, el, pl) {
     return result;
 }
 
-_MenuTree.prototype.createMenuTree = function(arr) {
-    var result = this.createMenuItem(arr);
-    // var body = '<ul class="menu-bar-body">' + result + '</ul>';
-
-    return result;
-}
-
 _MenuTree.prototype.appendMenuToEle = function(arr, el) {
     var root = el || $('body');
-    var menuTree = this.createMenuTree(arr);
+    var menuTree = this.createMenuItem(arr);
     root.append(menuTree);
     this.initMenuHandel();
     this.finish();

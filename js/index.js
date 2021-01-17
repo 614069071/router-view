@@ -106,7 +106,11 @@ function loadContent() {
     ];
 
     // 创建 NavMenu
-    new _MenuTree(menuBarArray, $('.nav-menu-wrapper'));
+    new _MenuTree(menuBarArray, $('.nav-menu-wrapper'), function() {
+        console.log('complate');
+        var $label_item_tips = $('.label-item-tip');
+        $label_item_tips.slideUp();
+    });
 
     // 退出
     function exitHandel() {
