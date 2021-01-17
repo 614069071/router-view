@@ -94,15 +94,7 @@ function loadContent() {
         { title: 'LAN口设置', module: 'route-lan', icon: 'LANkou' },
         { title: '修改密码', module: 'route-manage', icon: 'edit' },
         { title: '软件升级', module: 'route-update', icon: 'rocket' },
-        {
-            title: '关于我们',
-            module: 'cloud-about',
-            icon: 'question',
-            list: [
-                { title: 'WAN口设置', module: 'route-internet', icon: 'WANkou' },
-
-            ]
-        },
+        { title: '关于我们', module: 'cloud-about', icon: 'question' },
     ];
 
     // 创建 NavMenu
