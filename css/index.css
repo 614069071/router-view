@@ -194,13 +194,19 @@
 /* 设备状态 首页*/
 .home-module-item-wrapper {
   background-color: #f5f7fa;
-  background-color: pink;
   padding: 20px 27px;
+}
+
+.home-item-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .home-item-inner--wrapper {
   background-color: #fff;
   padding: 0 24px;
+  margin-top: 20px;
 }
 
 .home-item-inner--title {
@@ -208,6 +214,25 @@
   line-height: 65px;
   border-bottom: 1px solid #dfe4ed;
   font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-left span {
+  color: var(--default-color);
+  margin-left: 10px;
+}
+
+.title-right span {
+  color: #606266;
+}
+
+.title-right span i {
+  color: #000;
+}
+
+.title-right span + span {
+  margin-left: 30px;
 }
 
 .home-item-info--main {
@@ -224,8 +249,28 @@
   margin-top: 18px;
 }
 
-.home-item-inner--main-item > div > span {
-  color: #000;
+.home-item-inner--main-item > span {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.big-item-inner--wrapper {
+  margin-top: 0;
+}
+
+.small-item-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.small-item-blank {
+  width: 20px;
+  background-color: #f5f7fa;
+}
+
+.small-item-inner--wrapper {
+  min-width: 40%;
+  flex: 1;
 }
 
 .device-state-wrapper {
@@ -236,10 +281,6 @@
   display: inline-block;
   width: 140px;
   margin-right: 20px;
-}
-
-.device-state-item-title {
-  margin-bottom: 10px;
 }
 
 .device-state-item .device-state-item-img {
@@ -259,13 +300,6 @@
   justify-content: center;
 }
 
-.device-state-item-other .other-item {
-  display: flex;
-}
-
-.device-state-item-other .other-item span {
-  text-align: left;
-}
 /* LAN口设置 */
 
 .setting-lan-from p {
