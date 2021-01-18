@@ -194,14 +194,13 @@
 .home-module-item-wrapper {
   background-color: #f5f7fa;
   padding: 20px 27px;
-}
-
-.home-item-inner {
+  min-height: 100%;
 }
 
 .home-item-inner--wrapper {
   background-color: #fff;
-  padding: 0 24px;
+  /* padding: 0 24px; */
+  box-sizing: border-box;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -257,6 +256,7 @@
 
 .big-item-inner--wrapper {
   margin-top: 0;
+  padding: 0 24px;
 }
 
 .small-item-wrapper {
@@ -271,9 +271,22 @@
 }
 
 .small-item-inner--wrapper {
-  min-width: 530px;
-  max-width: 50%;
-  flex: 1;
+  width: 50%;
+  box-sizing: border-box;
+  background-color: #f5f7fa;
+}
+
+.small-item-inner--wrapper.right {
+  padding-right: 10px;
+}
+
+.small-item-inner--wrapper.left {
+  padding-left: 10px;
+}
+
+.item-inner-main {
+  background-color: #fff;
+  padding: 0 24px;
 }
 
 .device-state-wrapper {
@@ -328,10 +341,11 @@
   width: 260px;
   min-width: 260px;
   height: 195px;
+  padding-bottom: 58px;
   background-image: url(../images/network.png);
   background-size: contain;
   background-repeat: no-repeat;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: relative;
 }
 
@@ -345,9 +359,27 @@
   height: 66px;
   position: absolute;
   left: 124px;
-  bottom: 60px;
+  top: 74px;
   transform: rotate(-122deg);
   transform-origin: center 60px;
+}
+
+.network-item .notwork-speed,
+.network-item .notwork-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.network-item .notwork-speed {
+  font-size: 24px;
+  color: #30bf78;
+  bottom: 40px;
+}
+
+.network-item .notwork-title {
+  color: rgba(0, 0, 0, 0.45);
+  bottom: 10px;
 }
 
 /* LAN口设置 */
