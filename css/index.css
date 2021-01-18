@@ -253,6 +253,10 @@
   color: rgba(0, 0, 0, 0.85);
 }
 
+.home-item-inner--main-item > i {
+  color: var(--default-color);
+}
+
 .big-item-inner--wrapper {
   margin-top: 0;
 }

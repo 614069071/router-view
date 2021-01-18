@@ -34,7 +34,7 @@ function loadLogin() {
     }
 
     loadContent();
-    $.cookie('__accessToken__', 1);
+    _storages.set('__accessToken__', 1);
 
     return;
     _loading();
@@ -43,7 +43,7 @@ function loadLogin() {
         console.log('login suc', res);
         if (res.error == 0) {
           loadContent();
-          $.cookie('__accessToken__', 1);
+          _storages.set('__accessToken__', 1);
         } else if (res.error == 10001) {
           _toast('密码错误');
         } else {
@@ -106,7 +106,7 @@ function loadContent() {
 
   // 退出
   function exitHandel() {
-    $.cookie('__accessToken__', 0);
+    _storages.set('__accessToken__', 0);
     _storages.set('_module_', '')
     loadLogin();
   }
@@ -430,7 +430,7 @@ function loadContent() {
 
               if (res.error === 0) {
                 _toast('修改成功，3秒后将自动回到登录页', 'success', function () {
-                  $.cookie('__accessToken__', 0);
+                  _storages.set('__accessToken__', 0);
                   loadLogin();
                 });
               } else {
@@ -536,7 +536,7 @@ function loadContent() {
 }
 
 $(function () {
-  var state = $.cookie('__accessToken__');
+  var state = _storages.get('__accessToken__');
   console.log(state)
 
   if (state == '1') {
