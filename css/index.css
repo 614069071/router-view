@@ -275,7 +275,8 @@
 }
 
 .small-item-inner--wrapper {
-  min-width: 40%;
+  min-width: 530px;
+  max-width: 50%;
   flex: 1;
 }
 
@@ -286,7 +287,6 @@
 .device-state-item {
   display: flex;
   flex: 1;
-  margin-right: 20px;
   justify-content: center;
   align-items: center;
 }
@@ -295,6 +295,12 @@
   height: 230px;
   width: 230px;
   position: relative;
+}
+
+.device-state-item .device-state-item-img.network-state-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .device-state-item-img .device-state-item-wrapper {
@@ -320,6 +326,32 @@
   color: rgba(0, 0, 0, 0.85);
   font-size: 24px;
   margin-top: 17px;
+}
+
+.network-item {
+  width: 260px;
+  min-width: 260px;
+  height: 195px;
+  background-image: url(../images/network.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  position: relative;
+}
+
+.device-state-item .device-state-item-img.network-state-wrapper {
+  width: 100%;
+  min-width: 530px;
+}
+
+.network-item .notwork-pointer {
+  width: 12px;
+  height: 66px;
+  position: absolute;
+  left: 124px;
+  bottom: 60px;
+  transform: rotate(-122deg);
+  transform-origin: center 60px;
 }
 
 /* LAN口设置 */
