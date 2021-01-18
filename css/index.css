@@ -207,6 +207,8 @@
   background-color: #fff;
   padding: 0 24px;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-item-inner--title {
@@ -282,16 +284,17 @@
 }
 
 .device-state-item {
-  display: inline-block;
-  width: 140px;
+  display: flex;
+  flex: 1;
   margin-right: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .device-state-item .device-state-item-img {
   height: 230px;
   width: 230px;
   position: relative;
-  text-align: center;
 }
 
 .device-state-item-img .device-state-item-wrapper {
