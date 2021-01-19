@@ -88,6 +88,7 @@ function loadContent() {
     checked: true,
     callback: function () {
       console.log('object')
+      loadNetworkState();
     }
   },
   { title: 'WAN口设置', module: 'route-internet', icon: 'WANkou' },
@@ -102,6 +103,7 @@ function loadContent() {
     console.log('complate');
     var $label_item_tips = $('.label-item-tip');
     $label_item_tips.slideUp();
+    clearInterval(networkTimer);
   });
 
   // 退出
@@ -194,18 +196,24 @@ function loadContent() {
   var $netword_dw_pointer = $('#netword_dw_pointer');
   var $netword_dw_speed = $('#netword_dw_speed');
 
-  setInterval(() => {
-    // 上行速度
-    var num1 = parseInt(Math.random() * 10240 * 1000);//模拟网速
-    var nt1 = getDegrees(num1);
-    $netword_up_pointer.css('transform', 'rotate(' + nt1.deg + 'deg)');
-    $netword_up_speed.text(nt1.bety);
-    var num2 = parseInt(Math.random() * 512 * 1000);//模拟网速
-    var nt2 = getDegrees(num2);
-    $netword_dw_pointer.css('transform', 'rotate(' + nt2.deg + 'deg)');
-    $netword_dw_speed.text(nt2.bety);
-  }, 4000);
+  var networkTimer = null;
+  function loadNetworkState() {
+    networkTimer && clearInterval(networkTimer);
+    networkTimer = setInterval(() => {
+      console.log('loadNetworkState')
+      // 上行速度
+      var num1 = parseInt(Math.random() * 10240 * 1000);//模拟网速
+      var nt1 = getDegrees(num1);
+      $netword_up_pointer.css('transform', 'rotate(' + nt1.deg + 'deg)');
+      $netword_up_speed.text(nt1.bety);
+      var num2 = parseInt(Math.random() * 512 * 1000);//模拟网速
+      var nt2 = getDegrees(num2);
+      $netword_dw_pointer.css('transform', 'rotate(' + nt2.deg + 'deg)');
+      $netword_dw_speed.text(nt2.bety);
+    }, 4000);
+  }
 
+  loadNetworkState();
 
   // 设置svg度数
   function setSvgStyle(num) {
