@@ -405,19 +405,24 @@
   width: 100%;
   border-radius: 50%;
   background-repeat: repeat no-repeat;
-  background-size: 221px 266px;
+  background-size: 221px 120px;
   background-position: 0px 140px;
 }
 
 .usb-state-inner.item1 {
   background-image: url(../images/ripple1.png);
-  /* animation: waves 3s linear infinite; */
+  animation: waves 3s linear infinite;
 }
 
-/* .usb-state-inner.item2 {
+.usb-state-inner.item2 {
   background-image: url(../images/ripple2.png);
+  animation: waves 4s linear infinite;
+}
+
+.usb-state-inner.item3 {
+  background-image: url(../images/ripple3.png);
   animation: waves 5s linear infinite;
-} */
+}
 
 @keyframes waves {
   0% {

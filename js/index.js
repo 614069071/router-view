@@ -213,10 +213,6 @@ function loadContent() {
   }
 
 
-  // canvas
-
-
-
   // WAN口设置
   var $internet_connect_select_options = $('.internet-connect-select .select-option');
   var $internet_connect_select_items = $('.connect-type-main-wrapper .model-type-item');
