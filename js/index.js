@@ -449,6 +449,14 @@ function loadContent() {
 
   });
 
+  // 提示框
+  var $control_tip_btn = $('#control_tip_btn');
+  var $change_ps_popur = $('#change_ps_popur');
+
+  $control_tip_btn.on('click', function () {
+    $change_ps_popur.toggle();
+  });
+
   // 设备管理 => 固件升级
   var $upgrade_popup_warpper = $('.upgrade-popup-warpper');
   var $progress_wrapper = $('.upgrade-progress-wrapper');

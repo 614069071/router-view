@@ -458,6 +458,49 @@
   left: 0;
 }
 
+/* 修改密码 */
+.label-new-password {
+  position: relative;
+}
+
+.label-popur-wrapper {
+  position: absolute;
+  left: 345px;
+  white-space: nowrap;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  transform: translateY(-50%);
+}
+
+.label-popur-icon {
+  font-size: 14px;
+  padding: 10px;
+  color: #c0c4cc;
+  cursor: pointer;
+}
+
+.label-popur-main {
+  padding: 14px 20px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.label-popur-main-title {
+  font-size: 16px;
+  color: #303133;
+  height: 22px;
+  line-height: 22px;
+}
+
+.label-popur-main-context {
+  color: #606266;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 6px;
+}
+
 /* 路由器管理 => 软件升级 */
 .progress-bar-wrapper {
   margin-top: 10px;
