@@ -86,7 +86,7 @@ function _getTimeSync() {
   return _request(parmas);
 }
 
-// 获取设备列表
+// 获取dhcp设备列表
 function _getOlineList() {
   var parmas = { operation: 'get_host', function: 'get' };
 
