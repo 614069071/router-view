@@ -532,6 +532,9 @@
 .display-file-name {
   width: 240px;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .display-file-name.active {
