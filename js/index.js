@@ -134,15 +134,6 @@ function loadContent() {
           .catch(function (err) {
             _toast('设备重置失败，请检查设备连接是否正常！', 'error');
           })
-        // 重启
-        // _restartRoute()
-        //   .then(function (res) {
-        //     console.log(res, '重启suc');
-        //     exitHandel();
-        //   })
-        //   .catch(function (err) {
-        //     _toast('设备重启失败，请检查设备连接是否正常！', 'error');
-        //   })
       }
     });
   })
