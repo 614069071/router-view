@@ -359,9 +359,10 @@
   height: 66px;
   position: absolute;
   left: 124px;
-  top: 74px;
-  transform: rotate(-122deg);
+  top: 70px;
+  transform: rotate(-120deg);
   transform-origin: center 60px;
+  /* transition: all 0.2s; */
 }
 
 .network-item .notwork-speed,
@@ -392,24 +393,31 @@
   overflow: hidden;
 }
 
+.usb-canvas {
+  height: 230px;
+  width: 230px;
+  border: 1px solid red;
+}
+
 .usb-state-inner {
   position: absolute;
   height: 230px;
   width: 100%;
   border-radius: 50%;
   background-repeat: repeat no-repeat;
-  background-position: 0px 160px;
+  background-size: 221px 266px;
+  background-position: 0px 140px;
 }
 
 .usb-state-inner.item1 {
-  background-image: url(../images/bo1.png);
-  animation: waves 3s linear infinite;
+  background-image: url(../images/ripple1.png);
+  /* animation: waves 3s linear infinite; */
 }
 
-.usb-state-inner.item2 {
-  background-image: url(../images/bo2.png);
+/* .usb-state-inner.item2 {
+  background-image: url(../images/ripple2.png);
   animation: waves 5s linear infinite;
-}
+} */
 
 @keyframes waves {
   0% {
@@ -417,7 +425,7 @@
   }
 
   100% {
-    background-position: 191px 160px;
+    background-position: 221px 160px;
   }
 }
 

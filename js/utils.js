@@ -21,6 +21,19 @@ function _ip(str) {
   return reg.test(str);
 }
 
+function _toBety(size) {
+  var c = 0;
+  var num = size / 1000;
+  var bety = ['K', 'M', 'G', 'T'];
+
+  while (num >= 1024) {
+    num /= 1024;
+    c++;
+  }
+
+  return num.toFixed(2) + bety[c];
+}
+
 /* 
   @data 请求数据
   @method 请求方式

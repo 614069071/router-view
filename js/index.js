@@ -167,15 +167,53 @@ function loadContent() {
 
   /* 主体功能模块 */
   // 首页（设备状态）
+  // 网络状态
+  function getDegrees(size) {
+    var sum = -120;
+    var se = _toBety(size) + '/S';
+    var deg = size / 1000;
+
+    if (deg <= 600) {
+      var c = (deg / 600) * 120;
+      sum += c;
+    } else if (deg <= 1024) {
+      var c = (((deg - 600) / 424) * 60) + 120;
+      sum += c;
+    } else if (deg > 1024) {
+      var c = (((deg - 1024) / 9216) * 60) + 180;
+
+      sum += c;
+      sum = sum > 120 ? 120 : sum;
+    }
+
+    return { deg: sum, bety: se };
+  }
+
+  var $netword_up_pointer = $('#netword_up_pointer');
+  var $netword_up_speed = $('#netword_up_speed');
+  var $netword_dw_pointer = $('#netword_dw_pointer');
+  var $netword_dw_speed = $('#netword_dw_speed');
+
+  setInterval(() => {
+    // 上行速度
+    var num1 = parseInt(Math.random() * 10240 * 1000);//模拟网速
+    var nt1 = getDegrees(num1);
+    $netword_up_pointer.css('transform', 'rotate(' + nt1.deg + 'deg)');
+    $netword_up_speed.text(nt1.bety);
+    var num2 = parseInt(Math.random() * 512 * 1000);//模拟网速
+    var nt2 = getDegrees(num2);
+    $netword_dw_pointer.css('transform', 'rotate(' + nt2.deg + 'deg)');
+    $netword_dw_speed.text(nt2.bety);
+  }, 4000);
+
+
+  // 设置svg度数
   function setSvgStyle(num) {
     return 'stroke-dasharray: ' + (num || 0) + 'px, 295.31px; transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;';
   }
 
-  var $network_state_svg = $('.network-state-svg');
 
-  setTimeout(function () {
-    $network_state_svg.prop('style', setSvgStyle(20));
-  }, 3000)
+  // canvas
 
 
 

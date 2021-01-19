@@ -90,18 +90,18 @@
                   <div class="device-state-item">
                     <div class="device-state-item-img network-state-wrapper">
                       <div class="network-item">
-                        <div class="notwork-pointer">
+                        <div class="notwork-pointer" id="netword_up_pointer">
                           <img src="./images/pointer.png" alt="">
                         </div>
-                        <span class="notwork-speed">600K/S</span>
+                        <span class="notwork-speed" id="netword_up_speed">0.00K/S</span>
                         <div class="notwork-title">WAN口上行速率</div>
                       </div>
 
                       <div class="network-item">
-                        <div class="notwork-pointer">
+                        <div class="notwork-pointer" id="netword_dw_pointer">
                           <img src="./images/pointer.png" alt="">
                         </div>
-                        <span class="notwork-speed">600K/S</span>
+                        <span class="notwork-speed" id="netword_dw_speed">0.00K/S</span>
                         <div class="notwork-title">WAN口下行速率</div>
                       </div>
                     </div>
@@ -172,14 +172,18 @@
 
                   <div class="device-state-item">
                     <div class="device-state-item-img">
-                      <div class="usb-state-wrapper">
+                      <!-- <div class="usb-state-wrapper">
                         <div class="usb-state-inner item1"></div>
                         <div class="usb-state-inner item2"></div>
-                      </div>
-                      <div class="device-state-item-wrapper">
+                      </div> -->
+
+                      <canvas class="usb-canvas" id="usb_canvas">
+                        你的浏览器暂不支持该功能，请升级你的浏览器
+                      </canvas>
+                      <!-- <div class="device-state-item-wrapper">
                         <span>USB剩余容量</span>
                         <span class="device-state-item-text">1G</span>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
