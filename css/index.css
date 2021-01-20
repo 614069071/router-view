@@ -532,6 +532,7 @@
 .display-file-label {
   display: flex;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .display-file-name {
@@ -557,6 +558,16 @@
 .display-file-look {
   color: var(--default-color) !important;
   border-color: #cee0ff !important;
+}
+
+.upload-file-tip {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  font-size: 12px;
+  padding-top: 4px;
+  color: #f56c6c;
+  display: none;
 }
 
 .upgrade-progress-wrapper {

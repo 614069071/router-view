@@ -531,23 +531,37 @@ function loadContent() {
   var $update_file = $('#update_file');
   var $upgrade_submit = $('#upgrade_submit');
   var $upgrade_name = $('.display-file-name');
+  var $upload_file_tip = $('.upload-file-tip');
 
   $update_file.on('change', function (e) {
     var file = e.target.files[0] || {};
+    console.log(file, 'file')
+    var fileType = file.type;
     var name = file.name;
 
-    if (name) {
-      $upgrade_name.addClass('active').text(name);
-    } else {
+    if (!name) {
       $upgrade_name.removeClass('active').text('请点击浏览');
+      return;
     }
+
+    if (fileType !== 'text/plain') {
+      $update_file.val('');
+      $upgrade_name.removeClass('active').text('请点击浏览');
+      $upload_file_tip.text('升级文件为非法数据，请通过官网下载合法升级文件').slideDown();
+      return;
+    }
+
+    $upgrade_name.addClass('active').text(name);
+    $upload_file_tip.text('').slideUp();
   })
 
   $upgrade_submit.on('click', function () {
     var $file = $update_file.prop('files')[0];
     if (!$file) {
-      _toast('请选择升级文件！', 'warning');
+      $upload_file_tip.text('升级文件不能为空，请通过浏览选择升级的文件').slideDown();
       return;
+    } else {
+      $upload_file_tip.text('').slideUp();
     }
     $upgrade_popup_warpper.show();
     upgrade_Progress.start();
