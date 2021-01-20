@@ -295,14 +295,16 @@ _Progress.prototype.move = function (num) {
   var $progress_percentage = $('.progress-wrapper .progress-percentage');
 
   self.timer = setInterval(function () {
+    if (self.current >= 99) {
+      clearInterval(self.timer);
+      return;
+    }
     self.current += 1;
     var scale = self.current + '%';
     console.log(self.current, 'self.current');
     $progress_percentage.text(scale);
     $progress_bar.prop('style', 'stroke-dasharray: ' + (self.current * step) + 'px, 295.31px;');
-    if (self.current >= 100) {
-      clearInterval(self.timer);
-    }
+
   }, speed);
 }
 
