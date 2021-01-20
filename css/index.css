@@ -530,11 +530,18 @@
 }
 
 .display-file-name {
-  width: 240px;
+  width: 212px;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  height: 40px;
+  line-height: 40px;
+  width: 240px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  margin-right: 10px;
+  padding: 0 14px;
 }
 
 .display-file-name.active {
