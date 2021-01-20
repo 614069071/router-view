@@ -531,7 +531,7 @@ function loadContent() {
   var $update_file = $('#update_file');
   var $upgrade_submit = $('#upgrade_submit');
   var $upgrade_name = $('.display-file-name');
-  var $upload_file_tip = $('.upload-file-tip');
+  var $upload_file_tip = $('.label-item-tip');
 
   $update_file.on('change', function (e) {
     var file = e.target.files[0] || {};
