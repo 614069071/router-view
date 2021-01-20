@@ -541,6 +541,7 @@ function loadContent() {
 
     if (!name) {
       $upgrade_name.removeClass('active').text('请点击浏览');
+      $upload_file_tip.text('').slideUp();
       return;
     }
 
