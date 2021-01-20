@@ -145,3 +145,10 @@ function _upgradeStart() {
 
   return _request(parmas);
 }
+
+// 检测版本（测试接口，无效）
+function _detectionVersion() {
+  var parmas = {};
+
+  return _request(parmas);
+}
