@@ -87,12 +87,31 @@ function loadContent() {
     icon: 'cloud',
     checked: true,
     callback: function () {
-      console.log('object')
-      loadNetworkState();
+      // loadNetworkState();
+      _getRouterInfo()
+        .then(function (res) {
+          console.log('获取路由信息 success', res);
+        })
+        .catch(function (err) {
+          console.log('获取路由信息 error', err);
+        })
     }
   },
   { title: 'WAN口设置', module: 'route-internet', icon: 'WANkou' },
-  { title: 'LAN口设置', module: 'route-lan', icon: 'LANkou' },
+  {
+    title: 'LAN口设置',
+    module: 'route-lan',
+    icon: 'LANkou',
+    callback: function () {
+      _getOlineList()
+        .then(function (res) {
+          console.log('lan口设置 dhcp 设备列表 success', res)
+        })
+        .catch(function (err) {
+          console.log('lan口设置 dhcp 设备列表 error', err)
+        })
+    }
+  },
   { title: '修改密码', module: 'route-manage', icon: 'edit' },
   { title: '软件升级', module: 'route-update', icon: 'rocket' },
   { title: '关于我们', module: 'cloud-about', icon: 'question' },
@@ -206,9 +225,9 @@ function loadContent() {
 
   var _module_ = _storages.get('_module_');
 
-  if (_module_ === 'route-status' || !_module_) {
-    loadNetworkState();
-  }
+  // if (_module_ === 'route-status' || !_module_) {
+  //   loadNetworkState();
+  // }
 
 
   // 设置svg度数
@@ -236,7 +255,13 @@ function loadContent() {
   var $setting_wizard_static_form_tips = $setting_wizard_static_form.find('.label-item-tip');
 
   $setting_wizard_dynamic_form_submit.on('click', function () {
-    console.log('DHCP（推荐）')
+    _setConnectDhcp()
+      .then(function (res) {
+        console.log('wan口设置 dhcp（推荐） success', res);
+      })
+      .catch(function (err) {
+        console.log('wan口设置 dhcp（推荐） error', err);
+      })
   });
 
   // 宽带拨号提交
@@ -264,7 +289,13 @@ function loadContent() {
     }
 
     // ajax
-
+    _setConnectPPPoE(data.name1, data.name2)
+      .then(function (res) {
+        console.log('wan口设置 ppoe success', res)
+      })
+      .catch(function (err) {
+        console.log('wan口设置 ppoe error', err)
+      })
   });
 
   // 静态ip提交
@@ -291,7 +322,13 @@ function loadContent() {
       $setting_wizard_static_form_tips.eq(1).html('').slideUp();
     }
     // ajax
-
+    _setConnectStatic()
+      .then(function (res) {
+        console.log('wan口设置 静态 success', res)
+      })
+      .catch(function (err) {
+        console.log('wan口设置 静态 error', err)
+      })
   });
 
   // lan设置
@@ -317,7 +354,16 @@ function loadContent() {
   $setting_lan_auto_submit.on('click', function () {
     var parmas = { name1: '192.168.1.1', name2: '255.255.255.0' };
 
-    console.log('自动', parmas)
+    console.log('自动', parmas);
+
+    _setLanInfo()
+      .then(function (res) {
+        console.log('lan口设置 success', res)
+      })
+      .catch(function (err) {
+        console.log('lan口设置 error', err)
+      })
+
   });
   // 手动设置
   var $setting_lan_custom_submit = $('#setting_lan_custom_submit');
@@ -354,6 +400,14 @@ function loadContent() {
     } else {
       $setting_lan_custom_form_tips.eq(1).html('').slideUp();
     }
+
+    _setLanInfo()
+      .then(function (res) {
+        console.log('lan口设置 success', res)
+      })
+      .catch(function (err) {
+        console.log('lan口设置 error', err)
+      })
 
   });
 
@@ -551,8 +605,9 @@ function loadContent() {
   $update_file.on('change', function (e) {
     var file = e.target.files[0] || {};
     console.log(file, 'file')
-    var fileType = file.type;
     var name = file.name;
+    var arr = name.split('.');
+    var fileType = arr[arr.length - 1];
 
     if (!name) {
       $upgrade_name.removeClass('active').text('请点击浏览');
@@ -560,7 +615,7 @@ function loadContent() {
       return;
     }
 
-    if (fileType !== 'text/plain') {
+    if (fileType !== 'bin') {
       $update_file.val('');
       $upgrade_name.removeClass('active').text('请点击浏览');
       $upload_file_tip.text('升级文件为非法数据，请通过官网下载合法升级文件').slideDown();
@@ -584,10 +639,19 @@ function loadContent() {
     return;
     uploadFile($file)
       .then(function (res) {
-        console.log(res)
+        console.log('上传文件 success', res);
+
+        return;
+        _upgradeStart()
+          .then(function (res) {
+            console.log(object)
+          })
+          .catch(function (err) {
+            console.log(err);
+          })
       })
       .catch(function (err) {
-        console.log(err)
+        console.log('上传文件 error', err);
       })
   })
 

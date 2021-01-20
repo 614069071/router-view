@@ -82,9 +82,9 @@ function _setConnectDhcp(dns, mac, mtu) {
     operation: 'wan_setup',
     function: 'set',
     mode: 1,
-    dns: dns,
-    mac: mac,
-    mtu: mtu
+    dns: '',
+    mac: '',
+    mtu: ''
   };
 
   return _request(parmas);
@@ -110,18 +110,18 @@ function _setConnectPPPoE(account, password) {
 }
 
 // 设置静态IP
-function _setConnectStatic(ip, mask, gw, dns, dns1, mac, mtu) {
+function _setConnectStatic(ip, mask, gw, dns, dns1, mtu) {
   var parmas = {
     operation: 'wan_setup',
     function: 'set',
-    ip: ip,
-    mask: mask,
-    gw: gw,
+    ip: '',
+    mask: '',
+    gw: '',
     mode: 3,
-    mtu: mtu,
-    dns: dns,
-    dns1: dns1,
-    mac: mac,
+    mtu: '',
+    dns: '',
+    dns1: '',
+    mac: '',
   };
 
   return _request(parmas);
