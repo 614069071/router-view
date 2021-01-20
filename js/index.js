@@ -530,7 +530,12 @@ function loadContent() {
   $update_file.on('change', function (e) {
     var file = e.target.files[0] || {};
     var name = file.name;
-    name && $upgrade_name.addClass('active').text(name);
+
+    if (name) {
+      $upgrade_name.addClass('active').text(name);
+    } else {
+      $upgrade_name.removeClass('active').text('请点击浏览');
+    }
   })
 
   $upgrade_submit.on('click', function () {

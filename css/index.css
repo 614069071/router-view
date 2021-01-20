@@ -529,6 +529,11 @@
   color: var(--default-color);
 }
 
+.display-file-label {
+  display: flex;
+  margin-bottom: 20px;
+}
+
 .display-file-name {
   width: 212px;
   text-align: left;
