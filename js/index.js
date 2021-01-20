@@ -204,7 +204,12 @@ function loadContent() {
     }, 4000);
   }
 
-  loadNetworkState();
+  var _module_ = _storages.get('_module_');
+
+  if (_module_ === 'route-status' || !_module_) {
+    loadNetworkState();
+  }
+
 
   // 设置svg度数
   function setSvgStyle(num) {
