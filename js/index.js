@@ -3,6 +3,7 @@ var $login_wrapper = $('#login_wrapper');
 var $content_wrapper = $('#content_wrapper');
 var _LogintHtml = $login_wrapper.html();
 var _ContentHtml = $content_wrapper.html();
+var networkTimer = null;
 
 $login_wrapper.empty();
 $content_wrapper.empty();
@@ -11,6 +12,7 @@ $content_wrapper.empty();
 function loadLogin() {
   $content_wrapper.hide().empty();
   $login_wrapper.hide().html(_LogintHtml).show();
+  clearInterval(networkTimer);
   _init();
 
   var $login_submit_btn = $('#login_submit');
@@ -33,8 +35,8 @@ function loadLogin() {
       $ps_error_tip.html('').slideUp();
     }
 
-    loadContent();
     _storages.set('__accessToken__', 1);
+    loadContent();
 
     return;
     _loading();
@@ -99,8 +101,7 @@ function loadContent() {
     icon: 'LANkou',
     callback: function () {
       onlineDHCPlist();
-
-
+      initLanSetting();
     }
   },
   { title: '修改密码', module: 'route-manage', icon: 'edit' },
@@ -229,7 +230,6 @@ function loadContent() {
   var $usb_use_cap = $('.usb_use_cap');
   var $usb_remain_cap = $('.usb_remain_cap');
 
-  var networkTimer = null;
   var CacheUpBety = 0;
   var CacheDownBety = 0;
   function loadNetworkState() {
@@ -314,10 +314,11 @@ function loadContent() {
   }
 
   var _module_ = _storages.get('_module_');
+  var __accessToken__ = _storages.get('__accessToken__');
 
-  if (_module_ === 'route-status' || !_module_) {
-    loadNetworkState();
-  }
+  // if (__accessToken__ == '1' && (_module_ === 'route-status' || !_module_)) {
+  //   loadNetworkState();
+  // }
 
   // WAN口设置
   var $internet_connect_select_options = $('.internet-connect-select .select-option');
@@ -424,15 +425,63 @@ function loadContent() {
   // });
 
   var $lan_set_select_options = $('.lan-connect-select .select-option');
-  var $lan_set_select_items = $('.lan-set-wrapper .lan-type-item');
+  var $setting_lan_custom_submit = $('#setting_lan_custom_submit');
+  var $setting_lan_custom_frorm = $('#setting_lan_custom_frorm');
+  var $setting_lan_custom_frorm_input = $setting_lan_custom_frorm.find('input');
+  var $setting_lan_custom_form_tips = $setting_lan_custom_frorm.find('.label-item-tip');
+  var $lan_mac = $('.lan-mac');
+  var $lan_switch = $('.lan-switch');
+  var $lan_switch_check = $lan_switch.children('input');
+  var $setting_lan_auto_submit = $('#setting_lan_auto_submit');
+  // DHCP分配范围设置
+  var $lan_dhcp_switch_btn = $('.lan-dhcp-switch');
+  var $lan_dhcp_item_options = $('.lan-dhcp-item-option');
+  var $setting_lan_dhcp_submit = $('#setting_lan_dhcp_submit');
+  var $lan_dhcp_form = $('#lan_dhcp_form');
+  var $lan_dhcp_form_tips = $lan_dhcp_form.find('.label-item-tip');
+  var $lan_dhcp_start = $('.lan-dhcp-start');
+  var $lan_dhcp_end = $('.lan-dhcp-end');
 
   $lan_set_select_options.on('click', function () {
     var $index = $(this).index();
-    $lan_set_select_items.eq($index).show().siblings().hide();
+    if ($index) {
+      $setting_lan_custom_frorm_input.prop('readonly', false);
+    } else {
+      $setting_lan_custom_frorm_input.eq(0).val('192.168.1.1');
+      $setting_lan_custom_frorm_input.eq(1).val('255.255.255.0');
+      $setting_lan_custom_frorm_input.prop('readonly', true);
+    }
   });
 
+
+  // 获取lan口信息
+  function initLanSetting() {
+    // 获取lan口信息
+    _getLanInfo()
+      .then(function (res) {
+        $lan_mac.text(res.mac.toUpperCase());
+        // 开启手动分配IP
+        if (res.enable === '1') {
+          $lan_switch.addClass('on');
+          $lan_switch_check.prop('checked', true);
+          $lan_dhcp_item_options.hide().eq(1).show();
+        } else if (res.enable == '0') {
+          $lan_switch.removeClass('on');
+          $lan_switch_check.prop('checked', false);
+          $lan_dhcp_item_options.hide().eq(0).show();
+          $lan_dhcp_start.val(res.start);
+          $lan_dhcp_end.val(res.end);
+        }
+
+        $setting_lan_custom_frorm_input.eq(0).val(res.ip);
+        $setting_lan_custom_frorm_input.eq(1).val(res.mask);
+      })
+      .catch(function (err) {
+
+      })
+  }
+
   // 自动设置（默认设置）
-  var $setting_lan_auto_submit = $('#setting_lan_auto_submit');
 
   $setting_lan_auto_submit.on('click', function () {
     var parmas = { name1: '192.168.1.1', name2: '255.255.255.0' };
@@ -449,39 +498,98 @@ function loadContent() {
 
   });
   // 手动设置
-  var $setting_lan_custom_submit = $('#setting_lan_custom_submit');
-  var $setting_lan_custom_frorm = $('#setting_lan_custom_frorm');
-  var $setting_lan_custom_form_tips = $setting_lan_custom_frorm.find('.label-item-tip');
+  // $setting_lan_custom_submit.on('click', function () {
+  //   var data = _formArrToObject($setting_lan_custom_frorm);
 
-  $setting_lan_custom_submit.on('click', function () {
-    var data = _formArrToObject($setting_lan_custom_frorm);
+  //   console.log($setting_lan_custom_form_tips)
 
-    console.log($setting_lan_custom_form_tips)
+  //   _setLanInfo()
+  //     .then(function (res) {
+  //       console.log('lan口设置 success', res)
+  //     })
+  //     .catch(function (err) {
+  //       console.log('lan口设置 error', err)
+  //     })
+  // });
 
-    if (!data.name1) {
+  // DHCP分配范围设置
+  var $lan_dhcp_item_options = $('.lan-dhcp-item-option');
+  var $setting_lan_dhcp_submit = $('#setting_lan_dhcp_submit');
+  var $lan_dhcp_form = $('#lan_dhcp_form');
+  var $lan_dhcp_form_tips = $lan_dhcp_form.find('.label-item-tip');
+
+  $lan_dhcp_switch_btn.on('change', function () {
+    var isChecked = $(this).prop('checked');
+
+    if (isChecked) {
+      $lan_dhcp_start.prop('readonly', false);
+      $lan_dhcp_end.prop('readonly', false);
+    } else {
+      $lan_dhcp_start.val('192.168.1.1').prop('readonly', true);
+      $lan_dhcp_end.val('192.168.1.254').prop('readonly', true);
+    }
+
+    console.log('DHCP服务器', isChecked)
+  });
+
+  $setting_lan_dhcp_submit.on('click', function () {
+    var data1 = _formArrToObject($setting_lan_custom_frorm);
+    var data2 = _formArrToObject($lan_dhcp_form);
+
+    console.log($setting_lan_custom_frorm_input.val(), '$setting_lan_custom_frorm_input');
+
+    console.log(data1, data2)
+
+    if (!data1.name1) {
       $setting_lan_custom_form_tips.eq(0).html('请输入IP地址').slideDown();
       return;
-    } else if (_space(data.name1)) {
+    } else if (_space(data1.name1)) {
       $setting_lan_custom_form_tips.eq(0).html('输入不能包含空格').slideDown();
       return;
-    } else if (!_ip(data.name1)) {
+    } else if (!_ip(data1.name1)) {
       $setting_lan_custom_form_tips.eq(0).html('请输入正确的IP地址').slideDown();
       return;
     } else {
       $setting_lan_custom_form_tips.eq(0).html('').slideUp();
     }
 
-    if (!data.name2) {
+    if (!data1.name2) {
       $setting_lan_custom_form_tips.eq(1).html('请输入IP地址').slideDown();
       return;
-    } else if (_space(data.name2)) {
+    } else if (_space(data1.name2)) {
       $setting_lan_custom_form_tips.eq(1).html('输入不能包含空格').slideDown();
       return;
-    } else if (!_ip(data.name2)) {
+    } else if (!_ip(data1.name2)) {
       $setting_lan_custom_form_tips.eq(1).html('请输入正确的子网掩码').slideDown();
       return;
     } else {
       $setting_lan_custom_form_tips.eq(1).html('').slideUp();
+    }
+
+    if (!data2.name3) {
+      $lan_dhcp_form_tips.eq(0).html('请输入IP地址').slideDown();
+      return;
+    } else if (_space(data2.name3)) {
+      $lan_dhcp_form_tips.eq(0).html('输入不能包含空格').slideDown();
+      return;
+    } else if (!_ip(data2.name3)) {
+      $lan_dhcp_form_tips.eq(0).html('请输入正确的IP地址').slideDown();
+      return;
+    } else {
+      $lan_dhcp_form_tips.eq(0).html('').slideUp();
+    }
+
+    if (!data2.name4) {
+      $lan_dhcp_form_tips.eq(1).html('请输入IP地址').slideDown();
+      return;
+    } else if (_space(data2.name4)) {
+      $lan_dhcp_form_tips.eq(1).html('输入不能包含空格').slideDown();
+      return;
+    } else if (!_ip(data2.name4)) {
+      $lan_dhcp_form_tips.eq(1).html('请输入正确的IP地址').slideDown();
+      return;
+    } else {
+      $lan_dhcp_form_tips.eq(1).html('').slideUp();
     }
 
     _setLanInfo()
@@ -492,56 +600,6 @@ function loadContent() {
         console.log('lan口设置 error', err)
       })
 
-  });
-
-  // DHCP分配范围设置
-  var $lan_dhcp_switch_btn = $('.lan-dhcp-switch');
-  var $lan_dhcp_item_options = $('.lan-dhcp-item-option');
-  var $setting_lan_dhcp_submit = $('#setting_lan_dhcp_submit');
-  var $lan_dhcp_form = $('#lan_dhcp_form');
-  var $lan_dhcp_form_tips = $lan_dhcp_form.find('.label-item-tip');
-
-  $lan_dhcp_switch_btn.on('change', function () {
-    var isChecked = $(this).prop('checked') ? 1 : 0;
-    var index = isChecked ? 1 : 0;
-    $lan_dhcp_item_options.hide().eq(index).show();
-    console.log('DHCP服务器', isChecked)
-  });
-
-  $setting_lan_dhcp_submit.on('click', function () {
-    var isChecked = $lan_dhcp_switch_btn.prop('checked');
-    // 默认
-    var data1 = { name1: '192.168.199.1', name2: '192.168.199.200' };
-    // 范围
-    var data2 = _formArrToObject($lan_dhcp_form);
-
-    if (!data2.name1) {
-      $lan_dhcp_form_tips.eq(0).html('请输入IP地址').slideDown();
-      return;
-    } else if (_space(data2.name1)) {
-      $lan_dhcp_form_tips.eq(0).html('输入不能包含空格').slideDown();
-      return;
-    } else if (!_ip(data2.name1)) {
-      $lan_dhcp_form_tips.eq(0).html('请输入正确的IP地址').slideDown();
-      return;
-    } else {
-      $lan_dhcp_form_tips.eq(0).html('').slideUp();
-    }
-
-    if (!data2.name2) {
-      $lan_dhcp_form_tips.eq(1).html('请输入IP地址').slideDown();
-      return;
-    } else if (_space(data2.name2)) {
-      $lan_dhcp_form_tips.eq(1).html('输入不能包含空格').slideDown();
-      return;
-    } else if (!_ip(data2.name2)) {
-      $lan_dhcp_form_tips.eq(1).html('请输入正确的IP地址').slideDown();
-      return;
-    } else {
-      $lan_dhcp_form_tips.eq(1).html('').slideUp();
-    }
-
-    console.log(isChecked, data2);
   });
 
   // 获取DHCP列表

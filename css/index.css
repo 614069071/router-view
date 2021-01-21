@@ -456,10 +456,6 @@
 }
 
 .lan-dhcp-set-wrapper .lan-dhcp-item-option {
-  display: none;
-}
-
-.lan-dhcp-set-wrapper .lan-dhcp-item-option.active {
   display: block;
 }
 

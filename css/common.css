@@ -402,6 +402,10 @@ input[type="password"],
   box-sizing: border-box;
 }
 
+input[readonly] {
+  background-color: #f5f7fa;
+}
+
 .label-item .input-disabled,
 input[type="text"],
 input[type="password"] {
