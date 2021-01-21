@@ -98,13 +98,9 @@ function loadContent() {
     module: 'route-lan',
     icon: 'LANkou',
     callback: function () {
-      _getOlineList()
-        .then(function (res) {
-          console.log('lan口设置 dhcp 设备列表 success', res)
-        })
-        .catch(function (err) {
-          console.log('lan口设置 dhcp 设备列表 error', err)
-        })
+      onlineDHCPlist();
+
+
     }
   },
   { title: '修改密码', module: 'route-manage', icon: 'edit' },
@@ -420,12 +416,12 @@ function loadContent() {
 
   // lan设置
   // DCHP设备列表创建分页器
-  new _Pager($('.device-list-pager-wrapper'), {
-    total: 100,
-    callback: function (index) {
-      console.log('device', index);
-    }
-  });
+  // new _Pager($('.device-list-pager-wrapper'), {
+  //   total: 100,
+  //   callback: function (index) {
+  //     console.log('device', index);
+  //   }
+  // });
 
   var $lan_set_select_options = $('.lan-connect-select .select-option');
   var $lan_set_select_items = $('.lan-set-wrapper .lan-type-item');
@@ -547,6 +543,26 @@ function loadContent() {
 
     console.log(isChecked, data2);
   });
+
+  // 获取DHCP列表
+  var $dhcp_online_list_body = $('.dhcp-online-list-body');
+  function onlineDHCPlist() {
+    _getOlineList()
+      .then(function (res) {
+        var list = res.terminals || [];
+        var table = '';
+
+        $.each(list, function (i, item) {
+          table += '<tr><td>' + (i + 1) + '</td><td>' + item.name + '</td><td>' + item.mac + '</td><td>' + item.ip + '</td></tr>';
+        });
+
+        $dhcp_online_list_body.empty().html(table);
+        console.log('lan口设置 dhcp 设备列表 success', res)
+      })
+      .catch(function (err) {
+        console.log('lan口设置 dhcp 设备列表 error', err)
+      })
+  }
 
   // 设备管理 => 修改管理密码
   var $setting_manage_form = $('#setting_manage_form');
