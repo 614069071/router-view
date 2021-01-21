@@ -239,18 +239,18 @@
 }
 
 .home-item-inner--main-item {
-  color: #606266;
   width: 33%;
   height: 18px;
   line-height: 18px;
   margin-top: 18px;
-}
-
-.home-item-inner--main-item > span {
   color: rgba(0, 0, 0, 0.85);
 }
 
-.home-item-inner--main-item > i {
+.home-item-inner--main-item > span {
+  color: #606266;
+}
+
+.home-item-inner--main-item span > i {
   color: var(--default-color);
 }
 

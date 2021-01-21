@@ -73,11 +73,12 @@
                 <div class="title-left">设备信息</div>
               </div>
               <div class="home-item-info--main">
-                <div class="home-item-inner--main-item"><span>产品型号：</span>NSS-H-1</div>
-                <div class="home-item-inner--main-item"><span>SN地址：</span>NJ-NJ-NJ-NJ-NJ-NJ-NJ</div>
-                <div class="home-item-inner--main-item"><span>MAC地址：</span>E0-67-B3-71-FF-FF</div>
-                <div class="home-item-inner--main-item"><span>版本信息：</span>V1.0.6</div>
-                <div class="home-item-inner--main-item"><span>运行状态：</span>已稳定运行 <i>8</i> 天 <i>12</i> 小时</div>
+                <div class="home-item-inner--main-item">产品型号：<span class="device-item">XXX</span></div>
+                <div class="home-item-inner--main-item">SN地址：<span class="device-item">XX-XX-XX-XX-XX-XX-XX</span></div>
+                <div class="home-item-inner--main-item">MAC地址：<span class="device-item">XX-XX-XX-XX-XX-XX</span></div>
+                <div class="home-item-inner--main-item">版本信息：<span class="device-item">V1.0.0</span></div>
+                <div class="home-item-inner--main-item">运行状态：已稳定运行<span class="device-item"> <i>0</i> 天 <i>0</span></i>
+                </div>
               </div>
             </div>
 
@@ -85,7 +86,7 @@
               <div class="home-item-inner--wrapper small-item-inner--wrapper">
                 <div class="item-inner-main">
                   <div class="home-item-inner--title">
-                    <div class="title-left">网络状态<span>在线</span></div>
+                    <div class="title-left">网络状态<span class="newrork-state">在线</span></div>
                   </div>
                   <div class="device-state-item">
                     <div class="device-state-item-img network-state-wrapper">
@@ -114,8 +115,8 @@
                   <div class="home-item-inner--title">
                     <div class="title-left">内置硬盘<span>EXT4</span></div>
                     <div class="title-right">
-                      <span>总容量 <i>1T</i></span>
-                      <span>使用容量 <i>500G</i></span>
+                      <span>总容量 <i class="dev_total_cap">0</i></span>
+                      <span>使用容量 <i class="dev_use_cap">0</i></span>
                     </div>
                   </div>
 
@@ -124,14 +125,14 @@
                       <svg viewBox="0 0 100 100">
                         <path d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94" stroke="#F0F2F5"
                           stroke-width="4.8" fill="none" style="stroke-dasharray: 295.31px, 295.31px;"></path>
-                        <path d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94" stroke="#34C9C9"
-                          stroke-linecap="round" stroke-width="4.8" fill="none"
-                          style="stroke-dasharray: 73.8274px, 295.31px;">
+                        <path class="dev-svg-path" d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94"
+                          stroke="#34C9C9" stroke-linecap="round" stroke-width="4.8" fill="none"
+                          style="stroke-dasharray: 0px, 295.31px;">
                         </path>
                       </svg>
                       <div class="device-state-item-wrapper">
                         <span>剩余容量</span>
-                        <span>500G</span>
+                        <span class="dev_remain_cap">0</span>
                       </div>
                     </div>
                   </div>
@@ -147,14 +148,14 @@
                       <svg viewBox="0 0 100 100">
                         <path d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94" stroke="#F0F2F5"
                           stroke-width="4.8" fill="none" style="stroke-dasharray: 295.31px, 295.31px;"></path>
-                        <path d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94" stroke="#20a0ff"
-                          stroke-linecap="round" stroke-width="4.8" fill="none"
-                          style="stroke-dasharray: 73.8274px, 295.31px;">
+                        <path class="client-svg-path" d="M 50 50 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94"
+                          stroke="#20a0ff" stroke-linecap="round" stroke-width="4.8" fill="none"
+                          style="stroke-dasharray: 0px, 295.31px;">
                         </path>
                       </svg>
                       <div class="device-state-item-wrapper">
                         <span>LAN口连接终端数量</span>
-                        <span class="device-state-item-text">1个</span>
+                        <span class="device-state-item-text client-connect-state">1个</span>
                       </div>
                     </div>
                   </div>
@@ -167,8 +168,8 @@
                   <div class="home-item-inner--title">
                     <div class="title-left">USB外接设备</div>
                     <div class="title-right">
-                      <span>总容量 <i>4G</i></span>
-                      <span>使用容量 <i>3G</i></span>
+                      <span>总容量 <i class="usb-total-cap">0</i></span>
+                      <span>使用容量 <i class="usb-use-cap">0</i></span>
                     </div>
                   </div>
 
@@ -182,7 +183,7 @@
 
                       <div class="device-state-item-wrapper">
                         <span>USB剩余容量</span>
-                        <span class="device-state-item-text">1G</span>
+                        <span class="device-state-item-text usb-remain-cap">0</span>
                       </div>
                     </div>
                   </div>

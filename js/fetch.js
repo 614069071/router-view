@@ -35,6 +35,11 @@ function _getRouterInfo() {
 }
 
 // 获取设备状态信息（）
+function _getDeviceInfo() {
+  var parmas = { operation: 'dev_info', function: 'get' };
+
+  return _request(parmas);
+}
 
 // 获取时间
 function _getTimeSync() {

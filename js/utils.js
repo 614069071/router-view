@@ -34,6 +34,24 @@ function _toBety(size) {
   return num.toFixed(2) + bety[c];
 }
 
+// 统一格式
+function formatNumber(n) {
+  var n = n.toString();
+  return n[1] ? n : '0' + n;
+}
+
+// 序列化时间
+function _formatTime(date, type) {
+  // var year = date.getFullYear();
+  // var month = date.getMonth() + 1;
+  var day = date.getDate();
+  var hour = date.getHours();
+  // var minute = date.getMinutes();
+  // var second = date.getSeconds();
+
+  return { day: day, hour: hour };
+}
+
 /* 
   @data 请求数据
   @method 请求方式
@@ -48,11 +66,11 @@ function _request(data, method, url) {
       // dataType: "json",
       dataType: "json",
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         resolve(res);
       },
       error: function (err) {
-        console.log(err);
+        // console.log(err);
         reject(err);
       },
       complete: function (xhr) {
