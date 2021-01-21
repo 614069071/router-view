@@ -239,10 +239,20 @@ _MenuTree.prototype.appendMenuToEle = function (arr, el) {
   var menuTree = this.createMenuItem(arr);
   root.append(menuTree);
   this.initMenuHandel();
-  this.finish();
+  this.finish(arr);
 }
 
-_MenuTree.prototype.finish = function () {
+_MenuTree.prototype.execute = function (arr, str) {
+  $.each(arr, function (i, e) {
+    if (e.module === str) {
+      e.callback && e.callback();
+    } else if (e.list && e.list.length) {
+      execute(e.list, str);
+    }
+  });
+}
+
+_MenuTree.prototype.finish = function (arr) {
   var $menu_item_titles = $('.menu-item-title');
   var _fistModule_ = $menu_item_titles.eq(0).data('module');
   var _module_ = _storages.get('_module_') || _fistModule_;
@@ -256,7 +266,10 @@ _MenuTree.prototype.finish = function () {
       $content.hide().removeClass('active').eq(i).show().addClass('active');
     }
   });
+
+  this.execute(arr, _module_);
 }
+
 /* ------------------- 创建 NavMenu end ------------------- */
 
 
