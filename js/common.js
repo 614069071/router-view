@@ -275,8 +275,9 @@ _MenuTree.prototype.finish = function (arr) {
 
 // 进度条
 function _Progress(el, count) {
+  var wait = (count || 60) * 1000 / 100;
   this.el = el || $('body'); //挂载点
-  this.count = count || 600; //时长 s
+  this.count = wait; //时长 s
   this.timer = null;
   this.current = 0;
   this.create();
@@ -297,43 +298,42 @@ _Progress.prototype.create = function () {
   this.el.empty().append($wrapper);
 }
 
-_Progress.prototype.move = function (num) {
+_Progress.prototype.move = function (sp) {
   var el = document.querySelector('.progress-wrapper');
   if (!el) this.create();
   var self = this;
   var sum = 295.31;
   var step = sum / 100;
-  var speed = num || self.count;
+  var speed = sp || self.count;
   var $progress_bar = $('.progress-wrapper .progress-bar');
   var $progress_percentage = $('.progress-wrapper .progress-percentage');
 
   self.timer = setInterval(function () {
-    if (self.current >= 99) {
+    if (!sp && self.current >= 99) {
       clearInterval(self.timer);
       return;
     }
     self.current += 1;
     var scale = self.current + '%';
-    console.log(self.current, 'self.current');
+    // console.log(self.current, 'self.current');
     $progress_percentage.text(scale);
     $progress_bar.prop('style', 'stroke-dasharray: ' + (self.current * step) + 'px, 295.31px;');
 
+    if (self.current >= 100) {
+      clearInterval(self.timer);
+    }
   }, speed);
 }
 
 _Progress.prototype.start = function () {
-  var self = this;
+  clearInterval(this.timer);
 
   this.move();
-
-  if (this.current >= 99) {
-    clearInterval(self.timer);
-  }
 }
 
 _Progress.prototype.finish = function () {
   clearInterval(this.timer);
-  this.move(100);
+  this.move(50);
 }
 
 _Progress.prototype.close = function () {

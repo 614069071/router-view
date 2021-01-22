@@ -105,20 +105,36 @@ function _setConnectStatic(parmas) {
 // 软件升级 => 上传文件
 function _uploadFile(file) {
   var formData = new FormData();
-  formData.append('file', file);
-  formData.append('type', 'upload');
-  formData.append('function', 'upgrade');
+  var url = _action + '?type=upload&function=upgrade';
 
-  return _request(formData);
-  // 上传完成，开始升级
-  // _upgradeStart();
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      type: 'post',
+      url: url,
+      timeout: 3000,
+      data: formData,
+      dataType: "json",
+      contentType: false,
+      processData: false,
+      success: function (res) {
+        resolve(res);
+      },
+      error: function (err) {
+        reject(err);
+      },
+      complete: function (xhr) {
+        xhr.abort();
+        _close();
+      }
+    });
+  });
 }
 
 //  软件升级 => 升级
 function _upgradeStart() {
-  var parmas = { type: 'mtd_write', function: 'upgrade' };
+  var url = _action + '?type=mtd_write&function=upgrade';
 
-  return _request(parmas);
+  return _request({}, 'post', url);
 }
 
 // 检测版本（测试接口，无效）

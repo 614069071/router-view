@@ -772,7 +772,7 @@ function loadContent() {
   // 设备管理 => 固件升级
   var $upgrade_popup_warpper = $('.upgrade-popup-warpper');
   var $progress_wrapper = $('.upgrade-progress-wrapper');
-  var upgrade_Progress = new _Progress($progress_wrapper);
+  window.upgrade_Progress = new _Progress($progress_wrapper, 120);
   // 线上更新
   var $detection_update_btn = $('#detection_update_btn');
 
@@ -854,20 +854,26 @@ function loadContent() {
     } else {
       $upload_file_tip.text('').slideUp();
     }
+
     $upgrade_popup_warpper.show();
     upgrade_Progress.start();
-    return;
-    uploadFile($file)
+
+    _uploadFile($file)
       .then(function (res) {
         console.log('上传文件 success', res);
 
-        return;
         _upgradeStart()
           .then(function (res) {
-            console.log(object)
+            if (res.check == '1') {
+              console.log('升级完成 success', res);
+              upgrade_Progress.finish();
+              $upgrade_popup_warpper.hide();
+              _toast('升级完成，设备重启中...');
+            }
           })
           .catch(function (err) {
-            console.log(err);
+            console.log('升级失败 error', res);
+            upgrade_Progress.close();
           })
       })
       .catch(function (err) {
