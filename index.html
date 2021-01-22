@@ -294,12 +294,13 @@
               <form class="lan-type-item dchp-fixed" id="setting_lan_custom_frorm">
                 <label class="label-item">
                   <span>IP地址</span>
-                  <input type="text" name="name1" placeholder="请输入您的起始IP地址" value="192.168.1.1" readonly />
+                  <input type="text" id="lan_ip_input" name="name1" maxlength="15" placeholder="请输入IP地址"
+                    value="192.168.1.1" readonly />
                   <div class="label-item-tip"></div>
                 </label>
                 <label class="label-item">
                   <span>子网掩码</span>
-                  <input type="text" name="name2" placeholder="请输入您的起始IP地址" value="255.255.255.0" readonly />
+                  <input type="text" name="name2" maxlength="15" placeholder="请输入子网掩码" value="255.255.255.0" readonly />
                   <div class="label-item-tip"></div>
                 </label>
                 <!-- <div class="label-item">
@@ -317,7 +318,7 @@
             <div class="label-item">
               <span>开关</span>
               <label class="switch-btn lan-switch">
-                <input class="lan-dhcp-switch" type="checkbox" name="dhcp" hidden role="switch" />
+                <input class="lan-dhcp-switch" type="checkbox" name="dhcp" value="1" hidden role="switch" />
                 <span></span>
               </label>
             </div>

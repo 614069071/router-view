@@ -455,10 +455,6 @@
   width: 150px;
 }
 
-.lan-dhcp-set-wrapper .lan-dhcp-item-option {
-  display: block;
-}
-
 .lan-dhcp-line {
   padding: 0 10px;
 }
@@ -597,6 +593,7 @@
   text-align: center;
   color: #606266;
   line-height: 22px;
+  padding: 0 44px;
 }
 
 .upgrade-popup-progress-wrapper {

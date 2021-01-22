@@ -56,21 +56,7 @@ function _getLanInfo() {
 }
 
 //  lan口设置 => 设置lan口信息
-function _setLanInfo() {
-  var parmas = {
-    operation: 'dhcpd',
-    function: 'set',
-    start: '',//开始区间
-    end: '',//结束区间
-    mask: '',//子网掩码
-    ip: ip,
-    enable: 1,//是否打开
-    dns1: '',
-    dns2: '',
-    ip_limit: '',
-    ip_startthird: '',
-  };
-
+function _setLanInfo(parmas) {
   return _request(parmas);
 }
 
