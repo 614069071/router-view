@@ -91,6 +91,7 @@ function loadContent() {
     icon: 'cloud',
     checked: true,
     callback: function () {
+      getNetworkState();
       loadNetworkState();
     }
   },
@@ -321,12 +322,12 @@ function loadContent() {
     }, 4000);
   }
 
-  var _module_ = _storages.get('_module_');
-  var __accessToken__ = _storages.get('__accessToken__');
+  // var _module_ = _storages.get('_module_');
+  // var __accessToken__ = _storages.get('__accessToken__');
 
-  if (__accessToken__ == '1' && (_module_ === 'route-status' || !_module_)) {
-    getNetworkState();
-  }
+  // if (__accessToken__ == '1' && (_module_ === 'route-status' || !_module_)) {
+  //   getNetworkState();
+  // }
 
   // WAN口设置
   var $internet_connect_select_options = $('.internet-connect-select .select-option');
