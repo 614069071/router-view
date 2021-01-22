@@ -653,11 +653,12 @@ function loadContent() {
 
     _setLanInfo(parmas)
       .then(function (res) {
-        console.log('lan口设置 success', res)
+        console.log('lan口设置 success', res);
         _toast('修改成功');
       })
       .catch(function (err) {
-        console.log('lan口设置 error', err)
+        _toast('修改成功');
+        console.log('lan口设置 catch', err);
       })
 
   });
