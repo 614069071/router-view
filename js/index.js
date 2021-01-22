@@ -609,7 +609,6 @@ function loadContent() {
     var end = data2.name4.split('.').pop();
     var ip_limit = end - start + 1;
 
-
     var parmas = {
       operation: 'dhcpd',
       function: 'set',
