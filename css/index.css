@@ -217,8 +217,12 @@
 }
 
 .title-left span {
-  color: var(--default-color);
   margin-left: 10px;
+  color: var(--default-color);
+}
+
+.title-left span.offline {
+  color: #dcdfe6;
 }
 
 .title-right span {

@@ -269,9 +269,12 @@ function loadContent() {
     _getRouterInfo()
       .then(function (res) {
         // 网络状态
-        var state = res.connect == '1' ? '在线' : '离线';
+        if (res.connect == '1') {
+          $newrork_state.removeClass('offline').text('在线');
+        } else {
+          $newrork_state.addClass('offline').text('离线');
+        }
         // 上行速率
-        $newrork_state.text(state);
         if (CacheUpBety) {
           var new_up_byte = (res.up_byte - CacheUpBety) / 4;
           var nt1 = getDegrees(new_up_byte);
@@ -473,9 +476,13 @@ function loadContent() {
         if (res.enable === '1') {
           $lan_switch.addClass('on');
           $lan_switch_check.prop('checked', true);
+          $lan_dhcp_start.prop('readonly', false);
+          $lan_dhcp_end.prop('readonly', false);
         } else if (res.enable == '0') {
           $lan_switch.removeClass('on');
           $lan_switch_check.prop('checked', false);
+          $lan_dhcp_start.prop('readonly', true);
+          $lan_dhcp_end.prop('readonly', true);
         }
 
         $lan_dhcp_start.val(res.start);
@@ -546,8 +553,8 @@ function loadContent() {
       $lan_dhcp_start.prop('readonly', false);
       $lan_dhcp_end.prop('readonly', false);
     } else {
-      $lan_dhcp_start.val('192.168.1.1').prop('readonly', true);
-      $lan_dhcp_end.val('192.168.1.254').prop('readonly', true);
+      $lan_dhcp_start.prop('readonly', true);
+      $lan_dhcp_end.prop('readonly', true);
     }
 
     console.log('DHCP服务器', isChecked)
@@ -622,8 +629,8 @@ function loadContent() {
       start: data2.name3,
       end: data2.name4,
       enable: enable,
-      dns1: '',
-      dns2: '',
+      // dns1: '',
+      // dns2: '',
       ip_limit: ip_limit,
       ip_startthird: start
     };
