@@ -865,15 +865,19 @@ function loadContent() {
         _upgradeStart()
           .then(function (res) {
             if (res.check == '1') {
-              console.log('升级完成 success', res);
-              upgrade_Progress.finish();
-              $upgrade_popup_warpper.hide();
+              console.log('升级 success', res);
               _toast('升级完成，设备重启中...');
+            } else {
+              _toast('升级失败');
             }
+            upgrade_Progress.finish();
+            $upgrade_popup_warpper.hide();
           })
           .catch(function (err) {
             console.log('升级失败 error', res);
+            _toast('升级失败');
             upgrade_Progress.close();
+            $upgrade_popup_warpper.hide();
           })
       })
       .catch(function (err) {
