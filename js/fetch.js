@@ -105,6 +105,8 @@ function _setConnectStatic(parmas) {
 // 软件升级 => 上传文件
 function _uploadFile(file) {
   var formData = new FormData();
+  formData.append('file', file);
+
   var url = _action + '?type=upload&function=upgrade';
 
   return new Promise(function (resolve, reject) {
