@@ -232,93 +232,98 @@ function loadContent() {
 
   var CacheUpBety = 0;
   var CacheDownBety = 0;
+
+  function getNetworkState() {
+    console.log('loadNetworkState');
+
+    // 设备信息
+    _getDeviceInfo()
+      .then(function (res) {
+        setDeviceInfo($device_items, res);
+        // 内置硬盘
+        var dev_total = Number(res.dev.total) ? _toBety(res.dev.total) : 0;
+        var dev_used = Number(res.dev.used) ? _toBety(res.dev.used) : 0;
+        var dev_remain = Number(res.dev.total - res.dev.used) ? _toBety(res.dev.total - res.dev.used) : 0;
+        var devDeg = ((res.dev.used / res.dev.total) || 0) * 295.31;
+
+        $dev_total_cap.text(dev_total);
+        $dev_use_cap.text(dev_used);
+        $dev_remain_cap.text(dev_remain);
+        $dev_svg_path.prop('style', setSvgStyle(devDeg));
+
+        // usb外接
+        var usb_total = Number(res.usb.total) ? _toBety(res.usb.total) : 0;
+        var usb_used = Number(res.usb.used) ? _toBety(res.usb.used) : 0;
+        var usb_remain = Number(res.usb.total - res.usb.used) && _toBety(res.usb.total - res.usb.used);
+
+        $usb_total_cap.text(usb_total);
+        $usb_use_cap.text(usb_used);
+        $usb_remain_cap.text(usb_remain);
+        console.log('获取设备信息 success', res);
+      })
+      .catch(function (err) {
+        console.log('获取设备信息 error', err);
+      })
+
+    // 路由信息
+    _getRouterInfo()
+      .then(function (res) {
+        // 网络状态
+        var state = res.connect == '1' ? '在线' : '离线';
+        // 上行速率
+        $newrork_state.text(state);
+        if (CacheUpBety) {
+          var new_up_byte = (res.up_byte - CacheUpBety) / 4;
+          var nt1 = getDegrees(new_up_byte);
+          $netword_up_pointer.css('transform', 'rotate(' + nt1.deg + 'deg)');
+          $netword_up_speed.text(nt1.bety);
+        }
+        CacheUpBety = res.up_byte;
+        // 下行速率
+        if (CacheDownBety) {
+          var new_down_byte = (res.down_byte - CacheDownBety) / 4;
+          var nt2 = getDegrees(new_down_byte);
+          $netword_dw_pointer.css('transform', 'rotate(' + nt2.deg + 'deg)');
+          $netword_dw_speed.text(nt2.bety);
+        }
+        CacheDownBety = res.down_byte;
+        // 运行时间 
+        var time = _formatTime(new Date(res.uptime));
+        var sTime = time.day ? '<i>' + time.day + '</i>天<i>' + time.hour + '</i>小时' : '<i>' + time.hour + '</i>小时';
+        $device_items.eq(4).html(sTime);
+
+        // lan口连接数量
+        var clientDeg = (res.client / 255) * 295.31;
+        $client_connect_state.text(res.client || 0);
+        $client_svg_path.prop('style', setSvgStyle(clientDeg));
+
+        console.log('获取路由信息 success', res);
+      })
+      .catch(function (err) {
+        console.log('获取路由信息 error', err);
+      })
+
+    var _deviceInfo_ = _storages.get('_deviceInfo_');
+
+    if (_deviceInfo_) {
+      setDeviceInfo($device_items, _deviceInfo_);
+      return;
+    }
+  }
+
   function loadNetworkState() {
     networkTimer && clearInterval(networkTimer);
-    networkTimer = setInterval(() => {
-      console.log('loadNetworkState');
-
-      // 设备信息
-      _getDeviceInfo()
-        .then(function (res) {
-          setDeviceInfo($device_items, res);
-          // 内置硬盘
-          var dev_total = Number(res.dev.total) ? _toBety(res.dev.total) : 0;
-          var dev_used = Number(res.dev.used) ? _toBety(res.dev.used) : 0;
-          var dev_remain = Number(res.dev.total - res.dev.used) ? _toBety(res.dev.total - res.dev.used) : 0;
-          var devDeg = ((res.dev.used / res.dev.total) || 0) * 295.31;
-
-          $dev_total_cap.text(dev_total);
-          $dev_use_cap.text(dev_used);
-          $dev_remain_cap.text(dev_remain);
-          $dev_svg_path.prop('style', setSvgStyle(devDeg));
-
-          // usb外接
-          var usb_total = Number(res.usb.total) ? _toBety(res.usb.total) : 0;
-          var usb_used = Number(res.usb.used) ? _toBety(res.usb.used) : 0;
-          var usb_remain = Number(res.usb.total - res.usb.used) && _toBety(res.usb.total - res.usb.used);
-
-          $usb_total_cap.text(usb_total);
-          $usb_use_cap.text(usb_used);
-          $usb_remain_cap.text(usb_remain);
-          console.log('获取设备信息 success', res);
-        })
-        .catch(function (err) {
-          console.log('获取设备信息 error', err);
-        })
-
-      // 路由信息
-      _getRouterInfo()
-        .then(function (res) {
-          // 网络状态
-          var state = res.connect == '1' ? '在线' : '离线';
-          // 上行速率
-          $newrork_state.text(state);
-          if (CacheUpBety) {
-            var new_up_byte = (res.up_byte - CacheUpBety) / 4;
-            var nt1 = getDegrees(new_up_byte);
-            $netword_up_pointer.css('transform', 'rotate(' + nt1.deg + 'deg)');
-            $netword_up_speed.text(nt1.bety);
-          }
-          CacheUpBety = res.up_byte;
-          // 下行速率
-          if (CacheDownBety) {
-            var new_down_byte = (res.down_byte - CacheDownBety) / 4;
-            var nt2 = getDegrees(new_down_byte);
-            $netword_dw_pointer.css('transform', 'rotate(' + nt2.deg + 'deg)');
-            $netword_dw_speed.text(nt2.bety);
-          }
-          CacheDownBety = res.down_byte;
-          // 运行时间 
-          var time = _formatTime(new Date(res.uptime));
-          var sTime = time.day ? '<i>' + time.day + '</i>天<i>' + time.hour + '</i>小时' : '<i>' + time.hour + '</i>小时';
-          $device_items.eq(4).html(sTime);
-
-          // lan口连接数量
-          var clientDeg = (res.client / 255) * 295.31;
-          $client_connect_state.text(res.client || 0);
-          $client_svg_path.prop('style', setSvgStyle(clientDeg));
-
-          console.log('获取路由信息 success', res);
-        })
-        .catch(function (err) {
-          console.log('获取路由信息 error', err);
-        })
-
-      var _deviceInfo_ = _storages.get('_deviceInfo_');
-
-      if (_deviceInfo_) {
-        setDeviceInfo($device_items, _deviceInfo_);
-        return;
-      }
+    networkTimer = setInterval(function () {
+      getNetworkState();
     }, 4000);
   }
 
   var _module_ = _storages.get('_module_');
   var __accessToken__ = _storages.get('__accessToken__');
 
-  // if (__accessToken__ == '1' && (_module_ === 'route-status' || !_module_)) {
-  //   loadNetworkState();
-  // }
+  if (__accessToken__ == '1' && (_module_ === 'route-status' || !_module_)) {
+    getNetworkState();
+  }
 
   // WAN口设置
   var $internet_connect_select_options = $('.internet-connect-select .select-option');
