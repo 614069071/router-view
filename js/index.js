@@ -385,11 +385,11 @@ function loadContent() {
     // ajax
     _setConnectPPPoE(data.name1, data.name2)
       .then(function (res) {
-        console.log('wan口设置 ppoe success', res);
+        console.log('wan口设置 PPoE success', res);
         _toast('设置成功');
       })
       .catch(function (err) {
-        console.log('wan口设置 ppoe error', err)
+        console.log('wan口设置 PPoE error', err)
       })
   });
 

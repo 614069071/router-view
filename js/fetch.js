@@ -20,7 +20,7 @@ function _restartRoute() {
   return _request(params);
 }
 
-// 恢复出厂设置
+// 恢复出厂设置(重置)
 function _restoreRoute() {
   var params = { operation: 'device_opt', action: 'default' };
 
@@ -37,13 +37,6 @@ function _getRouterInfo() {
 // 获取设备状态信息（）
 function _getDeviceInfo() {
   var parmas = { operation: 'dev_info', function: 'get' };
-
-  return _request(parmas);
-}
-
-// 获取时间
-function _getTimeSync() {
-  var parmas = { operation: 'time_sync', function: 'get', server: '' };
 
   return _request(parmas);
 }
@@ -78,7 +71,7 @@ function _setConnectDhcp() {
   return _request(parmas);
 }
 
-// 宽带拨号
+// wan口设置 宽带拨号
 function _setConnectPPPoE(account, password) {
   var params = {
     operation: "wan_setup",
