@@ -241,9 +241,9 @@ function loadContent() {
       .then(function (res) {
         setDeviceInfo($device_items, res);
         // 内置硬盘
-        var dev_total = Number(res.dev.total) ? _toBety(res.dev.total) : 0;
-        var dev_used = Number(res.dev.used) ? _toBety(res.dev.used) : 0;
-        var dev_remain = Number(res.dev.total - res.dev.used) ? _toBety(res.dev.total - res.dev.used) : 0;
+        var dev_total = Number(res.dev.total) ? _toBety(res.dev.total * 1000) : 0;
+        var dev_used = Number(res.dev.used) ? _toBety(res.dev.used * 1000) : 0;
+        var dev_remain = Number(res.dev.total - res.dev.used) ? _toBety((res.dev.total - res.dev.used) * 1000) : 0;
         var devDeg = ((res.dev.used / res.dev.total) || 0) * 295.31;
 
         $dev_total_cap.text(dev_total);
@@ -252,9 +252,9 @@ function loadContent() {
         $dev_svg_path.prop('style', setSvgStyle(devDeg));
 
         // usb外接
-        var usb_total = Number(res.usb.total) ? _toBety(res.usb.total) : 0;
-        var usb_used = Number(res.usb.used) ? _toBety(res.usb.used) : 0;
-        var usb_remain = Number(res.usb.total - res.usb.used) && _toBety(res.usb.total - res.usb.used);
+        var usb_total = Number(res.usb.total) ? _toBety(res.usb.total * 1000) : 0;
+        var usb_used = Number(res.usb.used) ? _toBety(res.usb.used * 1000) : 0;
+        var usb_remain = Number(res.usb.total - res.usb.used) && _toBety((res.usb.total - res.usb.used) * 1000);
 
         $usb_total_cap.text(usb_total);
         $usb_use_cap.text(usb_used);
@@ -350,6 +350,7 @@ function loadContent() {
     _setConnectDhcp()
       .then(function (res) {
         console.log('wan口设置 dhcp（推荐） success', res);
+        _toast('设置成功');
       })
       .catch(function (err) {
         console.log('wan口设置 dhcp（推荐） error', err);
@@ -383,7 +384,8 @@ function loadContent() {
     // ajax
     _setConnectPPPoE(data.name1, data.name2)
       .then(function (res) {
-        console.log('wan口设置 ppoe success', res)
+        console.log('wan口设置 ppoe success', res);
+        _toast('设置成功');
       })
       .catch(function (err) {
         console.log('wan口设置 ppoe error', err)
@@ -414,7 +416,18 @@ function loadContent() {
       $setting_wizard_static_form_tips.eq(1).html('').slideUp();
     }
     // ajax
-    _setConnectStatic()
+    var parmas = {
+      operation: 'wan_setup',
+      function: 'set',
+      mode: 3,
+      ip: data.name1,
+      mask: data.name2,
+      gw: data.name3,
+      dns: data.name4,
+      // mtu: '',
+      // mac: '',
+    };
+    _setConnectStatic(parmas)
       .then(function (res) {
         console.log('wan口设置 静态 success', res)
       })
@@ -640,6 +653,7 @@ function loadContent() {
     _setLanInfo(parmas)
       .then(function (res) {
         console.log('lan口设置 success', res)
+        _toast('修改成功');
       })
       .catch(function (err) {
         console.log('lan口设置 error', err)

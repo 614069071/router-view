@@ -68,14 +68,11 @@ function _getOlineList() {
 }
 
 // wan口设置 设置dhcp
-function _setConnectDhcp(dns, mac, mtu) {
+function _setConnectDhcp() {
   var parmas = {
     operation: 'wan_setup',
     function: 'set',
     mode: 1,
-    dns: '',
-    mac: '',
-    mtu: ''
   };
 
   return _request(parmas);
@@ -101,20 +98,7 @@ function _setConnectPPPoE(account, password) {
 }
 
 // 设置静态IP
-function _setConnectStatic(ip, mask, gw, dns, dns1, mtu) {
-  var parmas = {
-    operation: 'wan_setup',
-    function: 'set',
-    ip: '',
-    mask: '',
-    gw: '',
-    mode: 3,
-    mtu: '',
-    dns: '',
-    dns1: '',
-    mac: '',
-  };
-
+function _setConnectStatic(parmas) {
   return _request(parmas);
 }
 
