@@ -292,7 +292,7 @@ function loadContent() {
         }
         CacheDownBety = res.down_byte;
         // 运行时间 
-        var time = _formatTime(new Date(res.uptime));
+        var time = formattingTime(res.uptime);
         var sTime = time.day ? '<i>' + time.day + '</i>天<i>' + time.hour + '</i>小时' : '<i>' + time.hour + '</i>小时';
         $device_items.eq(4).html(sTime);
 

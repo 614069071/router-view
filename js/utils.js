@@ -125,3 +125,14 @@ function _formArrToObject(el) {
   // }
   return form;
 }
+
+// 秒数转成天时
+function formattingTime(count) {
+  var hour = parseInt(parseInt(count / 60) / 60) % 24;
+  if (hour < 1) {
+    hour = 0;
+  }
+  var day = parseInt(parseInt(parseInt(count / 60) / 60) / 24);
+
+  return { hour: hour, day: day };
+}
