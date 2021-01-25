@@ -35,10 +35,10 @@ function loadLogin() {
       $ps_error_tip.html('').slideUp();
     }
 
-    _storages.set('__accessToken__', 1);
-    loadContent();
+    // _storages.set('__accessToken__', 1);
+    // loadContent();
+    // return;
 
-    return;
     _loading();
     _login(value)
       .then(function (res) {
@@ -430,10 +430,11 @@ function loadContent() {
     };
     _setConnectStatic(parmas)
       .then(function (res) {
-        console.log('wan口设置 静态 success', res)
+        console.log('wan口设置 静态 success', res);
       })
       .catch(function (err) {
-        console.log('wan口设置 静态 error', err)
+        console.log('wan口设置 静态 error', err);
+        _toast('更新成功');
       })
   });
 
