@@ -47,9 +47,9 @@ function loadLogin() {
           loadContent();
           _storages.set('__accessToken__', 1);
         } else if (res.error == 10001) {
-          _toast('密码错误');
+          _toast('密码错误', 'error');
         } else {
-          _toast('登录失败');
+          _toast('登录失败', 'error');
         }
       })
       .catch(function (err) {
