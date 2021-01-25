@@ -2,7 +2,7 @@
 window._action = "/cgi-bin/cdata.cgi";
 
 // 禁止右键
-function disEvent() {
+function banEvent() {
   document.ondragstart = function () { return false };
   document.onbeforecopy = function () { return false };
   document.onselectstart = function () { return false };
@@ -12,7 +12,7 @@ function disEvent() {
   document.onmouseup = function () { document.selection && document.selection.empty(); }
 }
 
-disEvent();
+banEvent();
 
 window._init = function () {
 
