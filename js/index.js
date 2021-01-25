@@ -351,9 +351,11 @@ function loadContent() {
     _setConnectDhcp()
       .then(function (res) {
         console.log('wan口设置 dhcp（推荐） success', res);
+        _storages.set('__accessToken__', 0);
         _toast('设置成功');
       })
       .catch(function (err) {
+        _storages.set('__accessToken__', 0);
         console.log('wan口设置 dhcp（推荐） error', err);
       })
   });
@@ -431,10 +433,12 @@ function loadContent() {
     _setConnectStatic(parmas)
       .then(function (res) {
         console.log('wan口设置 静态 success', res);
+        _storages.set('__accessToken__', 0);
       })
       .catch(function (err) {
         console.log('wan口设置 静态 error', err);
         _toast('更新成功');
+        _storages.set('__accessToken__', 0);
       })
   });
 
@@ -448,17 +452,14 @@ function loadContent() {
   // });
 
   var $lan_set_select_options = $('.lan-connect-select .select-option');
-  var $setting_lan_custom_submit = $('#setting_lan_custom_submit');
   var $setting_lan_custom_frorm = $('#setting_lan_custom_frorm');
   var $setting_lan_custom_frorm_input = $setting_lan_custom_frorm.find('input');
   var $setting_lan_custom_form_tips = $setting_lan_custom_frorm.find('.label-item-tip');
   var $lan_mac = $('.lan-mac');
   var $lan_switch = $('.lan-switch');
   var $lan_switch_check = $lan_switch.children('input');
-  var $setting_lan_auto_submit = $('#setting_lan_auto_submit');
   // DHCP分配范围设置
   var $lan_dhcp_switch_btn = $('.lan-dhcp-switch');
-  var $lan_dhcp_item_options = $('.lan-dhcp-item-option');
   var $setting_lan_dhcp_submit = $('#setting_lan_dhcp_submit');
   var $lan_dhcp_form = $('#lan_dhcp_form');
   var $lan_dhcp_form_inputs = $lan_dhcp_form.find('input');
