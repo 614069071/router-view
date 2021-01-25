@@ -398,7 +398,7 @@ function loadContent() {
     var data = _formArrToObject($setting_wizard_static_form);
     console.log('静态ip', data)
     if (!data.name1) {
-      $setting_wizard_static_form_tips.eq(0).html('请输入宽带账号').slideDown();
+      $setting_wizard_static_form_tips.eq(0).html('请输入IP').slideDown();
       return;
     } else if (_space(data.name1)) {
       $setting_wizard_static_form_tips.eq(0).html('输入不能包含空格').slideDown();
@@ -408,7 +408,7 @@ function loadContent() {
     }
 
     if (!data.name2) {
-      $setting_wizard_static_form_tips.eq(1).html('请输入宽带账号').slideDown();
+      $setting_wizard_static_form_tips.eq(1).html('请输入子网掩码').slideDown();
       return;
     } else if (_space(data.name2)) {
       $setting_wizard_static_form_tips.eq(1).html('输入不能包含空格').slideDown();
